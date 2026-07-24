@@ -26,7 +26,6 @@ body{
 h1,h2,h3,h4{font-family:'Cormorant Garamond',serif; font-weight:600; color:var(--navy); line-height:1.15; margin:0}
 a{color:var(--sky)}
 
-/* HERO */
 .hero{
   background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 60%,#33477a 100%);
   color:var(--cream); padding:46px 24px 40px; text-align:center; position:relative; overflow:hidden;
@@ -37,13 +36,13 @@ a{color:var(--sky)}
 .hero h1{color:#fff; font-size:clamp(34px,6vw,58px); font-weight:700; letter-spacing:.5px}
 .hero .sub{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(18px,3vw,24px); color:#e9dfc4; margin-top:6px}
 .hero .meta{margin-top:20px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
-.hero .chip{background:#ffffff14; border:1px solid #ffffff33; padding:7px 15px; border-radius:40px; font-size:13.5px; letter-spacing:.02em}
+.hero .chip{background:#ffffff14; border:1px solid #ffffff33; padding:7px 15px; border-radius:40px; font-size:13.5px}
 .hero .chip b{color:var(--gold-lite)}
+.hero .stamp{margin-top:16px; display:inline-block; border:1.5px solid var(--gold-lite); color:var(--gold-lite); padding:5px 18px; border-radius:4px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; font-weight:700}
 
-/* NAV */
 nav{position:sticky; top:0; z-index:900; background:rgba(253,251,244,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); box-shadow:0 4px 14px -10px rgba(0,0,0,.25)}
 nav .wrap{max-width:1080px; margin:0 auto; display:flex; gap:4px; overflow-x:auto; padding:8px 12px}
-nav a{color:var(--navy); text-decoration:none; font-weight:600; font-size:13.5px; padding:8px 14px; border-radius:8px; white-space:nowrap; letter-spacing:.01em}
+nav a{color:var(--navy); text-decoration:none; font-weight:600; font-size:13.5px; padding:8px 14px; border-radius:8px; white-space:nowrap}
 nav a:hover{background:var(--cream)}
 .print-btn{margin-left:auto; background:var(--navy); color:#fff!important; border:none; cursor:pointer; font-family:'Karla'; font-weight:600}
 .print-btn:hover{background:var(--navy-2)!important}
@@ -55,15 +54,13 @@ section{margin-bottom:46px; scroll-margin-top:64px}
 .sec-head h2{font-size:clamp(26px,4vw,34px)}
 .lead{font-size:17px; color:var(--muted); max-width:70ch}
 
-/* ALERT CARDS */
-.alerts{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px}
+.alerts{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px}
 .alert{background:#fff; border:1px solid var(--line); border-left:5px solid var(--maroon); border-radius:12px; padding:16px 18px; box-shadow:var(--shadow)}
 .alert h4{font-size:20px; margin-bottom:4px}
 .alert .tag{font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--maroon); font-weight:700}
 .alert p{margin:6px 0 0; font-size:14.5px; color:#4a4638}
 .alert .call{margin-top:9px; font-size:13px; font-weight:600; color:var(--navy)}
 
-/* MAP */
 #map{height:480px; width:100%; border-radius:14px; border:1px solid var(--line); box-shadow:var(--shadow); z-index:1}
 .legend{display:flex; gap:18px; flex-wrap:wrap; margin-top:12px; font-size:13.5px}
 .legend span{display:inline-flex; align-items:center; gap:7px; font-weight:600; color:var(--navy)}
@@ -71,43 +68,38 @@ section{margin-bottom:46px; scroll-margin-top:64px}
 .leaflet-popup-content{font-family:'Karla',sans-serif; font-size:13px; line-height:1.5}
 .leaflet-popup-content b{font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--navy); font-weight:700}
 .leaflet-popup-content .note{color:#5a5442; display:block; margin-top:4px}
-.marker-num{background:var(--navy); color:#fff; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; border:2px solid #fff; box-shadow:0 2px 6px rgba(0,0,0,.35); font-family:'Karla'}
+.marker-num{color:#fff; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; border:2px solid #fff; box-shadow:0 2px 6px rgba(0,0,0,.35); font-family:'Karla'}
 
-/* VERSION TOGGLE */
-.toggle{display:inline-flex; background:var(--cream); border:1px solid var(--line); border-radius:40px; padding:5px; margin-bottom:8px; box-shadow:inset 0 1px 2px rgba(0,0,0,.05)}
-.toggle button{border:none; background:transparent; cursor:pointer; font-family:'Karla'; font-weight:700; font-size:14px; padding:10px 20px; border-radius:34px; color:var(--muted); transition:.2s; letter-spacing:.01em}
-.toggle button.on{background:var(--navy); color:#fff; box-shadow:var(--shadow)}
-.vlabel{background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin:10px 0 20px; box-shadow:var(--shadow)}
-.vlabel h3{font-size:23px}
-.vlabel h3 .pin{font-size:14px; font-family:'Karla'; font-weight:700; color:#fff; background:var(--gold); padding:3px 10px; border-radius:20px; vertical-align:middle; margin-left:8px; letter-spacing:.03em}
-.vlabel p{margin:6px 0 0; font-size:14.5px; color:#4a4638}
-
-/* DAY BLOCKS */
 .day{background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-bottom:16px; box-shadow:var(--shadow)}
 .day-h{background:linear-gradient(90deg,var(--navy),var(--navy-2)); color:#fff; padding:12px 18px; display:flex; align-items:center; gap:12px; flex-wrap:wrap}
 .day-h .d{font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:700}
-.day-h .date{font-size:13.5px; color:#d8cfb6; letter-spacing:.02em}
+.day-h .date{font-size:13.5px; color:#d8cfb6}
 .day-h .feast{margin-left:auto; font-size:12px; background:var(--gold); color:#fff; padding:4px 12px; border-radius:20px; font-weight:700; letter-spacing:.04em}
+.dress{background:var(--cream); padding:8px 18px; font-size:13px; color:var(--muted); border-bottom:1px solid var(--line)}
+.dress b{color:var(--navy)}
 table{width:100%; border-collapse:collapse; font-size:14px}
 th,td{padding:9px 12px; text-align:left; vertical-align:top; border-bottom:1px solid #f0ead9}
 th{background:var(--cream); font-size:11px; text-transform:uppercase; letter-spacing:.09em; color:var(--muted); font-weight:700}
-td.time{white-space:nowrap; font-weight:700; color:var(--navy); font-variant-numeric:tabular-nums; width:120px}
+td.time{white-space:nowrap; font-weight:700; color:var(--navy); font-variant-numeric:tabular-nums; width:112px}
+td.dur{white-space:nowrap; color:var(--muted); font-size:12.5px; width:62px; font-variant-numeric:tabular-nums}
 tr:last-child td{border-bottom:none}
 tr.mass td{background:#fbf3e4}
+tr.flex td{background:#f3f6f4}
 td .act{font-weight:600; color:var(--ink)}
 td .mass-badge{color:var(--maroon); font-weight:700}
-.flag{display:inline-block; font-size:11.5px; font-weight:700; padding:2px 8px; border-radius:6px; margin-top:4px; letter-spacing:.02em}
+.flag{display:inline-block; font-size:11.5px; font-weight:700; padding:2px 8px; border-radius:6px; margin-top:4px}
 .flag.fix{background:#e5f0ea; color:var(--green)}
 .flag.warn{background:#fbe9e3; color:var(--maroon)}
 .flag.info{background:#e6eef3; color:var(--sky)}
 .note-sm{display:block; color:var(--muted); font-size:12.5px; margin-top:3px}
 
-/* CALLOUT */
-.callout{background:#fbf3e4; border:1px solid var(--gold); border-left:5px solid var(--gold); border-radius:12px; padding:16px 18px; margin:8px 0 20px}
-.callout h4{color:var(--maroon); font-size:20px; margin-bottom:4px}
-.callout p{margin:6px 0 0; font-size:14px; color:#4a4232}
+.callout{background:#fbf3e4; border:1px solid var(--gold); border-left:5px solid var(--gold); border-radius:12px; padding:16px 20px; margin:0 0 18px}
+.callout h4{color:var(--maroon); font-size:21px; margin-bottom:6px}
+.callout p{margin:6px 0 0; font-size:14.5px; color:#4a4232}
+.callout ol{margin:8px 0 0; padding-left:20px; font-size:14.5px; color:#4a4232}
+.callout ol li{margin:5px 0}
+.callout b{color:var(--maroon)}
 
-/* GENERIC CARDS/LISTS */
 .grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px}
 .card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px 20px; box-shadow:var(--shadow)}
 .card h3{font-size:22px; margin-bottom:4px}
@@ -118,7 +110,6 @@ td .mass-badge{color:var(--maroon); font-weight:700}
 .card li::before{content:"✦"; position:absolute; left:0; top:5px; color:var(--gold); font-size:12px}
 .card li b{color:var(--navy)}
 
-/* CHECKLIST */
 .check{background:#fff; border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); overflow:hidden}
 .check .row{display:flex; align-items:flex-start; gap:12px; padding:12px 18px; border-bottom:1px solid #f0ead9}
 .check .row:last-child{border-bottom:none}
@@ -132,9 +123,7 @@ td .mass-badge{color:var(--maroon); font-weight:700}
 footer{background:var(--navy); color:#cbd2e0; text-align:center; padding:26px 20px; font-size:13px; border-top:4px solid var(--gold)}
 footer .cross{color:var(--gold-lite); font-size:22px; font-family:'Cormorant Garamond'}
 footer b{color:#fff}
-
 .small{font-size:12.5px; color:var(--muted)}
-.hidden{display:none!important}
 
 @media print{
   nav,.print-btn{display:none}
@@ -143,8 +132,6 @@ footer b{color:#fff}
   #map{height:340px}
   section{page-break-inside:avoid; margin-bottom:22px}
   .day,.card,.alert,.check,.callout{box-shadow:none; border-color:#ccc}
-  .hidden{display:block!important} /* show both versions when printed */
-  .toggle{display:none}
 }
 </style>
 </head>
@@ -153,21 +140,21 @@ footer b{color:#fff}
 <div class="hero">
   <div class="kicker">Lingkungan Santa Rosa de Lima</div>
   <h1>Ziarek Jogja–Solo</h1>
-  <div class="sub">Rundown &amp; Panduan Panitia · Dua Versi Perencanaan</div>
+  <div class="sub">Dokumen Panitia · Rundown Final</div>
   <div class="meta">
     <span class="chip">📅 <b>14–17 Agustus 2026</b></span>
     <span class="chip">👥 <b>44 peserta</b> · 1 bus</span>
     <span class="chip">🚌 Poris → Jogja → Solo → Poris</span>
-    <span class="chip">✟ 5 Gua Maria &amp; Gereja Ziarah</span>
+    <span class="chip">✟ Misa Minggu <b>16:30</b> · Purbayan</span>
   </div>
+  <div class="stamp">Hasil Rapat Panitia</div>
 </div>
 
 <nav>
   <div class="wrap">
-    <a href="#ringkasan">Ringkasan</a>
+    <a href="#ringkasan">Wajib Dikunci</a>
     <a href="#peta">Peta Rute</a>
-    <a href="#rundown">Rundown (2 Versi)</a>
-    <a href="#rekomendasi">Rekomendasi</a>
+    <a href="#rundown">Rundown</a>
     <a href="#telepon">Checklist Telepon</a>
     <a href="#peserta">Perlengkapan</a>
     <a href="#panitia">Peran Panitia</a>
@@ -177,33 +164,39 @@ footer b{color:#fff}
 
 <main>
 
-  <!-- RINGKASAN -->
+  <!-- I. WAJIB DIKUNCI -->
   <section id="ringkasan">
-    <div class="sec-head"><span class="no">I</span><h2>3 Hal yang Wajib Dikunci Sekarang</h2></div>
-    <p class="lead" style="margin-bottom:18px">Susunan acara sudah matang. Yang berpotensi merusak rencana bukan jarak, tapi tiga titik ini — semua bisa diamankan dengan telepon dari sekarang.</p>
+    <div class="sec-head"><span class="no">I</span><h2>Yang Wajib Dikunci Sekarang</h2></div>
+    <p class="lead" style="margin-bottom:18px">Rute dan jadwal sudah final. Yang berpotensi merusak rencana bukan jarak, tapi empat titik ini — tiga di antaranya bisa diamankan cukup dengan telepon dari sekarang.</p>
     <div class="alerts">
       <div class="alert">
         <span class="tag">Konfirmasi #1</span>
         <h4>Parkir bus di Jatiningsih</h4>
-        <p>Peziarah melaporkan area parkirnya sempit — rombongan bus besar kerap harus pindah ke kendaraan kecil. Untuk bus 44, pastikan bisa parkir atau minimal drop-off dekat.</p>
+        <p>Peziarah melaporkan area parkirnya sempit — rombongan bus besar kerap harus pindah ke kendaraan kecil. Pastikan bus 44 bisa parkir atau minimal drop-off dekat.</p>
         <div class="call">📞 +62 895-3409-75311</div>
       </div>
       <div class="alert">
         <span class="tag">Konfirmasi #2</span>
         <h4>Rombongan 44 di Purbayan</h4>
-        <p>Misa Minggu 18:00 memang ada, tapi gereja tua &amp; bangku terbatas. Koordinasikan kehadiran rombongan dengan sekretariat agar tempat teratur (kantor tutup hari Minggu — urus dari jauh hari).</p>
+        <p>Misa Minggu <b>16:30</b> sudah terverifikasi. Tapi Purbayan melayani ±10.000 umat lewat 7 Misa akhir pekan — Misa sore akan <b>penuh</b>. Koordinasikan rombongan &amp; tanyakan kantong parkir bus.</p>
         <div class="call">📞 (0271) 636324 · parokipurbayan.org</div>
       </div>
       <div class="alert">
         <span class="tag">Konfirmasi #3</span>
         <h4>Reservasi Hari Raya (Sabtu)</h4>
-        <p>15 Agustus = Hari Raya SP Maria Diangkat ke Surga, jatuh Sabtu → Sendangsono &amp; Ganjuran akan <b>sangat ramai</b>. Reservasi kunjungan + tanya jadwal Misa &amp; arahan parkir bus.</p>
+        <p>15 Agustus = Hari Raya SP Maria Diangkat ke Surga, jatuh Sabtu → Sendangsono &amp; Ganjuran <b>sangat ramai</b>. Reservasi kunjungan + arahan parkir bus.</p>
         <div class="call">📞 Sendangsono +62 813-9330-1918 · Ganjuran (0274) 367154</div>
+      </div>
+      <div class="alert">
+        <span class="tag">Antisipasi #4</span>
+        <h4>Arus balik long weekend</h4>
+        <p>15–16–17 Agu = Sabtu–Minggu–Senin libur. Pulang Senin siang = <b>puncak arus balik ke Jakarta</b>. Estimasi 9 jam bisa jadi 11–12 jam. Beri tahu keluarga peserta dari sekarang soal kemungkinan tiba larut.</p>
+        <div class="call">⚠ Bukan telepon — ini komunikasi ke peserta</div>
       </div>
     </div>
   </section>
 
-  <!-- PETA -->
+  <!-- II. PETA -->
   <section id="peta">
     <div class="sec-head"><span class="no">II</span><h2>Peta Rute Ziarah</h2></div>
     <p class="lead" style="margin-bottom:14px">Alur searah &amp; logis: masuk dari Kulon Progo (barat) → turun ke Bantul (selatan) → melintang ke Gunungkidul → berakhir di Solo (timur). Tidak ada jalur bolak-balik. <b>Tap tiap titik</b> untuk membaca catatan lapangan.</p>
@@ -212,263 +205,183 @@ footer b{color:#fff}
       <span><i class="dot" style="background:#26385f"></i> Hari 1 · Jogja (Sabtu)</span>
       <span><i class="dot" style="background:#b98a2e"></i> Hari 2 · Solo (Minggu)</span>
       <span><i class="dot" style="background:#8a2b2b"></i> Titik Misa</span>
-      <span class="small">Estimasi waktu = perhitungan jarak asli + faktor bus besar (bukan mobil).</span>
+      <span><i class="dot" style="background:#7d8a7f"></i> Titik cadangan (dikorbankan bila telat)</span>
     </div>
+    <p class="small" style="margin-top:10px">Estimasi waktu dihitung dari jarak asli antar-titik + faktor bus besar (bukan mobil pribadi).</p>
   </section>
 
-  <!-- RUNDOWN -->
+  <!-- III. RUNDOWN -->
   <section id="rundown">
-    <div class="sec-head"><span class="no">III</span><h2>Rundown — Dua Versi</h2></div>
-    <p class="lead" style="margin-bottom:16px">Semua koreksi waktu &amp; rekomendasi sudah dibenamkan. Perbedaan kedua versi hanya di <b>di mana Misa dirayakan</b>. Pilih salah satu, lalu sebarkan.</p>
+    <div class="sec-head"><span class="no">III</span><h2>Rundown Final</h2></div>
 
-    <div class="toggle" role="tablist">
-      <button id="btnA" class="on" onclick="showVer('A')">Versi A · Misa di Purbayan</button>
-      <button id="btnB" onclick="showVer('B')">Versi B · Misa di Ganjuran</button>
+    <div class="callout">
+      <h4>⚑ Protokol Kontinjensi — Keputusan Rapat</h4>
+      <ol>
+        <li><b>Titik yang dikorbankan lebih dulu = Gua Maria Jatiningsih.</b> Jatiningsih sifatnya tambahan. Ganjuran diprioritaskan karena mayoritas peserta belum pernah ke sana — durasi Ganjuran <u>tidak</u> dipotong.</li>
+        <li><b>Bila Hari-2 meleset</b> (di Tritis atau di perjalanan): korbankan slot <i>Keliling Gereja 15:00–16:00</i>. Keliling gereja dipindah ke <b>setelah Misa</b>. Konsekuensinya perjalanan ke POP! Hotel &amp; check-in mundur — <b>tidak masalah</b>, karena setibanya di hotel acaranya bebas.</li>
+        <li><b>Jam mati yang tidak boleh digeser:</b> Misa Purbayan mulai <b>16:30</b>. Semua penyesuaian dilakukan di sekitarnya, bukan padanya.</li>
+      </ol>
     </div>
 
-    <!-- ===== VERSI A ===== -->
-    <div id="verA">
-      <div class="vlabel">
-        <h3>Versi A — Misa Minggu di Purbayan <span class="pin">Rencana Awal</span></h3>
-        <p>Sabtu (Hari Raya): ziarah 3 lokasi tanpa Misa terjadwal — dirayakan lewat doa pribadi di tiap gua. Kewajiban Minggu ditunaikan di <b>Misa Minggu 18:00 Gereja St. Antonius Purbayan</b>. Cocok bila ingin menjaga Sabtu tetap fleksibel terhadap keterlambatan bus malam.</p>
-      </div>
-
-      <!-- Hari 0 -->
-      <div class="day">
-        <div class="day-h"><span class="d">Hari 0</span><span class="date">Jumat, 14 Agu 2026 (malam) · Perjalanan ke Jogja</span></div>
-        <table>
-          <tr><th>Waktu</th><th>Kegiatan</th></tr>
-          <tr><td class="time">22:30–23:30</td><td><span class="act">Persiapan keberangkatan di titik kumpul</span><span class="note-sm">Absen kelompok sebelum berangkat — pastikan 44 lengkap.</span></td></tr>
-          <tr><td class="time">23:30–08:30</td><td><span class="act">Perjalanan Poris → Sendangsono</span> · snack &amp; sarapan di bus<span class="flag warn">Beri margin: bisa molor ke 09:30–10:00. Start Hari-1 fleksibel.</span></td></tr>
-        </table>
-      </div>
-
-      <!-- Hari 1 A -->
-      <div class="day">
-        <div class="day-h"><span class="d">Hari 1</span><span class="date">Sabtu, 15 Agu 2026 · Bermalam di Jogja</span><span class="feast">★ Hari Raya Bunda Maria</span></div>
-        <table>
-          <tr><th>Waktu</th><th>Kegiatan</th></tr>
-          <tr><td class="time">08:30–09:00</td><td><span class="act">Tiba di Sendangsono</span> — turun, toilet, persiapan (buffer)</td></tr>
-          <tr><td class="time">09:00–11:30</td><td><span class="act">✟ Gua Maria Sendangsono</span> — doa, jalan salib &amp; foto bersama<span class="flag warn">Ramai (Hari Raya). Jalan akses menanjak &amp; sempit.</span></td></tr>
-          <tr><td class="time">11:30–12:15</td><td>Perjalanan ke Jatiningsih</td></tr>
-          <tr><td class="time">12:15–13:30</td><td><span class="act">✟ Gua Maria Sendang Jatiningsih</span> — doa &amp; foto<span class="flag warn">Cek parkir bus besar (lihat Konfirmasi #1). Area doa dekat dari parkir.</span></td></tr>
-          <tr><td class="time">13:30–14:30</td><td>Perjalanan ke Ganjuran — makan siang di bus</td></tr>
-          <tr><td class="time">14:30–16:30</td><td><span class="act">✟ Gereja Hati Kudus Yesus, Ganjuran</span> — doa &amp; foto<span class="note-sm">Boleh ikut Misa Hari Raya di sini bila diinginkan. Ada Candi Hati Kudus, pemandian, museum.</span></td></tr>
-          <tr><td class="time">16:30–17:05</td><td>Perjalanan ke The Cube Hotel</td></tr>
-          <tr><td class="time">17:05–18:30</td><td><span class="act">Check-in &amp; istirahat</span> — The Cube Hotel</td></tr>
-          <tr><td class="time">18:30–19:00</td><td>Perjalanan ke Malioboro <span class="flag info">OPSIONAL</span></td></tr>
-          <tr><td class="time">19:00–21:30</td><td><span class="act">Jalan-jalan &amp; makan malam di Malioboro</span><span class="flag info">Opsional — yang lelah boleh langsung istirahat di hotel. Melindungi stamina lansia untuk Tritis besok pagi.</span></td></tr>
-          <tr><td class="time">21:30–21:50</td><td>Kembali ke hotel &amp; istirahat</td></tr>
-        </table>
-      </div>
-
-      <!-- Hari 2 A -->
-      <div class="day">
-        <div class="day-h"><span class="d">Hari 2</span><span class="date">Minggu, 16 Agu 2026 · Bermalam di Solo</span></div>
-        <table>
-          <tr><th>Waktu</th><th>Kegiatan</th></tr>
-          <tr><td class="time">05:30–07:00</td><td><span class="act">Sarapan &amp; check-out</span> — The Cube Hotel</td></tr>
-          <tr><td class="time">07:00–08:45</td><td>Perjalanan ke Gua Maria Tritis<span class="flag info">Jalan Gunungkidul berkelok — bus pelan, ~1,5–1,75 jam.</span></td></tr>
-          <tr><td class="time">08:45–10:45</td><td><span class="act">✟ Gua Maria Tritis, Paliyan</span> — doa, jalan salib &amp; foto<span class="flag fix">Bonus waktu ditaruh di sini. Dari parkir jalan ~700 m–1 km (ada tanjakan); tersedia mobil antar-jemput &amp; kursi roda untuk lansia.</span></td></tr>
-          <tr><td class="time">10:45–13:30</td><td>Perjalanan ke Gua Maria Mojosongo — makan siang di bus <span class="note-sm">Perjalanan panjang &amp; melintang (~2,5–3 jam).</span></td></tr>
-          <tr><td class="time">13:30–14:30</td><td><span class="act">✟ Gua Maria Mojosongo, Solo</span> — doa &amp; foto<span class="note-sm">Ramah lansia: banyak bangku &amp; pohon, tak perlu jalan jauh.</span></td></tr>
-          <tr><td class="time">14:30–15:00</td><td>Perjalanan ke POP! Hotel Solo<span class="flag fix">KOREKSI: hanya ~20–30 menit (rundown lama tertulis 1,5 jam).</span></td></tr>
-          <tr><td class="time">15:00–16:30</td><td><span class="act">Check-in &amp; istirahat</span> — POP! Hotel <span class="note-sm">Waktu istirahat kini lebih lega berkat koreksi di atas.</span></td></tr>
-          <tr><td class="time">16:30–17:00</td><td>Perjalanan ke Gereja St. Antonius Purbayan</td></tr>
-          <tr><td class="time">17:00–18:00</td><td>Tiba di gereja — lihat-lihat, gua Maria di samping gereja &amp; doa pribadi</td></tr>
-          <tr class="mass"><td class="time">18:00–19:30</td><td><span class="mass-badge">✟ MISA MINGGU — Gereja St. Antonius Purbayan</span><span class="flag warn">Koordinasi rombongan 44 dengan sekretariat (lihat Konfirmasi #2).</span></td></tr>
-          <tr><td class="time">19:30–20:00</td><td>Kembali ke POP! Hotel</td></tr>
-          <tr><td class="time">20:00–21:30</td><td>Makan malam &amp; istirahat</td></tr>
-        </table>
-      </div>
-
-      <!-- Hari 3 (shared) -->
-      <div class="day" data-shared>
-        <div class="day-h"><span class="d">Hari 3</span><span class="date">Senin, 17 Agu 2026 · Pulang ke Poris</span><span class="feast">★ HUT RI ke-81</span></div>
-        <table>
-          <tr><th>Waktu</th><th>Kegiatan</th></tr>
-          <tr><td class="time">07:00–09:00</td><td><span class="act">Sarapan &amp; beli oleh-oleh Solo</span><span class="flag warn">Cek jam buka toko — 17 Agustus banyak yang buka lebih lambat.</span></td></tr>
-          <tr><td class="time">09:00–10:30</td><td>Lanjut belanja / sarapan khas Solo</td></tr>
-          <tr><td class="time">10:30–11:00</td><td>Check-out POP! Hotel</td></tr>
-          <tr><td class="time">11:00–20:00</td><td><span class="act">Berangkat pulang ke Poris</span> — makan siang &amp; malam di bus<span class="flag info">Waspada penutupan jalan untuk upacara HUT RI (pagi). Siapkan rute alternatif keluar kota.</span></td></tr>
-        </table>
-      </div>
+    <!-- HARI 0 -->
+    <div class="day">
+      <div class="day-h"><span class="d">Hari 0</span><span class="date">Jumat, 14 Agustus 2026 (malam) · Perjalanan ke Jogja</span></div>
+      <div class="dress">👕 Pakaian: <b>Baju bebas</b></div>
+      <table>
+        <tr><th>Waktu</th><th>Durasi</th><th>Kegiatan</th></tr>
+        <tr><td class="time">22:30–23:30</td><td class="dur">01:00</td><td><span class="act">Persiapan keberangkatan</span><span class="note-sm">Absen per kelompok sebelum berangkat — pastikan 44 lengkap.</span></td></tr>
+        <tr><td class="time">23:30–08:30</td><td class="dur">09:00</td><td><span class="act">Perjalanan Poris → Jogja (GM Sendangsono)</span><span class="note-sm">Pembagian snack roti, air minum &amp; sarapan nasi bakar di bus.</span><span class="flag warn">Beri margin: bisa molor ke 09:30–10:00. Bila telat → Jatiningsih yang dikorbankan.</span></td></tr>
+      </table>
     </div>
 
-    <!-- ===== VERSI B ===== -->
-    <div id="verB" class="hidden">
-      <div class="vlabel">
-        <h3>Versi B — Misa Hari Raya di Ganjuran (Sabtu) <span class="pin">Alternatif</span></h3>
-        <p>Rombongan mengikuti <b>Misa Hari Raya di Gereja Ganjuran</b> pada Sabtu sore. Hari-1 disusun ulang agar muat Misa. Di hari Minggu, Purbayan menjadi <b>kunjungan &amp; doa pribadi</b>. <i>Alternatif:</i> Misa pagi di Sendangsono juga mungkin, tapi jam tiba bus malam kurang pasti — maka Ganjuran (sore) lebih aman dikunci.</p>
-      </div>
+    <!-- HARI 1 -->
+    <div class="day">
+      <div class="day-h"><span class="d">Hari 1</span><span class="date">Sabtu, 15 Agustus 2026 · Bermalam di Jogja</span><span class="feast">★ Hari Raya Bunda Maria</span></div>
+      <div class="dress">👕 Pakaian: <b>Merah / Putih</b></div>
+      <table>
+        <tr><th>Waktu</th><th>Durasi</th><th>Kegiatan</th></tr>
+        <tr><td class="time">08:30–09:00</td><td class="dur">00:30</td><td><span class="act">Tiba di Sendangsono</span> — turun bus, toilet, persiapan</td></tr>
+        <tr><td class="time">09:00–11:30</td><td class="dur">02:30</td><td><span class="act">✟ Gua Maria Sendangsono</span> — doa, jalan salib &amp; foto bersama<span class="flag warn">Ramai (Hari Raya + Sabtu). Jalan akses menanjak &amp; sempit — bus jalan pelan.</span></td></tr>
+        <tr><td class="time">11:30–12:15</td><td class="dur">00:45</td><td>Perjalanan ke Gua Maria Jatiningsih — <b>makan siang di bus</b></td></tr>
+        <tr class="flex"><td class="time">12:15–13:30</td><td class="dur">01:15</td><td><span class="act">✟ Gua Maria Ratu Perdamaian Sendang Jatiningsih</span> — doa rosario &amp; foto bersama<span class="flag info">TITIK CADANGAN — inilah yang dilewati bila rombongan telat.</span><span class="flag warn">Cek parkir bus besar (Konfirmasi #1). Area doa dekat dari parkir.</span></td></tr>
+        <tr><td class="time">13:30–14:30</td><td class="dur">01:00</td><td>Perjalanan ke Gereja Ganjuran</td></tr>
+        <tr><td class="time">14:30–17:00</td><td class="dur">02:30</td><td><span class="act">✟ Gereja Hati Kudus Yesus — Ganjuran, Bantul</span> — doa &amp; foto bersama<span class="flag fix">PRIORITAS — mayoritas peserta belum pernah ke sini. Durasi tidak dipotong.</span><span class="note-sm">Ada Candi Hati Kudus, pemandian, museum &amp; pendopo untuk istirahat. Parkir bus diarahkan petugas ke lapangan saat ramai.</span></td></tr>
+        <tr><td class="time">17:00–17:30</td><td class="dur">00:30</td><td>Perjalanan ke The Cube Hotel Yogya</td></tr>
+        <tr><td class="time">17:30–18:30</td><td class="dur">01:00</td><td><span class="act">Check-in &amp; istirahat</span> — The Cube Hotel<span class="flag warn">1 jam untuk 44 orang itu mepet. Pembagian kamar diselesaikan jauh hari, kunci disiapkan per kelompok.</span></td></tr>
+        <tr><td class="time">18:30–19:00</td><td class="dur">00:30</td><td>Perjalanan ke Malioboro</td></tr>
+        <tr><td class="time">19:00–21:30</td><td class="dur">02:30</td><td><span class="act">Jalan-jalan &amp; makan malam masing-masing di Malioboro</span><span class="flag warn">Sabtu malam long weekend = sangat padat. Tetapkan titik &amp; jam kumpul yang tegas; peserta berpencar = risiko tertinggal.</span></td></tr>
+        <tr><td class="time">21:30–21:50</td><td class="dur">00:20</td><td>Kembali ke The Cube Hotel &amp; istirahat</td></tr>
+      </table>
+    </div>
 
-      <div class="callout">
-        <h4>⚠ Konfirmasi Kewajiban Minggu ke Romo Pendamping</h4>
-        <p>15 Agustus (Sabtu) adalah Hari Raya SP Maria Diangkat ke Surga. Perlu dipastikan apakah Misa Sabtu sore yang dipilih di Ganjuran <b>sudah sekaligus memenuhi kewajiban Misa Minggu</b>. Bila <b>ya</b> → Purbayan cukup kunjungan &amp; doa. Bila <b>belum</b> → tetap ikuti Misa Minggu: paling praktis, kembalikan slot Purbayan menjadi <b>Misa 18:00</b> (persis seperti Versi A). Jadwal Misa Sabtu Ganjuran: 16:00 (Bahasa Jawa) &amp; 18:00 (Bahasa Indonesia) — <b>konfirmasi apakah ada jadwal khusus Hari Raya</b>.</p>
-      </div>
+    <!-- HARI 2 -->
+    <div class="day">
+      <div class="day-h"><span class="d">Hari 2</span><span class="date">Minggu, 16 Agustus 2026 · Bermalam di Solo</span><span class="feast">✟ Misa Purbayan</span></div>
+      <div class="dress">👕 Pakaian: <b>Seragam kaos yang dibagikan</b> · ada Misa → siapkan pakaian sopan, <b>ganti di Mojosongo</b></div>
+      <table>
+        <tr><th>Waktu</th><th>Durasi</th><th>Kegiatan</th></tr>
+        <tr><td class="time">05:30–07:00</td><td class="dur">01:30</td><td><span class="act">Sarapan &amp; check-out</span> — The Cube Hotel<span class="note-sm">Bawa makan siang dari hotel.</span><span class="flag warn">Minta hotel hindari lauk bersantan (dimakan 4–6 jam kemudian di bus hangat). Simpan di cooler bila ada.</span></td></tr>
+        <tr><td class="time">07:00–08:45</td><td class="dur">01:45</td><td>Perjalanan ke Gua Maria Tritis, Gunungkidul<span class="note-sm">Jalan berkelok naik-turun — siapkan kantong anti-mabuk, lansia duduk di depan.</span></td></tr>
+        <tr><td class="time">08:45–10:45</td><td class="dur">02:00</td><td><span class="act">✟ Gua Maria Tritis — Paliyan, Gunungkidul</span> — doa, jalan salib &amp; foto bersama<span class="flag warn">TITIK PALING RAWAN MELESET. Jalan ~700 m–1 km dari parkir, ada tanjakan.</span><span class="flag fix">Tersedia mobil antar-jemput &amp; kursi roda — berangkatkan lansia paling awal, jangan terakhir. Rombongan langsung bergerak begitu turun bus.</span></td></tr>
+        <tr><td class="time">10:45–13:30</td><td class="dur">02:45</td><td><span class="act">Perjalanan ke Gua Maria Mojosongo, Solo</span> — makan siang di bus<span class="flag warn">Jadwalkan 1× stop toilet secara eksplisit (rest area jalur Wonosari). Untuk 44 orang = 20–30 menit — jangan diimprovisasi.</span></td></tr>
+        <tr><td class="time">13:30–14:30</td><td class="dur">01:00</td><td><span class="act">✟ Gua Maria Mojosongo — Jebres, Surakarta</span> — doa rosario &amp; foto bersama<span class="flag fix">TITIK GANTI BAJU untuk Misa. Ada toilet. Baju ganti disimpan di tas kabin, bukan koper bagasi.</span><span class="note-sm">Ramah lansia: banyak bangku &amp; pohon, tak perlu jalan jauh dari parkir.</span></td></tr>
+        <tr><td class="time">14:30–15:00</td><td class="dur">00:30</td><td>Perjalanan ke Gereja St. Antonius Purbayan</td></tr>
+        <tr class="flex"><td class="time">15:00–16:00</td><td class="dur">01:00</td><td><span class="act">Keliling Gereja Santo Antonius Purbayan</span><span class="flag info">SLOT PENYANGGA — bila rombongan telat, slot ini dilewati dan keliling gereja dipindah ke setelah Misa.</span></td></tr>
+        <tr class="mass"><td class="time">16:00–17:30</td><td class="dur">01:30</td><td><span class="mass-badge">✟ 16:00 — masuk gereja &amp; ambil tempat duduk | MISA MULAI 16:30</span><span class="flag warn">Purbayan melayani ±10.000 umat; Misa sore penuh. Masuk lebih awal agar rombongan 44 bisa duduk berdekatan.</span><span class="note-sm">Koper tetap di bus selama Misa — sopir/kernet stand by di bus.</span></td></tr>
+        <tr><td class="time">17:30–18:00</td><td class="dur">00:30</td><td>Perjalanan ke POP! Hotel Slamet Riyadi<span class="flag fix">Boleh mundur bila Misa selesai lebih lambat — acara di hotel bebas.</span></td></tr>
+        <tr><td class="time">18:00–19:00</td><td class="dur">01:00</td><td><span class="act">Check-in &amp; istirahat</span> — POP! Hotel Solo, acara bebas</td></tr>
+      </table>
+    </div>
 
-      <!-- Hari 0 (shared) -->
-      <div class="day">
-        <div class="day-h"><span class="d">Hari 0</span><span class="date">Jumat, 14 Agu 2026 (malam) · Perjalanan ke Jogja</span></div>
-        <table>
-          <tr><th>Waktu</th><th>Kegiatan</th></tr>
-          <tr><td class="time">22:30–23:30</td><td><span class="act">Persiapan keberangkatan di titik kumpul</span><span class="note-sm">Absen kelompok — pastikan 44 lengkap.</span></td></tr>
-          <tr><td class="time">23:30–08:30</td><td><span class="act">Perjalanan Poris → Sendangsono</span> · snack &amp; sarapan di bus<span class="flag warn">Beri margin: bisa molor ke 09:30–10:00.</span></td></tr>
-        </table>
-      </div>
-
-      <!-- Hari 1 B -->
-      <div class="day">
-        <div class="day-h"><span class="d">Hari 1</span><span class="date">Sabtu, 15 Agu 2026 · Bermalam di Jogja</span><span class="feast">★ Misa Hari Raya @ Ganjuran</span></div>
-        <table>
-          <tr><th>Waktu</th><th>Kegiatan</th></tr>
-          <tr><td class="time">08:30–09:00</td><td><span class="act">Tiba di Sendangsono</span> — turun, toilet, persiapan</td></tr>
-          <tr><td class="time">09:00–11:00</td><td><span class="act">✟ Gua Maria Sendangsono</span> — doa, jalan salib &amp; foto<span class="flag info">Sedikit dipersingkat untuk melindungi jadwal Misa sore.</span></td></tr>
-          <tr><td class="time">11:00–11:45</td><td>Perjalanan ke Jatiningsih</td></tr>
-          <tr><td class="time">11:45–12:45</td><td><span class="act">✟ Gua Maria Sendang Jatiningsih</span> — doa &amp; foto<span class="flag warn">Cek parkir bus besar (Konfirmasi #1).</span></td></tr>
-          <tr><td class="time">12:45–13:45</td><td>Perjalanan ke Ganjuran — makan siang di bus</td></tr>
-          <tr><td class="time">13:45–16:00</td><td><span class="act">Tiba di Ganjuran</span> — doa pribadi, Candi Hati Kudus, istirahat di pendopo, siap Misa<span class="note-sm">Parkir bus diarahkan petugas ke lapangan; sisakan waktu jalan dari parkir.</span></td></tr>
-          <tr class="mass"><td class="time">16:00–17:30</td><td><span class="mass-badge">✟ MISA HARI RAYA — Gereja Ganjuran</span><span class="flag warn">Asumsi Misa 16:00. KONFIRMASI jadwal &amp; bahasa Hari Raya lebih dulu.</span></td></tr>
-          <tr><td class="time">17:30–18:05</td><td>Perjalanan ke The Cube Hotel</td></tr>
-          <tr><td class="time">18:05–19:00</td><td><span class="act">Check-in &amp; istirahat</span> — The Cube Hotel</td></tr>
-          <tr><td class="time">19:00–21:00</td><td>Makan malam <span class="flag info">Malioboro OPSIONAL &amp; lebih singkat — banyak yang lelah.</span></td></tr>
-        </table>
-      </div>
-
-      <!-- Hari 2 B -->
-      <div class="day">
-        <div class="day-h"><span class="d">Hari 2</span><span class="date">Minggu, 16 Agu 2026 · Bermalam di Solo</span></div>
-        <table>
-          <tr><th>Waktu</th><th>Kegiatan</th></tr>
-          <tr><td class="time">05:30–07:00</td><td><span class="act">Sarapan &amp; check-out</span> — The Cube Hotel</td></tr>
-          <tr><td class="time">07:00–08:45</td><td>Perjalanan ke Gua Maria Tritis<span class="flag info">Jalan berkelok — bus pelan.</span></td></tr>
-          <tr><td class="time">08:45–10:45</td><td><span class="act">✟ Gua Maria Tritis, Paliyan</span> — doa, jalan salib &amp; foto<span class="flag fix">Jalan ~700 m–1 km dari parkir; mobil antar-jemput &amp; kursi roda tersedia untuk lansia.</span></td></tr>
-          <tr><td class="time">10:45–13:30</td><td>Perjalanan ke Gua Maria Mojosongo — makan siang di bus</td></tr>
-          <tr><td class="time">13:30–14:30</td><td><span class="act">✟ Gua Maria Mojosongo, Solo</span> — doa &amp; foto</td></tr>
-          <tr><td class="time">14:30–15:00</td><td>Perjalanan ke POP! Hotel Solo<span class="flag fix">KOREKSI: hanya ~20–30 menit.</span></td></tr>
-          <tr><td class="time">15:00–17:00</td><td><span class="act">Check-in &amp; istirahat</span> — POP! Hotel <span class="note-sm">Lebih lega karena tak mengejar Misa.</span></td></tr>
-          <tr><td class="time">17:00–17:30</td><td>Perjalanan ke Gereja St. Antonius Purbayan</td></tr>
-          <tr><td class="time">17:30–18:30</td><td><span class="act">Purbayan — kunjungan &amp; doa pribadi</span><span class="flag warn">Bila kewajiban Minggu belum terpenuhi (lihat kotak ⚠ di atas), ubah slot ini menjadi Misa 18:00.</span></td></tr>
-          <tr><td class="time">18:30–19:00</td><td>Kembali ke POP! Hotel</td></tr>
-          <tr><td class="time">19:00–20:30</td><td>Makan malam &amp; istirahat</td></tr>
-        </table>
-      </div>
-
-      <!-- Hari 3 B (shared, duplicated for print) -->
-      <div class="day">
-        <div class="day-h"><span class="d">Hari 3</span><span class="date">Senin, 17 Agu 2026 · Pulang ke Poris</span><span class="feast">★ HUT RI ke-81</span></div>
-        <table>
-          <tr><th>Waktu</th><th>Kegiatan</th></tr>
-          <tr><td class="time">07:00–09:00</td><td><span class="act">Sarapan &amp; beli oleh-oleh Solo</span><span class="flag warn">Cek jam buka toko — 17 Agustus.</span></td></tr>
-          <tr><td class="time">09:00–10:30</td><td>Lanjut belanja / sarapan khas Solo</td></tr>
-          <tr><td class="time">10:30–11:00</td><td>Check-out POP! Hotel</td></tr>
-          <tr><td class="time">11:00–20:00</td><td><span class="act">Berangkat pulang ke Poris</span> — makan siang &amp; malam di bus<span class="flag info">Waspada penutupan jalan upacara HUT RI (pagi).</span></td></tr>
-        </table>
-      </div>
+    <!-- HARI 3 -->
+    <div class="day">
+      <div class="day-h"><span class="d">Hari 3</span><span class="date">Senin, 17 Agustus 2026 · Pulang ke Poris</span><span class="feast">★ HUT RI ke-81</span></div>
+      <div class="dress">👕 Pakaian: <b>Baju bebas</b></div>
+      <table>
+        <tr><th>Waktu</th><th>Durasi</th><th>Kegiatan</th></tr>
+        <tr><td class="time">07:00–09:00</td><td class="dur">02:00</td><td><span class="act">Sarapan &amp; beli oleh-oleh Solo</span><span class="flag warn">Cek jam buka toko — 17 Agustus banyak yang buka lebih lambat.</span></td></tr>
+        <tr><td class="time">09:00–10:30</td><td class="dur">01:30</td><td><span class="act">Lanjut belanja / sarapan khas Solo</span><span class="note-sm">Jam 10 makan siang sudah tiba di hotel.</span></td></tr>
+        <tr><td class="time">10:30–11:00</td><td class="dur">00:30</td><td>Check-out POP! Hotel</td></tr>
+        <tr><td class="time">11:00–20:00</td><td class="dur">09:00</td><td><span class="act">Berangkat pulang ke Poris</span> — makan siang &amp; makan malam di bus<span class="flag warn">Arus balik long weekend: realistis 11–12 jam. Waspada penutupan jalan upacara HUT RI (pagi) — siapkan rute alternatif keluar kota.</span></td></tr>
+      </table>
+      <div class="dress" style="border-bottom:none; border-top:1px solid var(--line)">📌 Bagian Hari-3 setelah 10:30 mengikuti rencana awal — mohon dikonfirmasi ulang bila rapat sudah menetapkan versi lain.</div>
     </div>
   </section>
 
-  <!-- REKOMENDASI -->
-  <section id="rekomendasi">
-    <div class="sec-head"><span class="no">IV</span><h2>Rekomendasi Kunci</h2></div>
-    <div class="grid2">
-      <div class="card">
-        <h3><span class="ic">①</span>Pindahkan bonus 1 jam</h3>
-        <p class="small">Mojosongo→POP hanya ~20 menit (bukan 1,5 jam). Alihkan kelebihan waktu ke buffer Tritis / istirahat siang di Solo — jangan biarkan panitia menunggu tanpa alasan.</p>
-      </div>
-      <div class="card">
-        <h3><span class="ic">②</span>Malioboro = opsional</h3>
-        <p class="small">Setelah 9 jam bus + 3 lokasi + jalan salib, banyak peserta lelah. Yang mau lanjut silakan; yang capek istirahat di hotel. Menjaga lansia tetap fit untuk Tritis esok pagi.</p>
-      </div>
-      <div class="card">
-        <h3><span class="ic">③</span>Margin leg semalaman</h3>
-        <p class="small">Poris→Sendangsono 9 jam untuk 44 orang cenderung optimis (rehat toilet 1–2×). Jaga start Hari-1 fleksibel agar tidak panik bila tiba 09:30–10:00.</p>
-      </div>
-      <div class="card">
-        <h3><span class="ic">④</span>Antisipasi keramaian Hari Raya</h3>
-        <p class="small">Sendangsono &amp; Ganjuran padat pada Sabtu 15 Agu. Durasi di lokasi bisa membengkak karena antre, bukan karena perjalanan. Reservasi = wajib.</p>
-      </div>
-      <div class="card">
-        <h3><span class="ic">⑤</span>Manfaatkan fasilitas lansia Tritis</h3>
-        <p class="small">Ada mobil antar-jemput &amp; kursi roda dari parkir ke gua (jalan 700 m–1 km, ada tanjakan). Beritahu lansia dari awal &amp; siapkan dana tip seikhlasnya.</p>
-      </div>
-      <div class="card">
-        <h3><span class="ic">⑥</span>Catatan liturgi</h3>
-        <p class="small">Keputusan memindah Misa ke Minggu (Versi A) sudah menutup kewajiban Minggu — sah. Versi B menambah Misa Hari Raya: pastikan status kewajiban Minggu ke romo pendamping.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- TELEPON -->
+  <!-- IV. TELEPON -->
   <section id="telepon">
-    <div class="sec-head"><span class="no">V</span><h2>Checklist Telepon Pra-Keberangkatan</h2></div>
+    <div class="sec-head"><span class="no">IV</span><h2>Checklist Telepon Pra-Keberangkatan</h2></div>
     <p class="lead" style="margin-bottom:14px">Selesaikan jauh hari. Centang setelah dikonfirmasi. (Cetak halaman ini untuk rapat.)</p>
     <div class="check">
       <div class="row"><div class="box"></div><div class="txt"><b>Sendangsono</b> — reservasi kunjungan Hari Raya (ramai) + arahan parkir bus. <span class="who">PIC: ____</span></div><div class="phone">+62 813-9330-1918</div></div>
-      <div class="row"><div class="box"></div><div class="txt"><b>Jatiningsih</b> — KONFIRMASI parkir / drop-off bus besar 44. <span class="who">PIC: ____</span></div><div class="phone">+62 895-3409-75311</div></div>
-      <div class="row"><div class="box"></div><div class="txt"><b>Ganjuran</b> — jadwal Misa Hari Raya 15 Agu (jam &amp; bahasa) + arahan parkir bus ke lapangan. <span class="who">PIC: ____</span></div><div class="phone">(0274) 367154 · WA 0852-2618-7657</div></div>
-      <div class="row"><div class="box"></div><div class="txt"><b>Purbayan</b> — koordinasi rombongan 44 di Misa Minggu 18:00 + (bila perlu) berkat rombongan. <span class="who">PIC: ____</span></div><div class="phone">(0271) 636324</div></div>
-      <div class="row"><div class="box"></div><div class="txt"><b>Tritis</b> — konfirmasi mobil antar-jemput &amp; kursi roda untuk lansia + parkir bus. <span class="who">PIC: ____</span></div><div class="phone">+62 851-9855-2323</div></div>
-      <div class="row"><div class="box"></div><div class="txt"><b>The Cube Hotel</b> — check-in rombongan, jam, sarapan pagi. <span class="who">PIC: ____</span></div><div class="phone">+62 811-2792-079</div></div>
-      <div class="row"><div class="box"></div><div class="txt"><b>POP! Hotel Solo</b> — check-in, makan malam / katering. <span class="who">PIC: ____</span></div><div class="phone">(0271) 3009999</div></div>
-      <div class="row"><div class="box"></div><div class="txt"><b>Katering / konsumsi bus</b> — snack + 2× makan/hari, kebutuhan khusus (rendah gula/garam). <span class="who">PIC: ____</span></div><div class="phone">—</div></div>
+      <div class="row"><div class="box"></div><div class="txt"><b>Ganjuran</b> — reservasi Hari Raya, arahan parkir bus ke lapangan, kapasitas rombongan 44. <span class="who">PIC: ____</span></div><div class="phone">(0274) 367154 · WA 0852-2618-7657</div></div>
+      <div class="row"><div class="box"></div><div class="txt"><b>Jatiningsih</b> — konfirmasi parkir / drop-off bus besar 44. <span class="who">PIC: ____</span></div><div class="phone">+62 895-3409-75311</div></div>
+      <div class="row"><div class="box"></div><div class="txt"><b>Purbayan</b> — koordinasi rombongan 44 di Misa Minggu 16:30, kantong parkir bus, (bila perlu) berkat rombongan. Kantor tutup hari Minggu — urus dari jauh hari. <span class="who">PIC: ____</span></div><div class="phone">(0271) 636324</div></div>
+      <div class="row"><div class="box"></div><div class="txt"><b>Tritis</b> — konfirmasi mobil antar-jemput &amp; kursi roda untuk lansia + parkir bus besar. <span class="who">PIC: ____</span></div><div class="phone">+62 851-9855-2323</div></div>
+      <div class="row"><div class="box"></div><div class="txt"><b>The Cube Hotel</b> — check-in rombongan (pembagian kamar dari jauh hari), sarapan pagi, <b>bekal makan siang Hari-2</b>. <span class="who">PIC: ____</span></div><div class="phone">+62 811-2792-079</div></div>
+      <div class="row"><div class="box"></div><div class="txt"><b>POP! Hotel Solo</b> — check-in petang (bisa mundur), makan malam / katering. <span class="who">PIC: ____</span></div><div class="phone">(0271) 3009999</div></div>
+      <div class="row"><div class="box"></div><div class="txt"><b>Katering / konsumsi bus</b> — snack, air, kebutuhan khusus (rendah gula/garam), hindari santan untuk bekal Hari-2. <span class="who">PIC: ____</span></div><div class="phone">—</div></div>
       <div class="row"><div class="box"></div><div class="txt"><b>Toko oleh-oleh Solo</b> — konfirmasi buka 17 Agustus (HUT RI). <span class="who">PIC: ____</span></div><div class="phone">—</div></div>
-      <div class="row"><div class="box"></div><div class="txt"><b>PO Bus</b> — 2 sopir (perjalanan jauh), kondisi bus, AC, P3K, toilet stops. <span class="who">PIC: ____</span></div><div class="phone">—</div></div>
+      <div class="row"><div class="box"></div><div class="txt"><b>PO Bus</b> — 2 sopir (perjalanan jauh + arus balik), kondisi bus, AC, P3K, titik stop toilet Hari-2. <span class="who">PIC: ____</span></div><div class="phone">—</div></div>
+      <div class="row"><div class="box"></div><div class="txt"><b>Pemberitahuan ke keluarga peserta</b> — kemungkinan tiba di Poris lebih larut dari jadwal (arus balik). <span class="who">PIC: ____</span></div><div class="phone">—</div></div>
     </div>
   </section>
 
-  <!-- PESERTA -->
+  <!-- V. PESERTA -->
   <section id="peserta">
-    <div class="sec-head"><span class="no">VI</span><h2>Perlengkapan Peserta</h2></div>
+    <div class="sec-head"><span class="no">V</span><h2>Perlengkapan &amp; Info Peserta</h2></div>
     <div class="grid2">
       <div class="card">
         <h3><span class="ic">🎒</span>Bawa Pribadi</h3>
         <ul>
           <li><b>Obat pribadi</b> + resep (jantung, gula, darah tinggi, mabuk perjalanan)</li>
           <li><b>Alas kaki nyaman/anti-selip</b> — Tritis basah &amp; ada tanjakan</li>
-          <li><b>Jaket</b> (AC bus &amp; pagi Gunungkidul) + topi/payung</li>
+          <li><b>Tas kecil kabin</b> berisi <b>baju ganti untuk Misa</b> (jangan di koper bagasi)</li>
+          <li>Jaket (AC bus &amp; pagi Gunungkidul) + topi/payung</li>
           <li>Botol minum &amp; snack pribadi</li>
-          <li>Uang tunai kecil (parkir, tip shuttle, lilin, oleh-oleh)</li>
+          <li>Uang tunai kecil (parkir, tip shuttle Tritis, lilin, oleh-oleh)</li>
           <li>Rosario &amp; buku doa/ibadat</li>
           <li>Powerbank + kantong plastik anti-mabuk</li>
           <li>Identitas + kartu BPJS/asuransi</li>
         </ul>
       </div>
       <div class="card">
+        <h3><span class="ic">👕</span>Kode Pakaian per Hari</h3>
+        <ul>
+          <li><b>Hari 0 (Jumat):</b> baju bebas</li>
+          <li><b>Hari 1 (Sabtu):</b> merah / putih</li>
+          <li><b>Hari 2 (Minggu):</b> seragam kaos yang dibagikan — <b>ganti pakaian sopan di Mojosongo</b> sebelum Misa</li>
+          <li><b>Hari 3 (Senin):</b> baju bebas</li>
+          <li class="small">Alternatif ringan: bawa kemeja berkerah untuk dirangkap di atas kaos seragam.</li>
+        </ul>
+      </div>
+      <div class="card">
         <h3><span class="ic">🙏</span>Kesiapan Rohani &amp; Fisik</h3>
         <ul>
           <li>Siapkan <b>intensi doa</b> pribadi/keluarga untuk tiap gua</li>
-          <li>Jaga stamina Hari-1 — tidur di bus semaksimal mungkin</li>
+          <li>Tidur semaksimal mungkin di bus Hari-0 — Hari-1 langsung padat</li>
           <li>Lansia: <b>manfaatkan mobil antar-jemput</b> di Tritis, jangan paksakan</li>
-          <li>Kenakan <b>name tag / kaos lingkungan</b> agar mudah dikenali di keramaian</li>
+          <li>Hari-2 adalah hari terberat: bergerak 05:30–18:00 tanpa istirahat kamar</li>
           <li>Selalu ikut <b>absen kelompok</b> tiap naik bus</li>
           <li>Simpan nomor koordinator &amp; PIC medis di HP</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><span class="ic">⏰</span>Yang Perlu Diketahui Peserta</h3>
+        <ul>
+          <li><b>Jatiningsih bersifat tambahan</b> — bisa dilewati bila rombongan telat</li>
+          <li><b>Misa mulai 16:30</b>; rombongan masuk gereja 16:00 untuk dapat tempat duduk</li>
+          <li>Check-in POP! Hotel bisa mundur bila Misa selesai lebih lambat — acara bebas</li>
+          <li><b>Hari-3 bisa tiba di Poris jauh lebih larut</b> dari jadwal karena arus balik. Beri tahu keluarga penjemput</li>
+          <li>Malioboro Sabtu malam sangat padat — patuhi jam &amp; titik kumpul</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- PANITIA -->
+  <!-- VI. PANITIA -->
   <section id="panitia">
-    <div class="sec-head"><span class="no">VII</span><h2>Peran Panitia &amp; Protokol</h2></div>
+    <div class="sec-head"><span class="no">VI</span><h2>Peran Panitia &amp; Protokol</h2></div>
     <div class="grid2">
       <div class="card">
         <h3><span class="ic">👥</span>Struktur &amp; Headcount</h3>
         <ul>
           <li>Bagi 44 peserta jadi <b>4–5 kelompok kecil</b>, tiap kelompok ada ketua</li>
-          <li><b>Protokol absen tiap naik bus</b> (hitung per kelompok) — cegah ketinggalan, terutama di Malioboro &amp; Tritis</li>
-          <li>Prioritaskan <b>lansia di kursi depan</b> bus (kurangi mabuk) &amp; dekat pintu</li>
-          <li>Briefing peserta <b>H-1</b>: jadwal, barang bawaan, titik &amp; jam kumpul, aturan Hari Raya</li>
+          <li><b>Absen tiap naik bus</b> (hitung per kelompok) — titik paling rawan: Malioboro &amp; Tritis</li>
+          <li>Prioritaskan <b>lansia di kursi depan</b> bus &amp; dekat pintu</li>
+          <li>Briefing peserta <b>H-1</b>: jadwal, barang bawaan, kode pakaian, titik &amp; jam kumpul</li>
+          <li>Pembagian kamar kedua hotel <b>diselesaikan sebelum berangkat</b></li>
         </ul>
       </div>
       <div class="card">
         <h3><span class="ic">🧭</span>PIC Wajib</h3>
         <ul>
-          <li><b>Koordinator utama</b> — pegang jadwal &amp; keputusan lapangan</li>
+          <li><b>Koordinator utama</b> — pegang jadwal &amp; putuskan kontinjensi di lapangan</li>
           <li><b>Koordinator ibadat</b> — pimpin jalan salib, rosario &amp; doa di bus</li>
-          <li><b>PIC medis</b> — kotak P3K, daftar peserta kondisi khusus, kontak darurat keluarga, nomor RS tiap kota</li>
-          <li><b>PIC logistik</b> — snack, air, konsumsi, tiket/parkir, dana kas kecil</li>
+          <li><b>PIC medis</b> — P3K, daftar peserta kondisi khusus, kontak darurat keluarga, nomor RS tiap kota</li>
+          <li><b>PIC logistik</b> — snack, air, konsumsi, tiket/parkir, kas kecil</li>
           <li><b>PIC dokumentasi</b> — foto bersama tiap lokasi</li>
+          <li><b>PIC bus</b> — jaga barang saat rombongan turun, terutama selama Misa di Purbayan</li>
         </ul>
       </div>
       <div class="card">
@@ -476,16 +389,18 @@ footer b{color:#fff}
         <ul>
           <li>Siapkan <b>amplop kolekte/persembahan</b> untuk tiap gua &amp; gereja</li>
           <li>Bawa <b>lilin</b> &amp; daftar intensi doa lingkungan</li>
-          <li>Susun urutan pemimpin doa/renungan di bus (isi waktu perjalanan panjang)</li>
+          <li>Susun urutan pemimpin doa/renungan di bus (mengisi perjalanan panjang)</li>
           <li>Playlist rohani / rosario untuk diputar di bus</li>
+          <li>Konfirmasi ke romo pendamping bila ingin ada berkat rombongan di Purbayan</li>
         </ul>
       </div>
       <div class="card">
         <h3><span class="ic">🛟</span>Cadangan &amp; Keamanan</h3>
         <ul>
           <li>Grup WA rombongan + <b>share live location</b> bus</li>
-          <li>Rencana cuaca (jas hujan) &amp; <b>rute alternatif keluar Solo 17 Agu</b> (upacara HUT RI)</li>
+          <li>Rencana cuaca (jas hujan) &amp; <b>rute alternatif keluar Solo 17 Agu</b></li>
           <li>Dana taktis / kas kecil (parkir, tip shuttle Tritis, darurat)</li>
+          <li>Koper tetap di bus sepanjang Hari-2 — pastikan bus terkunci &amp; ada yang stand by</li>
           <li>Pertimbangkan <b>asuransi perjalanan</b> rombongan (opsional)</li>
         </ul>
       </div>
@@ -497,32 +412,24 @@ footer b{color:#fff}
 <footer>
   <div class="cross">✟</div>
   <p><b>Ziarek Lingkungan St. Rosa de Lima</b> · Jogja–Solo · 14–17 Agustus 2026<br>
-  <span class="small" style="color:#9aa4b8">Dokumen kerja panitia — estimasi waktu berbasis jarak asli + faktor bus besar. Selalu konfirmasi jadwal Misa &amp; reservasi langsung ke pihak terkait. Bunda Maria, doakanlah perjalanan kami.</span></p>
+  <span class="small" style="color:#9aa4b8">Dokumen kerja panitia — estimasi waktu berbasis jarak asli + faktor bus besar. Jadwal Misa Purbayan 16:30 terverifikasi, namun tetap konfirmasi langsung ke paroki sebelum keberangkatan. Bunda Maria, doakanlah perjalanan kami.</span></p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
-function showVer(v){
-  document.getElementById('verA').classList.toggle('hidden', v!=='A');
-  document.getElementById('verB').classList.toggle('hidden', v!=='B');
-  document.getElementById('btnA').classList.toggle('on', v==='A');
-  document.getElementById('btnB').classList.toggle('on', v==='B');
-}
-
-// ---- MAP ----
 var stops = {
   day1:[
-    {n:1, name:"Gua Maria Sendangsono", lat:-7.667985, lng:110.2255368, time:"Sab 09:00", note:"Stop pertama. Jalan akses menanjak & sempit → bus pelan. Hari Raya = sangat ramai. Kunci reservasi & parkir bus."},
-    {n:2, name:"Gua Maria Sendang Jatiningsih", lat:-7.7592648, lng:110.2224032, time:"Sab 12:15", note:"⚠ Parkir sempit — bus besar sering pindah ke kendaraan kecil. Konfirmasi drop-off/parkir. Area doa dekat dari parkir."},
-    {n:3, name:"Gereja Ganjuran", lat:-7.9264812, lng:110.319215, time:"Sab 14:30", note:"Misa Hari Raya tersedia (Versi B). Parkir bus diarahkan ke lapangan. Ada Candi Hati Kudus & pemandian."},
-    {n:4, name:"The Cube Hotel (nginap)", lat:-7.8158222, lng:110.3681579, time:"Sab 17:05", note:"Check-in & istirahat. Dekat Malioboro (~9 mnt)."},
-    {n:5, name:"Malioboro (opsional)", lat:-7.7929, lng:110.3659, time:"Sab 19:00", note:"OPSIONAL. Yang lelah boleh langsung istirahat di hotel."}
+    {n:1, name:"Gua Maria Sendangsono", lat:-7.667985, lng:110.2255368, time:"Sab 09:00–11:30", note:"Stop pertama. Jalan akses menanjak & sempit → bus pelan. Hari Raya + Sabtu = sangat ramai. Kunci reservasi & parkir bus."},
+    {n:2, name:"Gua Maria Sendang Jatiningsih", lat:-7.7592648, lng:110.2224032, time:"Sab 12:15–13:30", note:"TITIK CADANGAN — dikorbankan lebih dulu bila rombongan telat. ⚠ Parkir sempit, konfirmasi drop-off bus besar."},
+    {n:3, name:"Gereja Ganjuran", lat:-7.9264812, lng:110.319215, time:"Sab 14:30–17:00", note:"PRIORITAS — mayoritas peserta belum pernah ke sini, durasi tidak dipotong. Ada Candi Hati Kudus, pemandian & pendopo. Parkir bus diarahkan ke lapangan."},
+    {n:4, name:"The Cube Hotel (nginap)", lat:-7.8158222, lng:110.3681579, time:"Sab 17:30", note:"Check-in 1 jam untuk 44 orang — siapkan pembagian kamar dari jauh hari."},
+    {n:5, name:"Malioboro", lat:-7.7929, lng:110.3659, time:"Sab 19:00–21:30", note:"Makan malam masing-masing. Sabtu malam long weekend = sangat padat. Titik & jam kumpul harus tegas."}
   ],
   day2:[
-    {n:6, name:"Gua Maria Tritis", lat:-8.0819686, lng:110.5568965, time:"Min 08:45", note:"Bus besar bisa parkir. Jalan ~700 m–1 km via jalan salib, ada tanjakan. Tersedia mobil antar-jemput & kursi roda untuk lansia."},
-    {n:7, name:"Gua Maria Mojosongo", lat:-7.546122, lng:110.8398382, time:"Min 13:30", note:"Perjalanan dari Tritis ~2,5–3 jam (makan siang di bus). Ramah lansia: banyak bangku, dekat parkir."},
-    {n:8, name:"POP! Hotel Solo (nginap)", lat:-7.5628069, lng:110.7991568, time:"Min 15:00", note:"Dari Mojosongo hanya ~20 mnt (koreksi dari 1,5 jam). Istirahat lebih lega."},
-    {n:9, name:"Gereja St. Antonius Purbayan", lat:-7.5687813, lng:110.8298146, time:"Min 18:00", note:"Misa Minggu 18:00 (Versi A). Bangku terbatas — koordinasi rombongan 44 dengan sekretariat."}
+    {n:6, name:"Gua Maria Tritis", lat:-8.0819686, lng:110.5568965, time:"Min 08:45–10:45", note:"TITIK PALING RAWAN MELESET. Jalan ~700 m–1 km dari parkir, ada tanjakan. Mobil antar-jemput & kursi roda tersedia — berangkatkan lansia paling awal."},
+    {n:7, name:"Gua Maria Mojosongo", lat:-7.546122, lng:110.8398382, time:"Min 13:30–14:30", note:"TITIK GANTI BAJU untuk Misa (ada toilet). Ramah lansia: banyak bangku, dekat parkir. Jadwalkan stop toilet di perjalanan dari Tritis."},
+    {n:8, name:"Gereja St. Antonius Purbayan", lat:-7.5687813, lng:110.8298146, time:"Min 16:00 · Misa 16:30", note:"Masuk gereja 16:00 untuk ambil tempat duduk; Misa mulai 16:30. Purbayan melayani ±10.000 umat — Misa sore penuh. Koper tetap di bus, sopir stand by."},
+    {n:9, name:"POP! Hotel Solo (nginap)", lat:-7.5628069, lng:110.7991568, time:"Min 18:00", note:"Check-in boleh mundur bila Misa selesai lebih lambat — acara di hotel bebas."}
   ]
 };
 
@@ -538,12 +445,12 @@ function mk(s, color){
   return [s.lat,s.lng];
 }
 
-var navy="#26385f", gold="#b98a2e", maroon="#8a2b2b";
+var navy="#26385f", gold="#b98a2e", maroon="#8a2b2b", grey="#7d8a7f";
 var pts1=[], pts2=[], all=[];
-stops.day1.forEach(function(s){ var c = (s.n===3)?maroon:navy; var p=mk(s,c); pts1.push(p); all.push(p); });
-stops.day2.forEach(function(s){ var c = (s.n===9)?maroon:gold; var p=mk(s,c); pts2.push(p); all.push(p); });
+stops.day1.forEach(function(s){ var c = (s.n===2)?grey:navy; var p=mk(s,c); pts1.push(p); all.push(p); });
+stops.day2.forEach(function(s){ var c = (s.n===8)?maroon:gold; var p=mk(s,c); pts2.push(p); all.push(p); });
 
-L.polyline(pts1,{color:navy, weight:3, opacity:.75, dashArray:'1,0'}).addTo(map);
+L.polyline(pts1,{color:navy, weight:3, opacity:.75}).addTo(map);
 L.polyline(pts2,{color:gold, weight:3, opacity:.85, dashArray:'6,6'}).addTo(map);
 
 map.fitBounds(L.latLngBounds(all).pad(0.12));
