@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evolusi Pelaporan Kartu Kuning — DSSY Paroki Tangerang</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: #faf9f7;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 0 0 500px;
+    }
+
+    .ac-root {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* HEADER */
+    .ac-header {
+      text-align: center;
+      padding: 3rem 1rem 2.5rem;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 1.5rem;
+    }
+    .ac-parish {
+      font-size: 17px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 14px;
+    }
+    .ac-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 50px;
+      font-weight: 700;
+      color: #111;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .ac-subtitle {
+      font-size: 27px;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .ac-verse {
+      font-size: 20px;
+      color: #999;
+      font-style: italic;
+    }
+
+    /* ACCORDION */
+    .ac-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .ac-item {
+      border-radius: 14px;
+      border: 2px solid #d0cdc8;
+      overflow: hidden;
+      background: #fff;
+    }
+    .ac-item.open {
+      border-color: #a0a0a0;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    }
+
+    /* TRIGGER */
+    .ac-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 28px 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .ac-trigger:hover { background: #f5f4f1; }
+
+    .ac-icon-wrap {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 34px;
+    }
+    .era1 .ac-icon-wrap { background: #D3D1C7; color: #444441; }
+    .era2 .ac-icon-wrap { background: #B5D4F4; color: #0C447C; }
+    .era3 .ac-icon-wrap { background: #9FE1CB; color: #085041; }
+    .era4 .ac-icon-wrap { background: #F5C4B3; color: #712B13; }
+
+    .ac-trigger-meta { flex: 1; }
+
+    .ac-trigger-badge {
+      font-size: 17px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .era1 .ac-trigger-badge { color: #5F5E5A; }
+    .era2 .ac-trigger-badge { color: #185FA5; }
+    .era3 .ac-trigger-badge { color: #0F6E56; }
+    .era4 .ac-trigger-badge { color: #993C1D; }
+
+    .ac-trigger-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 31px;
+      font-weight: 700;
+      color: #111;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .ac-trigger-period {
+      font-size: 21px;
+      color: #777;
+    }
+    .ac-chevron {
+      font-size: 31px;
+      color: #aaa;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .ac-item.open .ac-chevron { transform: rotate(180deg); }
+
+    /* BODY */
+    .ac-body {
+      display: none;
+      padding: 0 32px 32px;
+      border-top: 1px solid #e8e5e0;
+    }
+    .ac-item.open .ac-body { display: block; }
+
+    .ac-points {
+      list-style: none;
+      margin-top: 20px;
+    }
+    .ac-points li {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 18px 0;
+      border-bottom: 1px solid #eeebe6;
+      font-size: 24px;
+      color: #444;
+      line-height: 1.65;
+    }
+    .ac-points li:last-child { border-bottom: none; }
+    .ac-points li i {
+      font-size: 31px;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .era1 .ac-points li i { color: #888780; }
+    .era2 .ac-points li i { color: #185FA5; }
+    .era3 .ac-points li i { color: #0F6E56; }
+    .era4 .ac-points li i { color: #993C1D; }
+
+    /* CALLOUT */
+    .ac-callout {
+      margin-top: 20px;
+      padding: 22px 28px;
+      border-radius: 10px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      font-size: 22px;
+      line-height: 1.65;
+    }
+    .ac-callout.warning   { background: #FEF3DC; color: #633806; border: 1px solid #f0d090; }
+    .ac-callout.success   { background: #EAF3DE; color: #27500A; border: 1px solid #b8dea0; }
+    .ac-callout.highlight { background: #FAECE7; color: #712B13; border: 1px solid #f0b8a0; }
+    .ac-callout i { font-size: 31px; flex-shrink: 0; margin-top: 2px; }
+    .ac-callout.warning i   { color: #BA7517; }
+    .ac-callout.success i   { color: #3B6D11; }
+    .ac-callout.highlight i { color: #993C1D; }
+
+    /* QUOTE */
+    .ac-quote {
+      margin-top: 20px;
+      padding: 24px 32px;
+      border-left: 5px solid #185FA5;
+      background: #f2f6fc;
+      border-radius: 0 10px 10px 0;
+    }
+    .ac-quote p {
+      font-size: 24px;
+      font-style: italic;
+      color: #444;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+    .ac-quote .attr   { font-size: 20px; color: #888; }
+    .ac-quote .thanks { font-size: 20px; color: #777; font-style: italic; margin-top: 10px; }
+
+    /* CLOSING */
+    .ac-closing {
+      margin-top: 1.5rem;
+      padding: 40px 48px;
+      background: #fff;
+      border-radius: 14px;
+      border: 2px solid #d0cdc8;
+      text-align: center;
+    }
+    .ac-closing i.heart-icon {
+      font-size: 45px;
+      color: #993C1D;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .ac-closing p {
+      font-size: 24px;
+      color: #555;
+      line-height: 1.85;
+      font-style: italic;
+    }
+    .ac-closing strong {
+      color: #111;
+      font-weight: 600;
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+  <div class="ac-root">
+
+    <div class="ac-header">
+      <p class="ac-parish">Gereja Hati Santa Perawan Maria Tak Bernoda · Paroki Tangerang</p>
+      <h1 class="ac-title">Evolusi Pelaporan Kartu Kuning</h1>
+      <p class="ac-subtitle">Dana Sehat Santo Yusuf (DSSY) — dari Zaman ke Zaman</p>
+      <p class="ac-verse">"Segala sesuatu yang kamu lakukan, lakukanlah dengan sepenuh hati seperti untuk Tuhan." — Kol 3:23</p>
+    </div>
+
+    <div class="ac-list">
+
+      <div class="ac-item era1" id="era1">
+        <button class="ac-trigger" onclick="toggle('era1')" aria-expanded="false">
+          <div class="ac-icon-wrap"><i class="ti ti-pencil"></i></div>
+          <div class="ac-trigger-meta">
+            <div class="ac-trigger-badge">Era Pertama</div>
+            <div class="ac-trigger-title">Zaman Manual — Tanpa Standar</div>
+            <div class="ac-trigger-period">Sebelum 2014</div>
+          </div>
+          <i class="ti ti-chevron-down ac-chevron"></i>
+        </button>
+        <div class="ac-body">
+          <ul class="ac-points">
+            <li><i class="ti ti-files"></i><span>Setiap lingkungan memakai format laporan masing-masing — ada yang Excel, ada yang Word, ada yang tulis tangan lalu diprint</span></li>
+            <li><i class="ti ti-cash"></i><span>Setoran uang dilakukan secara tunai langsung ke paroki</span></li>
+            <li><i class="ti ti-book"></i><span>Kartu kuning hanya dicatat sebagai penerimaan — tanpa bisa dianalisa lebih lanjut</span></li>
+          </ul>
+          <div class="ac-callout warning">
+            <i class="ti ti-alert-triangle"></i>
+            <span>Karena format tidak seragam, bendahara paroki tidak dapat melakukan analisa sama sekali</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ac-item era2" id="era2">
+        <button class="ac-trigger" onclick="toggle('era2')" aria-expanded="false">
+          <div class="ac-icon-wrap"><i class="ti ti-device-floppy"></i></div>
+          <div class="ac-trigger-meta">
+            <div class="ac-trigger-badge">Era Kedua</div>
+            <div class="ac-trigger-title">Zaman Excel &amp; Flashdisk</div>
+            <div class="ac-trigger-period">2014 – 2016</div>
+          </div>
+          <i class="ti ti-chevron-down ac-chevron"></i>
+        </button>
+        <div class="ac-body">
+          <ul class="ac-points">
+            <li><i class="ti ti-table"></i><span>Format laporan diseragamkan — semua lingkungan mengisi template Excel resmi dari paroki</span></li>
+            <li><i class="ti ti-device-floppy"></i><span>Template dibagikan via flashdisk: paroki isi template → bendahara lingkungan bawa pulang → isi → print → tanda tangan ketua lingkungan → setor kembali bersama flashdisknya</span></li>
+            <li><i class="ti ti-refresh"></i><span>Paroki memperbarui template di flashdisk untuk laporan bulan berikutnya, lalu flashdisk bisa diambil kembali oleh bendahara lingkungan</span></li>
+            <li><i class="ti ti-cash"></i><span>Uang masih disetor tunai ke gereja</span></li>
+          </ul>
+          <div class="ac-callout warning">
+            <i class="ti ti-alert-triangle"></i>
+            <span>Kendala: Bendahara lingkungan harus 2× bolak-balik ke gereja — pertama untuk setor laporan, lalu kembali lagi untuk mengambil flashdisk yang sudah berisi template baru</span>
+          </div>
+          <div class="ac-quote">
+            <p>"Kami ibu-ibu bendahara lingkungan yang tadinya pegang panci dan centong, kini harus menggunakan laptop dan keyboard."</p>
+            <div class="attr">— Suara bendahara lingkungan, era 2014–2016</div>
+            <div class="thanks">Terima kasih atas keberanian dan ketulusan ibu-ibu untuk mau berubah demi pelayanan yang lebih baik. 🙏</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ac-item era3" id="era3">
+        <button class="ac-trigger" onclick="toggle('era3')" aria-expanded="false">
+          <div class="ac-icon-wrap"><i class="ti ti-cloud-upload"></i></div>
+          <div class="ac-trigger-meta">
+            <div class="ac-trigger-badge">Era Ketiga</div>
+            <div class="ac-trigger-title">Zaman Excel &amp; Dropbox</div>
+            <div class="ac-trigger-period">2016 – 2026</div>
+          </div>
+          <i class="ti ti-chevron-down ac-chevron"></i>
+        </button>
+        <div class="ac-body">
+          <ul class="ac-points">
+            <li><i class="ti ti-cloud"></i><span>Flashdisk dieliminasi sepenuhnya — setiap lingkungan mendapat akun Dropbox untuk mengunduh template dan mengunggah laporan yang sudah diisi</span></li>
+            <li><i class="ti ti-printer"></i><span>Laporan cetak yang sudah ditandatangani ketua lingkungan tetap diserahkan ke paroki</span></li>
+            <li><i class="ti ti-cash"></i><span>Uang masih disetor tunai ke gereja</span></li>
+          </ul>
+          <div class="ac-callout success">
+            <i class="ti ti-circle-check"></i>
+            <span>Perbaikan signifikan: tidak ada lagi bolak-balik ke gereja hanya untuk urusan flashdisk — efisiensi meningkat dan beban bendahara lingkungan berkurang</span>
+          </div>
+          <div class="ac-callout warning">
+            <i class="ti ti-alert-triangle"></i>
+            <span>Kendala: Template bulan berikutnya masih dibuat secara manual oleh bendahara paroki — bendahara lingkungan perlu menunggu proses update selesai sebelum bisa mengunduh template baru</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ac-item era4" id="era4">
+        <button class="ac-trigger" onclick="toggle('era4')" aria-expanded="false">
+          <div class="ac-icon-wrap"><i class="ti ti-sparkles"></i></div>
+          <div class="ac-trigger-meta">
+            <div class="ac-trigger-badge">Era Keempat · Sekarang</div>
+            <div class="ac-trigger-title">Zaman Google Sheet &amp; Digital</div>
+            <div class="ac-trigger-period">2026 &amp; Seterusnya</div>
+          </div>
+          <i class="ti ti-chevron-down ac-chevron"></i>
+        </button>
+        <div class="ac-body">
+          <ul class="ac-points">
+            <li><i class="ti ti-brand-google"></i><span>Excel &amp; Dropbox diganti sepenuhnya dengan Google Sheet — pengisian dilakukan secara online, dan hasilnya langsung bisa dilihat oleh bendahara paroki saat itu juga</span></li>
+            <li><i class="ti ti-shield-check"></i><span>Check &amp; balance 3 tingkat yang lebih transparan: (1) Input oleh bendahara lingkungan, (2) Validasi oleh satu anggota lain, (3) Review &amp; persetujuan oleh ketua lingkungan</span></li>
+            <li><i class="ti ti-qrcode"></i><span>Pilihan pembayaran baru via payment gateway: transfer ke virtual account atau QRIS — lebih mudah, lebih aman, dan tercatat otomatis</span></li>
+            <li><i class="ti ti-printer"></i><span>Opsi lama — cetak laporan dan setor tunai ke gereja — tetap tersedia bagi yang membutuhkan</span></li>
+          </ul>
+          <div class="ac-callout success">
+            <i class="ti ti-wand"></i>
+            <span>Template bulan berikutnya dibuat <strong>otomatis di belakang layar</strong> — begitu pembayaran via VA diterima atau setoran tunai dikonfirmasi, template langsung tersedia tanpa perlu menunggu proses manual dari bendahara paroki</span>
+          </div>
+          <div class="ac-callout success">
+            <i class="ti ti-circle-check"></i>
+            <span>Transparansi dan akuntabilitas tertinggi dalam sejarah DSSY — amanah kepercayaan umat dijaga dengan lebih ketat dan lebih modern dari sebelumnya</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ac-closing">
+      <i class="ti ti-heart heart-icon"></i>
+      <p>
+        Di setiap zaman, perubahan ini selalu lahir dari <strong>kerjasama yang erat</strong> antara bendahara paroki dan bendahara lingkungan.<br><br>
+        Era keempat ini pun tidak berbeda — kami memohon dengan sepenuh hati kerjasama yang sama dari ibu-ibu sekalian.<br><br>
+        Semua ini tidak lain dan tidak bukan adalah untuk <strong>kemuliaan Allah</strong> dan menjaga amanah kepercayaan umat yang telah dititipkan kepada kita semua.
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+    function toggle(id) {
+      const item = document.getElementById(id);
+      const btn = item.querySelector('.ac-trigger');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.ac-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.ac-trigger').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+  </script>
+</body>
+</html>
