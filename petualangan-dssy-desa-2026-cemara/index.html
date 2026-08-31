@@ -4048,7 +4048,7 @@ HOOKS.s11 = slideBergabung({
   rumah:{ atap:'#C7A24B', atapGelap:'#A8842F', lebar:184, bunga:true, atapCuram:true, dinding:'#EFE6CE' },
   halaman:[
     'Bu Marni mengetuk pintu rumah Bu Cicih, sekretaris lingkungan.',
-    'Aku bantu bu Marni... Aku bisa menyocokan berkas fisik dengan yang diketik.'
+    'Aku bantu bu Marni... Aku bisa menyocokkan berkas fisik dengan yang diketik.'
   ]
 });
 
@@ -5917,7 +5917,8 @@ HOOKS.s35 = (function(){
   /* kursi goyang + Pak Rusli, digambar sebagai satu kelompok supaya bisa berayun */
   function kursiGoyang(v, gx){
     const KY = 152;                         // puncak sandaran
-    v.fillStyle='rgba(0,0,0,0.16)'; v.fillRect(gx+6, 246, 78, 5);
+    // hanya bagian tengah tapak yang menyentuh lantai, jadi bayangannya pendek
+    v.fillStyle='rgba(0,0,0,0.14)'; v.fillRect(gx+18, 250, 33, 3);
     // sandaran: dua tiang + jeruji
     [0, 58].forEach(function(dx){
       v.fillStyle='#1B1B2B'; v.fillRect(gx+dx-1, KY-1, 12, 74);
@@ -5943,16 +5944,19 @@ HOOKS.s35 = (function(){
     // kaki + tapak lengkung
     v.fillStyle='#1B1B2B'; v.fillRect(gx+2, KY+77, 11, 20); v.fillRect(gx+57, KY+77, 11, 20);
     v.fillStyle='#8B6239'; v.fillRect(gx+3, KY+77, 9, 19); v.fillRect(gx+58, KY+77, 9, 19);
-    v.fillStyle='#1B1B2B';
-    for(let i=0;i<74;i++){
-      const yy = 246 - Math.round(3*Math.sin(Math.PI*i/73));
-      v.fillRect(gx-2+i, yy, 1, 5);
+    /* Tapak lengkungnya membusur KE BAWAH: paling rendah di tengah, naik ke
+       kedua ujung. Itu yang membuatnya bisa berayun. Dulu tandanya terbalik
+       (`246 - sin`), jadi bentuknya justru busur ke atas seperti jembatan -
+       bertumpu di dua ujung dan mustahil goyang. */
+    function tapak(warna, dy, tebal){
+      v.fillStyle = warna;
+      for(let i=0;i<74;i++){
+        const yy = 241 + Math.round(5*Math.sin(Math.PI*i/73));
+        v.fillRect(gx-2+i, yy+dy, 1, tebal);
+      }
     }
-    v.fillStyle='#8B6239';
-    for(let i=0;i<74;i++){
-      const yy = 246 - Math.round(3*Math.sin(Math.PI*i/73));
-      v.fillRect(gx-2+i, yy+1, 1, 3);
-    }
+    tapak('#1B1B2B', 0, 5);
+    tapak('#8B6239', 1, 3);
   }
 
   function tandaSeru(v, x, y){
