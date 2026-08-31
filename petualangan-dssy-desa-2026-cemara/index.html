@@ -340,15 +340,30 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
   opacity:0;transition:opacity .4s ease;
 }
 #s10 .panah.on{opacity:1}
+/* Jalur balik dari kotak 4 ke kotak 1. Sengaja tanpa keterangan apa pun -
+   siklusnya dijelaskan Andy secara lisan. Kotak lebarnya 330px dan rantainya
+   dipusatkan, jadi titik tengah kotak 1 dan kotak 4 tepat 165px dari tepi
+   wadah ini. */
 #s10 .loop{
-  position:absolute;top:632px;left:216px;right:216px;
+  position:absolute;top:486px;left:216px;right:216px;height:100px;
   opacity:0;transition:opacity .6s ease;
 }
 #s10 .loop.on{opacity:1}
-#s10 .loopGaris{height:5px;background:#3E5B86;margin-top:26px}
-#s10 .loopTeks{
-  position:absolute;top:0;left:50%;transform:translateX(-50%);
-  background:#101A2C;padding:0 26px;font-size:27px;color:#9FB6D6;white-space:nowrap;
+/* Aturan latar HANYA untuk tiga garisnya. Kalau ditulis `#s10 .loop div`,
+   spesifisitasnya justru mengalahkan `#s10 .lpKepala`, dan kepala panahnya
+   ikut berlatar emas - yang terlihat jadi kotak, bukan segitiga. */
+#s10 .lpTurun, #s10 .loopGaris, #s10 .lpNaik{position:absolute;background:var(--emas)}
+#s10 .lpTurun {right:163px;top:0;   width:5px;height:80px}
+#s10 .loopGaris{left:165px;right:165px;top:75px;height:5px}
+#s10 .lpNaik  {left:163px; top:30px;width:5px;height:50px}
+/* Kepala panah dari border, bukan huruf: ukurannya pasti, tidak bergantung
+   pada metrik font, dan sudutnya tetap tajam.
+   Patokan `left` adalah tepi kiri .loop (panggung 216px), BUKAN panggung:
+   titik tengah kotak 1 ada di panggung 381 -> 381-216-22 = 143. */
+#s10 .lpKepala{
+  position:absolute;left:143px;top:-2px;width:0;height:0;
+  border-left:22px solid transparent;border-right:22px solid transparent;
+  border-bottom:30px solid var(--emas);
 }
 #s10 .tutup{
   position:absolute;top:752px;left:0;right:0;text-align:center;
@@ -383,10 +398,15 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
 #s11b .jalanKap{
   position:absolute;top:112px;left:0;right:0;text-align:center;
 }
-#s11b .jalanKap div{opacity:0;transition:opacity 1s ease;text-shadow:5px 5px 0 rgba(0,0,0,.5)}
+/* Latarnya langit biru pucat, jadi teksnya HITAM dengan halo terang -
+   bukan putih dengan bayangan gelap. Lihat jebakan #13. */
+#s11b .jalanKap div{
+  opacity:0;transition:opacity 1s ease;
+  text-shadow:3px 3px 0 rgba(255,255,255,.72), -2px -2px 0 rgba(255,255,255,.55);
+}
 #s11b .jalanKap div.on{opacity:1}
-#s11b .jalanKap .k1{font-size:60px;color:#FFFFFF;margin-bottom:32px}
-#s11b .jalanKap .k2{font-size:38px;color:#DCE6F5;line-height:1.5}
+#s11b .jalanKap .k1{font-size:60px;color:#1B1B2B;margin-bottom:32px}
+#s11b .jalanKap .k2{font-size:38px;color:#1B1B2B;line-height:1.5}
 
 /* ====== SLIDE PANEL INFORMASI (S13-S18) ====== */
 .infoSlide{background:#101A2C}
@@ -420,6 +440,13 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
   margin-top:6px;padding:10px 22px;border:4px solid #1B1B2B;
   font-family:'Press Start 2P',monospace;font-size:20px;color:#1B1B2B;
 }
+/* Tali yang sama dengan S2. Di sana penonton belum tahu artinya;
+   di sini ketiga warnanya sudah punya nama. */
+#s13 .taliP{
+  position:absolute;top:678px;left:50%;transform:translateX(-50%) translateY(26px);
+  line-height:0;
+}
+#s13 .taliP.on{transform:translateX(-50%) translateY(0)}
 #s13 .catatan{
   position:absolute;top:826px;left:0;right:0;text-align:center;
   font-size:29px;color:#93A6C4;
@@ -895,18 +922,18 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
 /* ====== S39 - PERSIMPANGAN JALAN ====== */
 #s38{background:#6B9E56}
 #s38 .kapP{
-  position:absolute;left:200px;right:200px;top:44px;z-index:20;text-align:center;
+  position:absolute;left:200px;right:200px;top:104px;z-index:20;text-align:center;
   padding:22px 34px;background:rgba(6,5,14,.74);
   font-size:32px;line-height:1.45;color:#F2E7C4;
 }
 #s38 .kapP b{color:var(--emas)}
 #s38 .labelPapan{
   position:absolute;text-align:center;z-index:20;
-  font-family:'Press Start 2P',monospace;font-size:26px;color:#3A2510;
+  font-family:'Press Start 2P',monospace;font-size:23px;color:#3A2510;
   line-height:1.5;text-shadow:2px 2px 0 rgba(255,255,255,.24);
 }
-#s38 .lpKiri{left:160px;width:600px;top:246px}
-#s38 .lpKanan{left:1160px;width:600px;top:246px}
+#s38 .lpKiri{left:160px;width:600px;top:266px}
+#s38 .lpKanan{left:1160px;width:600px;top:266px}
 #s38 .pilihanP{
   position:absolute;left:0;right:0;top:876px;z-index:60;
   display:flex;justify-content:center;gap:96px;
@@ -1013,6 +1040,294 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
 }
 .tblRPG.lanjut{background:#5AD18A}
 
+/* ====== S44 - MENYERAHKAN UANG DI KASIR ====== */
+#s43{background:#E4D9C0}
+.kasir .kapK{
+  position:absolute;left:200px;right:200px;top:44px;z-index:20;text-align:center;
+  padding:22px 34px;background:rgba(6,5,14,.74);
+  font-size:32px;line-height:1.45;color:#F2E7C4;
+}
+.kasir .kapK b{color:var(--emas)}
+.kasir .papanK{
+  position:absolute;left:1252px;width:432px;top:250px;z-index:22;text-align:center;
+  pointer-events:none;font-family:'Press Start 2P',monospace;
+  font-size:23px;letter-spacing:.10em;color:#F4E7C4;
+}
+.kasir .kiriK{
+  position:absolute;left:64px;width:512px;top:236px;z-index:25;
+  display:flex;flex-direction:column;gap:22px;
+}
+.kasir .catK{
+  padding:24px 26px;background:rgba(6,5,14,.82);
+  font-size:26px;line-height:1.44;color:#F2E7C4;
+}
+.kasir .catK b{color:var(--emas)}
+.kasir .catK .lk{
+  display:flex;align-items:flex-start;gap:16px;margin-top:16px;
+}
+.kasir .catK .lk:first-child{margin-top:0}
+.kasir .catK .nmK{
+  flex:0 0 auto;width:38px;height:38px;background:var(--emas);color:#1B1B2B;
+  border:4px solid #1B1B2B;font-family:'Press Start 2P',monospace;font-size:17px;
+  display:flex;align-items:center;justify-content:center;
+}
+.kasir .tandaK{
+  padding:20px 24px;background:rgba(6,5,14,.82);
+  border-left:9px solid var(--emas);
+  font-size:25px;line-height:1.4;color:#F7E4AE;
+}
+.kasir .tandaK b{color:#FFF}
+.kasir .pilihanK{
+  position:absolute;left:0;right:64px;top:912px;z-index:60;
+  display:flex;justify-content:flex-end;gap:36px;
+}
+
+/* ====== S45 - KONFIRMASI DITERIMA, ACHIEVEMENT UNLOCKED ====== */
+.infoSlide .sub b{color:var(--emas)}
+.konfir .surelK{position:absolute;left:64px;width:876px;top:236px;z-index:20}
+.konfir .kananK{
+  position:absolute;left:986px;right:64px;top:284px;z-index:20;
+  display:flex;flex-direction:column;gap:46px;
+}
+.konfir .kartuK2{display:flex;align-items:center;gap:26px;padding:20px 26px}
+.konfir .kartuK2 .siapaK2{flex:0 0 auto;width:250px}
+.konfir .kartuK2 .nmK2{font-family:'Press Start 2P',monospace;font-size:21px;line-height:1.5}
+.konfir .kartuK2 .pnK2{
+  margin-top:12px;display:inline-block;padding:8px 16px;border:4px solid #1B1B2B;
+  font-family:'Press Start 2P',monospace;font-size:16px;color:#1B1B2B;
+}
+.konfir .kartuK2 .stK2{flex:1;min-width:0;font-size:25px;line-height:1.4;color:#DCE6F5}
+.konfir .kartuK2 .stK2 b{color:var(--emas)}
+.konfir .kakiK{
+  position:absolute;left:64px;width:876px;top:936px;text-align:center;z-index:20;
+  font-size:25px;line-height:1.4;color:#93A6C4;
+}
+
+/* ====== S46 - SPREADSHEET KOSONG, "TELAH DIPERBARUI!" ====== */
+#s45{background:#1A222E}
+.sheet .kapS{
+  position:absolute;left:180px;right:180px;top:44px;z-index:20;text-align:center;
+  padding:20px 30px;background:rgba(6,5,14,.74);
+  font-size:31px;line-height:1.4;color:#F2E7C4;
+}
+.sheet .kapS b{color:var(--emas)}
+.sheet .kapS.pergi{opacity:0;transition:opacity .3s ease}
+.sheet .hintS{
+  position:absolute;left:0;right:0;top:1022px;text-align:center;z-index:21;
+  font-family:'Press Start 2P',monospace;font-size:19px;color:var(--emas);
+}
+.sheet .hintS.pergi{opacity:0;transition:opacity .3s ease}
+.sheet .pow{
+  position:absolute;inset:0;z-index:40;opacity:0;pointer-events:none;
+}
+.sheet .pow.on{opacity:1}
+.sheet .pow .garisPow{position:absolute;inset:0}
+.sheet .pow .tulisanPow{
+  position:absolute;left:0;right:0;top:268px;text-align:center;
+  font-family:'Press Start 2P',monospace;font-size:104px;line-height:1.42;
+  color:var(--emas);transform:rotate(-5deg) scale(.2);opacity:0;
+  text-shadow:
+    -8px -8px 0 #1B1B2B,  8px -8px 0 #1B1B2B, -8px  8px 0 #1B1B2B, 8px 8px 0 #1B1B2B,
+     0 -8px 0 #1B1B2B, 0 8px 0 #1B1B2B, -8px 0 0 #1B1B2B, 8px 0 0 #1B1B2B,
+    18px 22px 0 rgba(0,0,0,.55);
+}
+.sheet .pow.on .tulisanPow{
+  opacity:1;transform:rotate(-5deg) scale(1);
+  transition:transform .17s cubic-bezier(.2,1.9,.5,1), opacity .1s ease;
+}
+.sheet .ketS{
+  position:absolute;left:250px;right:250px;top:768px;z-index:45;text-align:center;
+  padding:24px 32px;background:rgba(6,5,14,.86);
+  font-size:29px;line-height:1.45;color:#F2E7C4;
+  opacity:0;transition:opacity .5s ease .34s;
+}
+.sheet .ketS.on{opacity:1}
+.sheet .ketS b{color:var(--emas)}
+.sheet .tabS span{
+  position:absolute;top:958px;z-index:22;text-align:center;
+  font-family:'Press Start 2P',monospace;font-size:17px;color:#3C4A5A;letter-spacing:.02em;
+}
+.sheet .tabS span:first-child{color:#1967D2}
+.sheet .tabS.pergi{opacity:0;transition:opacity .3s ease}
+
+/* ====== S47 - KEMBALI KE DESA, SORE KEEMASAN ======
+   Slide serius: tidak ada penanda "!", tidak ada tombol, tidak ada panel. */
+#s46{background:#8E9C52}
+#s46 .warga{position:absolute;cursor:pointer;z-index:12}
+#s46 .judulSore{
+  position:absolute;top:26px;left:40px;z-index:10;
+  font-family:'Press Start 2P',monospace;font-size:24px;
+  color:#FFF2D4;text-shadow:4px 4px 0 #5A3A16;letter-spacing:.05em;
+}
+#s46 .arahSore{
+  position:absolute;top:26px;right:40px;z-index:10;text-align:right;
+  font-size:26px;color:#FFF2D4;text-shadow:3px 3px 0 #5A3A16;
+}
+#s46 .kelarSore{
+  position:absolute;top:92px;right:40px;text-align:right;z-index:14;width:820px;
+  font-size:31px;line-height:1.4;color:#FFF6E2;text-shadow:3px 3px 0 #5A3A16;
+  opacity:0;transition:opacity 1.1s ease;
+}
+#s46 .kelarSore.on{opacity:1}
+
+/* ====== S48 - "1 MINGGU KEMUDIAN" ====== */
+#s47{background:#0E1230}
+.waktu .kartuW{
+  position:absolute;left:0;right:0;top:404px;z-index:20;
+  display:flex;align-items:center;justify-content:center;gap:36px;
+  padding:44px 0;background:rgba(6,5,14,.72);
+  opacity:0;transition:opacity .9s ease;
+}
+.waktu .kartuW.on{opacity:1}
+.waktu .kartuW .tl{
+  font-family:'Press Start 2P',monospace;font-size:62px;color:var(--emas);
+  letter-spacing:.06em;text-shadow:7px 7px 0 #06091A;
+}
+.waktu .kakiW{
+  position:absolute;left:50%;transform:translateX(-50%);top:646px;z-index:20;
+  padding:16px 30px;background:rgba(6,5,14,.72);
+  font-size:30px;color:#E4D9C0;
+  opacity:0;transition:opacity .9s ease .5s;
+}
+.waktu .kakiW.on{opacity:1}
+
+/* ====== S49 - BU MARNI YANG RAJIN (dapur siang) ====== */
+#s48{background:#C9B392}
+
+/* ====== S50 - RINTANGAN 3: TERLALU CEPAT ====== */
+#s49{background:#C9B392}
+.rint3 .kapR3{
+  position:absolute;left:180px;right:180px;top:44px;z-index:20;text-align:center;
+  padding:20px 30px;background:rgba(6,5,14,.78);
+  font-size:32px;line-height:1.4;color:#F2E7C4;
+}
+.rint3 .kapR3 b{color:#F2A0A8}
+.rint3 .kapR3.pergi{opacity:0;transition:opacity .3s ease}
+.rint3 .hintR3{
+  position:absolute;left:0;right:0;top:986px;text-align:center;z-index:21;
+  font-family:'Press Start 2P',monospace;font-size:19px;color:var(--emas);
+}
+.rint3 .hintR3.pergi{opacity:0;transition:opacity .3s ease}
+.rint3 .layarR3{
+  position:absolute;left:410px;width:1100px;top:126px;z-index:40;
+  opacity:0;transform:scale(.94);
+  transition:opacity .4s ease, transform .4s cubic-bezier(.34,1.4,.64,1);
+}
+.rint3 .layarR3.on{opacity:1;transform:scale(1)}
+.rint3 .ketR3{
+  position:absolute;left:220px;right:220px;top:646px;z-index:41;
+  opacity:0;transition:opacity .5s ease .2s;
+}
+.rint3 .ketR3.on{opacity:1}
+.rint3 .ketR3 .b1{
+  padding:24px 30px;background:rgba(90,20,30,.86);border-left:10px solid #F2A0A8;
+  font-size:33px;line-height:1.4;color:#FFE4E7;
+}
+.rint3 .ketR3 .b1 b{color:#FFF}
+.rint3 .ketR3 .b2{
+  margin-top:20px;padding:24px 30px;background:rgba(6,5,14,.86);
+  font-size:29px;line-height:1.45;color:#F2E7C4;
+}
+.rint3 .ketR3 .b2 b{color:var(--emas)}
+
+/* ====== S51 - PERI DESY, DUA JALAN KELUAR ====== */
+#s50{background:#C9B392}
+.desy .duaJalan{
+  position:absolute;left:96px;right:96px;top:126px;z-index:50;
+  display:flex;justify-content:center;gap:60px;
+  opacity:0;transform:translateY(30px);
+  transition:opacity .45s ease, transform .5s cubic-bezier(.34,1.4,.64,1);
+}
+.desy .duaJalan.on{opacity:1;transform:translateY(0)}
+.desy .jalanK{
+  flex:1 1 0;min-width:0;padding:30px 30px 34px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+}
+.desy .jalanK .jdlJ{
+  font-family:'Press Start 2P',monospace;font-size:26px;letter-spacing:.06em;
+}
+.desy .jalanK .dsJ{font-size:26px;line-height:1.4;color:#C4D2E6;min-height:74px}
+.desy .jalanK .qrBungkus{background:#F4F1E8;padding:16px;line-height:0}
+
+
+/* ====== S52 - PENUTUP ====== */
+#s51{background:#3A2A4E}
+.penutup .ayatP{
+  position:absolute;top:96px;left:50%;transform:translateX(-50%);
+  width:1460px;text-align:center;z-index:20;
+  font-size:46px;line-height:1.62;color:var(--kertas);
+  text-shadow:4px 4px 0 rgba(0,0,0,.72);
+}
+.penutup .ayatP .kur{color:var(--emas)}
+.penutup .rujukP{
+  position:absolute;top:340px;left:0;right:0;text-align:center;z-index:20;
+  font-family:'Press Start 2P',monospace;font-size:24px;
+  color:var(--emas);letter-spacing:.06em;text-shadow:3px 3px 0 rgba(0,0,0,.72);
+  opacity:0;transition:opacity .7s ease;
+}
+.penutup .rujukP.on{opacity:1}
+.penutup .tutupP{
+  position:absolute;top:400px;left:50%;transform:translateX(-50%);
+  width:1360px;text-align:center;z-index:20;
+  padding:24px 34px;background:rgba(6,5,14,.62);
+  font-size:31px;line-height:1.5;color:#F2E7C4;
+  opacity:0;transition:opacity .9s ease;
+}
+.penutup .tutupP.on{opacity:1}
+.penutup .tamat{
+  position:absolute;top:954px;left:50%;transform:translateX(-50%);z-index:20;
+  padding:20px 46px;background:rgba(6,5,14,.72);
+  font-family:'Press Start 2P',monospace;font-size:28px;
+  color:#FFF2D4;letter-spacing:.24em;
+  opacity:0;transition:opacity 1.1s ease;
+}
+.penutup .tamat.on{opacity:1}
+
+/* Slide yang memakai tag PROSES perlu ruang ekstra di atas keterangannya.
+   Sengaja disebut satu per satu, bukan diberikan ke semua .kapD - S49 tidak
+   punya tag, dan kalau ikut kena, keterangannya turun tanpa alasan. */
+#s25 .kapD, #s30 .kapD, #s35 .kapD{padding-top:118px}
+
+/* ====== TAG "PROSES n" ======
+   Dipasang di slide pembuka tiap proses yang berupa adegan pixel art
+   (S26, S31, S36, S39). Di slide panel biasa seperti S21, nomor prosesnya
+   sudah menyatu di judulnya sendiri. Namanya mengikuti tiga kekuatan di
+   S15 - Mata, Tangan, Kunci - supaya penonton menyambungkannya sendiri. */
+.tagProses{
+  position:absolute;left:0;right:0;top:24px;text-align:center;z-index:34;
+  pointer-events:none;
+}
+.tagProses span{
+  display:inline-block;padding:14px 28px;
+  background:rgba(6,5,14,.86);border-bottom:5px solid var(--emas);
+  font-family:'Press Start 2P',monospace;font-size:20px;
+  color:var(--emas);letter-spacing:.08em;
+}
+
+/* ====== S45 - LENCANA BINTANG DI TIAP KARTU ====== */
+.konfir .kartuK2{position:relative}
+/* Tiga tahap, berurutan: kartunya timbul dulu, lalu bintangnya DISTEMPEL
+   (mengecil dari 2,8x dalam 130ms - resep yang sama dengan cap TERDAFTAR di
+   S25), baru sesudah mendarat denyutnya mulai. Denyut dan stempel sama-sama
+   memakai transform, jadi keduanya tidak boleh jalan bersamaan: animasi baru
+   dipasang setelah transisi stempelnya selesai. */
+.konfir .lencana{
+  position:absolute;right:8px;top:-24px;z-index:6;line-height:0;
+  opacity:0;transform:scale(2.8);
+}
+.konfir .lencana.cap{
+  opacity:1;transform:scale(1);
+  transition:opacity .13s ease-out, transform .13s ease-out;
+}
+.konfir .lencana.hidup{animation:denyut 1.5s ease-in-out infinite}
+@keyframes denyut{
+  0%,100%{transform:scale(1)}
+  50%    {transform:scale(1.16)}
+}
+@media (prefers-reduced-motion:reduce){
+  .konfir .lencana{opacity:1;transform:scale(1)}
+  .konfir .lencana.hidup{animation:none}
+}
 </style>
 </head>
 <body>
@@ -1040,7 +1355,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
     <!-- ============ S3 · PROLOG ============ -->
     <section class="slide" id="s3">
       <canvas class="layer" id="s3cv" width="1920" height="1080"></canvas>
-      <div class="baris b1" id="s3b1">Sudah dua belas tahun para bendahara lingkungan<br>berjalan dari zaman ke zaman.</div>
+      <div class="baris b1" id="s3b1">Sudah lebih dari dua belas tahun para bendahara lingkungan<br>berjalan dari zaman ke zaman.</div>
       <div class="baris b2" id="s3b2">Tiga desa telah dilewati.<br>Masing-masing meninggalkan satu pelajaran.</div>
       <div class="baris b3" id="s3b3">Sekarang, desa keempat menunggu.</div>
     </section>
@@ -1083,7 +1398,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
     <section class="slide" id="s8">
       <canvas class="layer" id="s8cv" width="1920" height="1080"></canvas>
       <div class="kalimat k1" id="s8k1">Misi Anda bukan mengalahkan monster.</div>
-      <div class="kalimat k2" id="s8k2">Misi Anda adalah mengumpulkan cukup &mdash; tepat waktu &mdash;<br>supaya yang sakit tertolong, dan yang berduka tidak sendirian.</div>
+      <div class="kalimat k2" id="s8k2">Misi Anda adalah mengumpulkan dana rutin &mdash;<br>supaya yang sakit tertolong, dan yang berduka tidak sendirian.</div>
     </section>
 
     <!-- ============ S9 · QUEST DIMULAI ============ -->
@@ -1109,15 +1424,17 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
 
     <!-- ============ S10 · KEPERCAYAAN HARUS DIJAGA ============ -->
     <section class="slide" id="s10">
-      <div class="tajuk">KEPERCAYAAN ADALAH BAHAN BAKARNYA</div>
+      <div class="tajuk">KEPERCAYAAN ADALAH KUNCINYA</div>
       <div class="rantai" id="s10rantai"></div>
       <div class="loop" id="s10loop">
+        <div class="lpTurun"></div>
         <div class="loopGaris"></div>
-        <div class="loopTeks">&#9664;&nbsp; lalu kepercayaan itu tumbuh, dan siklusnya berputar lebih cepat</div>
+        <div class="lpNaik"></div>
+        <div class="lpKepala"></div>
       </div>
       <div class="tutup" id="s10tutup">
         <div class="besar">Dan kepercayaan tidak bisa dijaga sendirian.</div>
-        <div class="kecil">Satu orang menginput, satu orang memeriksa, satu orang merilis.<br>Karena amanah ini terlalu berat untuk satu pundak.</div>
+        <div class="kecil">Harus ada yang menginput, ada yang memeriksa, dan ada yang merilis.<br>Karena amanah ini terlalu berat untuk dipikul sendirian.</div>
       </div>
     </section>
 
@@ -1147,6 +1464,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
       <div class="tj">PARTY LENGKAP &nbsp; 3 / 3</div>
       <div class="sub">Tiga orang, tiga peran.</div>
       <div class="baris3" id="s13baris"></div>
+      <div class="taliP naik" id="s13tali"></div>
       <div class="catatan">Mulai sekarang, warna inilah penanda siapa yang sedang bekerja.</div>
     </section>
 
@@ -1176,7 +1494,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
           <span class="chip">Valid</span><span class="panahS">&#9654;</span>
           <span class="chip akhir">Menunggu Pembayaran</span>
         </div>
-        <div class="ket">Perhatikan nama statusnya. Tidak ada <b>&quot;Disetujui&quot;</b>, tidak ada <b>&quot;Approve&quot;</b>.<br>Sistem ini sengaja dibuat tanpa kata-kata yang berbau atasan.</div>
+        <div class="ket">Perhatikan nama statusnya. Tidak ada <b>&quot;Disetujui&quot;</b>, tidak ada <b>&quot;Approve&quot;</b>.<br>Sistem ini sengaja dibuat tanpa kata-kata yang berbau hirarkis.</div>
       </div>
     </section>
 
@@ -1194,7 +1512,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
           <p>Script-nya tidak berjalan dengan baik. Errornya pun tidak jelas penyebabnya &mdash; membingungkan, bukan menolong.</p>
         </div>
       </div>
-      <div class="catatanB naik" id="s16c"><b>Tapi ada batasnya.</b> Membaca email notifikasi dan menekan tombol &quot;Rilis Laporan&quot; <b>boleh dari HP</b> &mdash; itu halaman web biasa, bukan Google Sheet.</div>
+      <div class="catatanB naik" id="s16c"><b>Pengecualian:</b> Membaca email notifikasi dan menekan tombol &quot;Rilis Laporan&quot; <b>boleh dari HP</b> &mdash; itu halaman web biasa, bukan Google Sheet.</div>
     </section>
 
     <!-- ============ S17 · JUBAH IDENTITAS ============ -->
@@ -1235,7 +1553,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
     <!-- ============ S21 &middot; GULUNGAN PERMOHONAN ============ -->
     <section class="slide infoSlide bekal formulir" id="s20">
       <div class="tj">PROSES 1 &middot; GULUNGAN PERMOHONAN</div>
-      <div class="sub">Form <b>Permohonan Perubahan Akses DSSY</b> &mdash; diisi sekali, oleh Pak Rusli.</div>
+      <div class="sub">Form <b>Permohonan Perubahan Akses DSSY</b> &mdash; diisi 1x, oleh Pak Rusli.</div>
       <div class="fWrap">
         <div class="fLayar dqbox naik" id="s20a">
           <img src="screenshot/SS-01.png" alt="Form Permohonan Perubahan Akses DSSY">
@@ -1300,7 +1618,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
       <div class="tj" style="color:#5AD18A">PARTY RESMI TERDAFTAR</div>
       <div class="hKiri">
         <div class="hSurat" id="s24surat"></div>
-        <div class="hCap">Stempel turun. <b>Akses lingkungan diperbarui</b> &mdash; Sheet Maker dan Sheet Checker sekarang mengenali ketiganya.</div>
+        <div class="hCap"><b>Akses lingkungan diperbarui</b> &mdash; Sheet Maker dan Sheet Checker sekarang mengenali ketiganya.</div>
       </div>
       <div class="hKanan" id="s24kanan"></div>
       <div class="tutupH" id="s24tutup">GULUNGAN AJAIB KINI BOLEH DISENTUH</div>
@@ -1309,6 +1627,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
     <!-- ============ S26 &middot; DAPUR BU MARNI ============ -->
     <section class="slide dapur" id="s25">
       <canvas class="layer" id="s25cv" width="1920" height="1080"></canvas>
+      <div class="tagProses"><span>PROSES 2 &middot; MATA YANG MEMBACA</span></div>
       <div class="kapD" id="s25kap">
         <div class="k1">Malam. Piring sudah dicuci, rumah sudah sepi.</div>
         <div class="k2">Di sinilah pekerjaan ini sebenarnya terjadi &mdash; di meja dapur, setelah semua urusan lain selesai.</div>
@@ -1335,7 +1654,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
     <!-- ============ S28 &middot; RINTANGAN 1: GERBANG IZIN ============ -->
     <section class="slide infoSlide bekal gerbang" id="s27">
       <div class="tj" style="color:#F2A0A8">&#9888; RINTANGAN 1 &middot; GERBANG IZIN</div>
-      <div class="sub">Pertama kali menu itu disentuh, Google menghadang dengan rentetan pertanyaan.</div>
+      <div class="sub">Pertama kali menu itu disentuh, Google menghadang dengan beberapa pertanyaan.</div>
       <div class="ssBingkai dqbox layarG naik" id="s27layar">
         <img src="screenshot/SS-04.png" alt="Rangkaian dialog otorisasi Google">
       </div>
@@ -1365,7 +1684,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
           <div class="dKotak dqbox naik" id="s28b">
             <div class="dNo">2</div>
             <div class="dJdl">NOTIFIKASI BERHASIL</div>
-            <p>&quot;Notifikasi berhasil dikirimkan.&quot; Klik <b>OK</b>. Kalau pesan ini sudah muncul, pekerjaan Anda <b>sudah terkirim</b> &mdash; tidak perlu diulang.</p>
+            <p>&quot;Notifikasi berhasil dikirimkan.&quot; Klik <b>OK</b>. Kalau pesan ini sudah muncul, pekerjaan Anda <b>sudah selesai</b>.</p>
           </div>
         </div>
       </div>
@@ -1397,6 +1716,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
     <!-- ============ S31 &middot; TERAS RUMAH BU CICIH ============ -->
     <section class="slide teras" id="s30">
       <canvas class="layer" id="s30cv" width="1920" height="1080"></canvas>
+      <div class="tagProses"><span>PROSES 3 &middot; TANGAN YANG MENIMBANG</span></div>
       <div class="kapD" id="s30kap">
         <div class="k1">Pagi hari di teras rumah Bu Cicih.</div>
         <div class="k2">Seekor merpati pos mendarat di pagar. Surat itu untuknya.</div>
@@ -1474,6 +1794,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
     <!-- ============ S36 &middot; BERANDA PAK RUSLI - MERPATI DATANG ============ -->
     <section class="slide beranda" id="s35">
       <canvas class="layer" id="s35cv" width="1920" height="1080"></canvas>
+      <div class="tagProses"><span>PROSES 4 &middot; KUNCI YANG MEMBUKA</span></div>
       <div class="kapD" id="s35kap">
         <div class="k1">Sore hari di beranda Pak Rusli.</div>
         <div class="k2">Yang tadi terbang dari teras Bu Cicih, sekarang tiba. Ia mengangkat kepala dari bukunya.</div>
@@ -1482,7 +1803,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
 
     <!-- ============ S37 &middot; MEMBACA DI HP, LALU MERILIS ============ -->
     <section class="slide infoSlide bekal hp" id="s36">
-      <div class="tj">PROSES 4 &middot; KUNCI YANG MEMBUKA</div>
+      <div class="tj">KUNCI YANG MEMBUKA</div>
       <div class="sub">Email notifikasi dan tombol Rilis Laporan &mdash; <b>boleh dibuka dari HP</b>.</div>
       <div class="hpWrap">
         <div class="hpKiri">
@@ -1497,7 +1818,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
           <div class="panahH"><span>&#9660;</span>tekan &quot;Rilis Laporan&quot;</div>
           <div class="kartuH dqbox kartuKanan" id="s36b">
             <div class="jdlH">HALAMAN KONFIRMASI</div>
-            <p><b>&quot;Terima Kasih!&quot;</b> &mdash; link pembayaran sedang dibuat dan akan dikirim ke Maker.<br><br>Kalau metode lingkungan Anda <b>Cash</b>, kalimatnya berbeda: Maker akan menerima notifikasi untuk membayar tunai ke kasir Bendahara Paroki.</p>
+            <p>Browser di HP akan terbuka. <b>&quot;Terima Kasih!&quot;</b> &mdash; link pembayaran sedang dibuat dan akan dikirim ke Maker.<br><br>Kalau metode lingkungan Anda <b>Cash</b>, kalimatnya berbeda: Maker akan menerima notifikasi untuk membayar tunai ke kasir Bendahara Paroki.</p>
           </div>
         </div>
         <div class="hpKanan" id="s36kanan">
@@ -1532,7 +1853,8 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
     <!-- ============ S39 &middot; PERSIMPANGAN JALAN (percabangan) ============ -->
     <section class="slide simpang" id="s38">
       <canvas class="layer" id="s38cv" width="1920" height="1080"></canvas>
-      <div class="kapP">Dari sini jalannya bercabang dua &mdash; tergantung <b>Metode Pembayaran</b> yang dipilih lingkungan Anda.</div>
+      <div class="tagProses"><span>PROSES 5 &middot; DUA JALAN PEMBAYARAN</span></div>
+      <div class="kapP">Dari sini jalannya bercabang dua, tergantung <b>Metode Pembayaran</b> yang Anda pilih.</div>
       <div class="labelPapan lpKiri">JALAN<br>MIDTRANS</div>
       <div class="labelPapan lpKanan">JALAN<br>CASH</div>
       <div class="pilihanP">
@@ -1559,7 +1881,7 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
       <div class="tj">LAYAR MIDTRANS &mdash; TAMPILAN SEBENARNYA</div>
       <div class="mWrap">
         <div class="mKiri">
-          <div class="lm"><span class="nm2">1</span><span>Nama, nomor telepon, e-mail, dan <b>jumlahnya sudah terisi sendiri</b>. Periksa sebentar, lalu tekan <b>Next</b>.</span></div>
+          <div class="lm"><span class="nm2">1</span><span>Nama, nomor telepon, dan e-mail Maker, serta <b>jumlahnya sudah terisi sendiri</b>. Periksa sebentar, lalu tekan <b>Next</b>.</span></div>
           <div class="lm"><span class="nm2">2</span><span>Pilih metodenya: <b>QRIS</b> atau <b>Virtual Account</b> (BCA, Mandiri, BNI, BRI, dan lainnya).</span></div>
           <div class="lm"><span class="nm2">3</span><span>Kalau memilih Virtual Account, keluar <b>nomor VA</b>. Nomor inilah yang dibawa ke ATM atau m-banking.</span></div>
           <div class="sosok" id="s40sosok"><div class="kt">Bu Marni membukanya dari HP, lewat tombol <b>Link Pembayaran</b> di email.</div></div>
@@ -1584,6 +1906,131 @@ canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
         <button class="tblRPG balik kecil" id="s41balik" data-nokli>&#8617;&nbsp; KEMBALI KE PERSIMPANGAN</button>
         <button class="tblRPG lanjut kecil" id="s41lanjut" data-nokli>LANJUT &nbsp;&#9654;</button>
       </div>
+    </section>
+
+    <!-- ============ S43 &middot; MENCETAK LAPORAN (CABANG CASH) ============ -->
+    <section class="slide cetak" id="s42">
+      <canvas class="layer" id="s42cv" width="1920" height="1080"></canvas>
+      <div class="kapC2" id="s42kap">Sebelum berangkat membayar, laporannya <b>dicetak dulu</b> &mdash; dua lembar: <b>PrintDS</b> dan <b>PrintSY</b>.</div>
+      <div class="tandaKlik blink" id="s42tanda">!</div>
+      <button class="zonaPrinter" id="s42zona" data-nokli></button>
+      <div class="hintKlik" id="s42hint">&#9650; KLIK PRINTERNYA</div>
+      <div class="ssBingkai dqbox layarCetak" id="s42layar">
+        <img src="screenshot/SS-15.png" alt="Sheet PrintDS - hasil cetak laporan">
+      </div>
+      <div class="hintCetak" id="s42ket">Di kertas itu sudah tercetak <b>Dibuat oleh</b>, <b>Diperiksa oleh</b>, dan <b>Mengetahui</b> &mdash; lengkap dengan tanggalnya. <b>Inilah yang menggantikan tanda tangan basah mereka bertiga.</b><div class="rilis">Langkah ini <b>wajib di kedua jalan</b>. Lewat Midtrans maupun tunai, laporannya tetap dicetak dulu &mdash; baru berangkat.</div></div>
+    </section>
+
+    <!-- ============ S44 &middot; MENYERAHKAN UANG DI KASIR ============ -->
+    <section class="slide kasir" id="s43">
+      <canvas class="layer" id="s43cv" width="1920" height="1080"></canvas>
+      <div class="kapK">Jalan tunai: uangnya diserahkan langsung ke <b>kasir Bendahara Gereja</b>.</div>
+      <div class="papanK">KASIR</div>
+      <div class="kiriK">
+        <div class="catK">
+          <div class="lk"><span class="nmK">1</span><span>Bawa <b>PrintDS</b> dan <b>PrintSY</b> yang tadi dicetak.</span></div>
+          <div class="lk"><span class="nmK">2</span><span>Serahkan uangnya sesuai <b>total yang tertera</b> di lembar cetak itu.</span></div>
+          <div class="lk"><span class="nmK">3</span><span>Pak Joko menghitung, lalu <b>mencatat</b> pembayaran itu ke dalam sistem.</span></div>
+        </div>
+        <div class="tandaK">Konfirmasinya <b>tidak keluar seketika</b> seperti jalan Midtrans &mdash; email pemberitahuan baru terkirim <b>setelah Pak Joko mencatat</b> pembayarannya.</div>
+      </div>
+      <div class="pilihanK">
+        <button class="tblRPG balik kecil" id="s43balik" data-nokli>&#8617;&nbsp; KEMBALI KE PERSIMPANGAN</button>
+        <button class="tblRPG lanjut kecil" id="s43lanjut" data-nokli>LANJUT &nbsp;&#9654;</button>
+      </div>
+    </section>
+
+    <!-- ============ S45 &middot; KONFIRMASI DITERIMA ============ -->
+    <section class="slide infoSlide konfir" id="s44">
+      <div class="tj">PEMBAYARAN SUMBANGAN DITERIMA</div>
+      <div class="sub">Ketiganya menerima e-mail yang <b>sama persis</b>.</div>
+      <div class="ssBingkai dqbox surelK naik" id="s44surel">
+        <img src="screenshot/SS-17.png" alt="E-mail konfirmasi pembayaran DSSY telah diterima">
+      </div>
+      <div class="kakiK naik" id="s44kaki">Isinya: total <b>Dana Sehat</b> dan <b>St. Yusuf</b> bulan ini, ditambah detail transaksinya &mdash; metode, waktu, bank, No. VA, Order ID, dan Transaction ID.</div>
+      <div class="kananK" id="s44kanan"></div>
+    </section>
+
+    <!-- ============ S46 &middot; TELAH DIPERBARUI! ============ -->
+    <section class="slide sheet" id="s45">
+      <canvas class="layer" id="s45cv" width="1920" height="1080"></canvas>
+      <div class="kapS" id="s45kap">Bulan berikutnya, lembar kerjanya sudah <b>bersih lagi</b>, siap diisi dari awal.</div>
+      <div class="tabS" id="s45tab"><span style="left:160px;width:400px">DanaSehat</span><span style="left:592px;width:352px">PrintDS</span><span style="left:992px;width:400px">SantoYusuf</span><span style="left:1424px;width:352px">PrintSY</span></div>
+      <div class="hintS" id="s45hint">&#9650; KLIK UNTUK MELIHAT APA YANG BERUBAH</div>
+      <div class="pow" id="s45pow">
+        <canvas class="garisPow" id="s45garis" width="1920" height="1080"></canvas>
+        <div class="tulisanPow">TELAH<br>DIPERBARUI!</div>
+      </div>
+      <div class="ketS" id="s45ket">Template bulan depan <b>otomatis tercipta</b>. Tidak perlu menunggu bendahara paroki menyiapkannya satu per satu, tidak perlu meminta. <b>Inilah yang berubah dari Era 3.</b></div>
+    </section>
+
+    <!-- ============ S47 &middot; KEMBALI KE DESA (sore keemasan) ============ -->
+    <section class="slide" id="s46">
+      <canvas class="layer" id="s46cv" width="1920" height="1080"></canvas>
+      <div class="judulSore">DESA 2026 CEMARA</div>
+      <div class="arahSore">Klik ketiga umat.</div>
+      <div class="kelarSore" id="s46kelar">Umat yang membutuhkan terbantu karena seluruh umat bergotong-royong.</div>
+      <div id="s46warga"></div>
+    </section>
+
+    <!-- ============ S48 &middot; 1 MINGGU KEMUDIAN ============ -->
+    <section class="slide waktu" id="s47">
+      <canvas class="layer" id="s47cv" width="1920" height="1080"></canvas>
+      <div class="kartuW" id="s47kartu">
+        <canvas id="s47jam"></canvas>
+        <div class="tl">1 MINGGU KEMUDIAN</div>
+      </div>
+      <div class="kakiW" id="s47kaki">Tujuh matahari terbit, tujuh matahari terbenam.</div>
+    </section>
+
+    <!-- ============ S49 &middot; BU MARNI YANG RAJIN ============ -->
+    <section class="slide dapur" id="s48">
+      <canvas class="layer" id="s48cv" width="1920" height="1080"></canvas>
+      <div class="kapD" id="s48kap">
+        <div class="k2">Bu Marni tidak menunggu sampai malam, tidak menunggu diingatkan. Gulungan Ajaib sudah terbuka, dan ia mulai mengisi.</div>
+      </div>
+    </section>
+
+    <!-- ============ S50 &middot; RINTANGAN 3: TERLALU CEPAT ============ -->
+    <section class="slide rint3" id="s49">
+      <canvas class="layer" id="s49cv" width="1920" height="1080"></canvas>
+      <div class="kapR3" id="s49kap">Isiannya selesai. Tapi begitu tombol <b>Ajukan Pengecekan</b> ditekan, layarnya <b>menolak</b>.</div>
+      <div class="hintR3" id="s49hint">&#9650; KLIK UNTUK MEMBACA PESANNYA</div>
+      <div class="ssBingkai dqbox layarR3" id="s49layar">
+        <img src="screenshot/SS-19.png" alt="Pesan: belum lebih dari 20 hari sejak pembayaran sebelumnya">
+      </div>
+      <div class="ketR3" id="s49ket">
+        <div class="b1"><b>Ini bukan kerusakan, dan Bu Marni tidak salah apa pun.</b> Ia justru terlalu rajin.</div>
+        <div class="b2">Sistemnya punya irama sendiri: <b>jaraknya minimal 20 hari</b> dari pembayaran sebelumnya. Pesannya bahkan menyebutkan sudah berapa hari berlalu. Yang perlu dilakukan cuma <b>menunggu</b>.</div>
+      </div>
+    </section>
+
+    <!-- ============ S51 &middot; PERI DESY, DUA JALAN KELUAR ============ -->
+    <section class="slide desy" id="s50">
+      <canvas class="layer" id="s50cv" width="1920" height="1080"></canvas>
+      <div class="duaJalan" id="s50panel">
+        <div class="jalanK dqbox">
+          <div class="jdlJ" style="color:#8FC2F2">BACA SOP</div>
+          <div class="dsJ">Panduan lengkapnya, langkah demi langkah, bisa dibuka kapan saja.</div>
+          <button class="tblRPG simpan kecil" id="s50sop" data-nokli>BUKA HALAMAN</button>
+          <div class="qrBungkus" id="s50qrsop"></div>
+        </div>
+        <div class="jalanK dqbox">
+          <div class="jdlJ" style="color:#8FE3C4">TANYA DESY</div>
+          <div class="dsJ">Tanyakan langsung apa pun yang membingungkan, dengan bahasa Anda sendiri.</div>
+          <button class="tblRPG ya kecil" id="s50tanya" data-nokli>BUKA HALAMAN</button>
+          <div class="qrBungkus" id="s50qrdesy"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S52 &middot; PENUTUP ============ -->
+    <section class="slide penutup" id="s51">
+      <canvas class="layer" id="s51cv" width="1920" height="1080"></canvas>
+      <div class="ayatP" id="s51ayat"></div>
+      <div class="rujukP" id="s51rujuk">KOLOSE 3:23</div>
+      <div class="tutupP" id="s51tutup">Semua ini adalah untuk kemuliaan Allah dan menjaga amanah kepercayaan umat yang telah dititipkan kepada kita semua.</div>
+      <div class="tamat" id="s51tamat">T A M A T</div>
     </section>
 
     <div id="hudWrap" data-nokli>
@@ -1670,6 +2117,12 @@ const SPR = {
     '..kskCCCCCCksk..','...k.kCCCCk.k...','.....kRkkRk.....','.....kRkkRk.....',
     '.....kRkkRk.....','.....kRkkRk.....','....kwwkkwwk....','....kkk..kkk....'
   ],
+  peri:[
+    '................','......kkkk......','.....khhhhk.....','....khssssbk....',
+    '....khsesesk....','.....ksmsk......','......ksk.......','..kwk.kCCk.kwk..',
+    '.kwwwkCCCCkwwwk.','.kwwwkCcCCkwwwk.','..kwk.kCCk.kwk..','.....kCCCCk.....',
+    '.....kCcCCk.....','......kkkk......','................','................'
+  ],
   ibu_langkah:[
     '.....kkkkkk.....','....khhhhhhk....','...khhhhhhhhk...','...khhhhhhhhk...',
     '...khssssssbk...','...khsesesshk...','...khssssssbk...','....khsmmsshk...',
@@ -1732,7 +2185,7 @@ function kanvasKecil(gambar){
    NAVIGASI
    ============================================================ */
 const SLIDES = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10',
-                's11','s11b','s12','s13','s14','s15','s16','s17','s18','s19','s20','s21','s22','s23','s24','s25','s26','s27','s28','s29','s30','s31','s32','s33','s34','s35','s36','s37','s38','s39','s40','s41'];
+                's11','s11b','s12','s13','s14','s15','s16','s17','s18','s19','s20','s21','s22','s23','s24','s25','s26','s27','s28','s29','s30','s31','s32','s33','s34','s35','s36','s37','s38','s39','s40','s41','s42','s43','s44','s45','s46','s47','s48','s49','s50','s51'];
 let idx = 0;
 const HUD = document.getElementById('hud');
 
@@ -1787,7 +2240,10 @@ const JUDUL = [
   'Merpati ke Pak Rusli', 'Rintangan 2: status berubah',
   'Beranda Pak Rusli', 'Membaca di HP, lalu merilis', 'Kalau link bermasalah',
   'Persimpangan jalan', 'Mencetak laporan (Midtrans)',
-  'Layar Midtrans', 'Di depan ATM'
+  'Layar Midtrans', 'Di depan ATM', 'Mencetak laporan (Cash)',
+  'Menyerahkan uang di kasir', 'Konfirmasi diterima', 'Telah diperbarui!',
+  'Kembali ke desa (sore)', '1 minggu kemudian', 'Bu Marni yang rajin',
+  'Rintangan 3: terlalu cepat', 'Peri Desy: dua jalan', 'Penutup'
 ];
 
 const HUDWRAP = document.getElementById('hudWrap');
@@ -1944,24 +2400,12 @@ pixelCanvas(document.getElementById('s1sky'), v=>{
   })(318, 258);
 });
 
-/* ============================================================
-   S2 — ayat pembuka + tali tiga lembar
-   Tiga lembar berwarna peran: merah (Maker), kuning (Checker),
-   hijau (Releaser). Penonton belum tahu artinya di sini — baru
-   nyambung nanti saat party terbentuk di S13.
-   ============================================================ */
-pixelCanvas(document.getElementById('s2tali'), v=>{
-  v.fillStyle = '#06091A'; v.fillRect(0,0,480,270);
-
-  // pita cahaya selebar layar penuh -- tanpa tepi kiri/kanan yang terlihat
-  for(let dy=-22; dy<=22; dy++){
-    const a = (1 - Math.abs(dy)/22) * 0.11;
-    v.fillStyle = 'rgba(32,46,96,' + a.toFixed(3) + ')';
-    v.fillRect(0, 150+dy, 480, 1);
-  }
-
-  // --- tali tiga lembar ---
-  const x0=112, x1=368, ym=150, amp=7, wl=27;
+/* Tali tiga lembar teranyam. Dipakai dua kali: S2 sebagai bayangan awal,
+   dan S14 saat party terbentuk - di situlah artinya baru terbayar.
+   Kedalaman tiap lembar dihitung dari cos fasenya, jadi yang di belakang
+   digambar lebih gelap dan digambar lebih dulu. Bukan tiga garis terpisah. */
+function gambarTali(v, x0, x1, ym){
+  const amp = 7, wl = 27;
   const LEMBAR = [
     {warna:'#D3455B', gelap:'#943040', fase:0},
     {warna:'#F7C325', gelap:'#AD891A', fase:2*Math.PI/3},
@@ -1979,11 +2423,28 @@ pixelCanvas(document.getElementById('s2tali'), v=>{
       v.fillRect(x, y-1, 1, 3);
     });
   }
-
-  // simpul kecil di kedua ujung
-  v.fillStyle='#6B4A2F';
+  v.fillStyle='#6B4A2F';                                  // simpul di kedua ujung
   v.fillRect(x0-5, ym-3, 5, 7);
   v.fillRect(x1,   ym-3, 5, 7);
+}
+
+/* ============================================================
+   S2 — ayat pembuka + tali tiga lembar
+   Tiga lembar berwarna peran: merah (Maker), kuning (Checker),
+   hijau (Releaser). Penonton belum tahu artinya di sini — baru
+   nyambung nanti saat party terbentuk di S13.
+   ============================================================ */
+pixelCanvas(document.getElementById('s2tali'), v=>{
+  v.fillStyle = '#06091A'; v.fillRect(0,0,480,270);
+
+  // pita cahaya selebar layar penuh -- tanpa tepi kiri/kanan yang terlihat
+  for(let dy=-22; dy<=22; dy++){
+    const a = (1 - Math.abs(dy)/22) * 0.11;
+    v.fillStyle = 'rgba(32,46,96,' + a.toFixed(3) + ')';
+    v.fillRect(0, 150+dy, 480, 1);
+  }
+
+  gambarTali(v, 112, 368, 150);
 });
 
 HOOKS.s2 = (function(){
@@ -1991,13 +2452,29 @@ HOOKS.s2 = (function(){
   const AYAT = BARIS.join(String.fromCharCode(10));
   const el = document.getElementById('s2ayat');
   const rj = document.getElementById('s2rujuk');
-  let mesin = null;
+  const JEDA = 1150;                  // rujukan sempat terbaca dulu
+  let mesin = null, jadwal = [];
+
+  function mulaiKetik(){
+    mesin = ketik(el, AYAT, 34, null);
+  }
   return {
     enter(){
+      el.innerHTML = '';
       rj.classList.remove('on');
-      mesin = ketik(el, AYAT, 34, ()=> rj.classList.add('on'));
+      mesin = null;
+      jadwal.forEach(clearTimeout);
+      jadwal = [ setTimeout(function(){ rj.classList.add('on'); }, 180),
+                 setTimeout(mulaiKetik, JEDA) ];
     },
-    klik(){ return mesin ? mesin.penuh() : false; }
+    klik(){
+      if(mesin) return mesin.penuh();       // sedang mengetik: percepat
+      jadwal.forEach(clearTimeout); jadwal = [];   // masih menunggu: langsung penuh
+      rj.classList.add('on');
+      mulaiKetik(); mesin.penuh();
+      return true;
+    },
+    keluar(){ jadwal.forEach(clearTimeout); jadwal = []; }
   };
 })();
 /* ============================================================
@@ -2114,19 +2591,19 @@ HOOKS.s4 = (function(){
   const DESA = [
     { no:1, x:66,  y:206, warna:'#D3D1C7', tinta:'#4A4842',
       era:'ERA PERTAMA', tahun:'Sebelum 2014', nama:'MBAH TUMI',
-      teks:['Dulu, Nak... sebelum 2014, tiap lingkungan bikin laporan sesuka hati. Ada yang pakai Excel, ada yang Word, ada yang tulis tangan lalu diprint.',
+      teks:['Dulu, Nak... sebelum 2014, tiap lingkungan bikin laporan seadanya. Ada yang pakai Excel, ada yang Word, ada yang tulis tangan lalu diprint.',
             'Uangnya kami antar tunai ke paroki. Bendahara paroki tidak bisa menganalisa apa-apa, karena bentuknya beda-beda semua.'],
       pop:{left:96, top:392} },
     { no:2, x:170, y:150, warna:'#B5D4F4', tinta:'#0C447C',
       era:'ERA KEDUA', tahun:'2014 - 2016', nama:'BU SRI',
       teks:['Tahun 2014 semua diseragamkan. Template Excel resmi dari paroki, dibagikan lewat flashdisk.',
             'Saya bawa pulang, saya isi, saya print, minta tanda tangan ketua lingkungan, lalu antar lagi ke gereja. Habis itu balik lagi ambil flashdisk berisi template bulan depan. Dua kali bolak-balik, tiap bulan.'],
-      kutip:'Kami ibu-ibu bendahara lingkungan yang tadinya pegang panci dan centong, kini harus menggunakan laptop dan keyboard.',
+      kutip:'Kami ibu-ibu bendahara lingkungan yang tadinya pegang panci dan centong, belajar membuat laporan dengan laptop dan keyboard.',
       pop:{left:404, top:58} },
     { no:3, x:286, y:184, warna:'#9FE1CB', tinta:'#085041',
       era:'ERA KETIGA', tahun:'2016 - 2026', nama:'PAK BAMBANG',
-      teks:['Tahun 2016, flashdisk-nya kami buang. Tiap lingkungan dapat akun Dropbox - unduh template dari situ, unggah lagi kalau sudah diisi.',
-            'Tidak ada lagi bolak-balik. Tapi masih ada yang mengganjal: template bulan depan masih dibuat manual oleh bendahara paroki. Kami harus menunggu.'],
+      teks:['Tahun 2016, flashdisk-nya tidak dipakai lagi. Tiap lingkungan dapat 1 folder Dropbox - download template dari situ, dan kirim lagi kalau sudah diisi.',
+            'Tidak ada lagi bolak-balik. Sudah lebih praktis.'],
       pop:{left:836, top:300} },
     { no:4, x:398, y:92, warna:'#F5C4B3', tinta:'#712B13',
       era:'ERA KEEMPAT', tahun:'2026 dan seterusnya', nama:null }
@@ -2503,27 +2980,107 @@ HOOKS.s5 = (function(){
       cemara(v, x, 270, 84 + ((i*23)%28)));
   });
 
-  /* ---------- gumpalan awan ---------- */
-  function benjol(y){
-    return 20*Math.sin(y/9.1) + 11*Math.sin(y/4.3 + 1.7) + 8*Math.sin(y/17.5 + 3.1);
-  }
-  function gumpal(v, maju, dariKiri){
-    // maju: 0 = di luar layar, 1 = menutup penuh.
-    // Lebar dasar 310 supaya bagian tersempit pun tetap melewati tengah layar.
-    for(let y=0;y<270;y++){
-      const lebar = maju * (310 + benjol(y));
-      if(lebar <= 0) continue;
-      const w = Math.round(Math.min(lebar, 480));
-      const x = dariKiri ? 0 : 480 - w;
-      // badan awan: sedikit menggelap ke bawah
-      v.fillStyle = y < 88 ? '#FBF9F2' : (y < 178 ? '#F4F1E8' : '#E9E5D9');
-      v.fillRect(x, y, w, 1);
-      // tepi depan diberi dua tingkat bayangan supaya bervolume
-      v.fillStyle = '#D6D2C6';
-      v.fillRect(dariKiri ? x + w - 6 : x, y, 6, 1);
-      v.fillStyle = '#BEB9AB';
-      v.fillRect(dariKiri ? x + w - 2 : x, y, 2, 1);
+  /* ---------- AWAN: dua bank cumulus yang merapat ----------
+     Awannya disusun dari puluhan cakram yang saling menindih, bukan dari
+     bidang rata bertepi bergelombang - yang terakhir itu terbaca sebagai
+     tirai, bukan awan.
+
+     Bank-nya dibangun SEKALI ke kanvas 560x290 lalu tinggal digeser tiap
+     bingkai. Selain jauh lebih ringan, ini yang menjamin pikselnya tidak
+     bergetar selagi awannya bergerak.
+
+     Badan padatnya sengaja dibuat saling menindih di tengah (lihat MAJU):
+     mulai maju >= 0,875 layar dijamin tertutup rapat, jadi pergantian
+     pemandangan di maju = 1 tidak pernah bocor. */
+  const LW = 560, LH = 290, MAJU = 480, RW = LW - 180;
+
+  function cakram(k, cx, cy, r){
+    if(r <= 0) return;
+    const rr = r*r;
+    for(let dy=-r; dy<=r; dy++){
+      const w = Math.floor(Math.sqrt(Math.max(0, rr - dy*dy)));
+      k.fillRect(cx-w, cy+dy, w*2+1, 1);
     }
+  }
+
+  /* Kuncinya: tiap warna digambar sebagai SATU lapis gabungan seluruh
+     gumpalan, bukan gumpalan demi gumpalan lengkap dengan sorot dan
+     bayangannya. Kalau tiap gumpalan diberi sorotnya sendiri, rim tiap
+     lingkaran ikut kelihatan dan hasilnya terbaca sebagai tumpukan bola.
+     Digambar per lapis, batas antar gumpalan lenyap karena warnanya sama -
+     yang tersisa cuma siluet berbenjol dengan satu arah cahaya. */
+  function bankAwan(benih, tepiDiKiri){
+    const c = document.createElement('canvas');
+    c.width = LW; c.height = LH;
+    const k = c.getContext('2d'); k.imageSmoothingEnabled = false;
+    let b = benih;
+    const acak = function(){ b=(b*1103515245+12345)&0x7fffffff; return b/0x7fffffff; };
+
+    // ---- lobus: gerombolan besar yang jadi bentuk dasar awan ----
+    // Cakram yang disebar satu-satu menghasilkan titik-titik putih seperti
+    // buih. Yang dibutuhkan justru sebaliknya: sedikit gerombolan besar,
+    // masing-masing berisi cakram yang saling menindih rapat, sehingga
+    // batas antar cakram lenyap dan yang tersisa satu massa berbenjol.
+    const lobus = [];
+    for(let i=0;i<24;i++)
+      lobus.push([-50 + acak()*(LW+100), -40 + acak()*(LH+80), 44 + acak()*46]);
+    // ---- rantai lobus di sepanjang tepi depan ----
+    // Lobus acak saja tidak cukup: di ruas tinggi yang kebetulan tidak
+    // kebagian lobus, batas awan jatuh ke tepi kotak badan - dan tepi kotak
+    // itu garis tegak lurus sempurna. Itulah "sisi yang terlihat rata".
+    // Rantai ini menaruh satu lobus tiap beberapa piksel ke bawah, dengan
+    // langkah lebih pendek daripada jari-jarinya, jadi seluruh tinggi kanvas
+    // pasti berlekuk dan tidak ada ruas yang tersisa lurus.
+    const arah    = tepiDiKiri ? -1 : 1;
+    const pangkal = tepiDiKiri ? 180 : LW - 180;      // tepi kotak badan
+    for(let y = -60; y < LH + 60; ){
+      const r = 34 + acak()*36;
+      // Sejauh mana lobus menjorok keluar dibuat SELALU kurang dari
+      // jari-jarinya, supaya sisi dalamnya tetap menempel ke kotak badan.
+      // Kalau lebih, akan ada lubang antara lobus dan badan awan.
+      const keluar = r * (0.30 + acak()*0.68);
+      lobus.push([pangkal + arah*keluar, y, r]);
+      y += 22 + acak()*26;                            // saling menindih
+    }
+
+    const p = [];
+    lobus.forEach(function(L){
+      const n = 8 + Math.floor(acak()*7);
+      for(let j=0;j<n;j++){
+        const a = acak()*Math.PI*2, d = acak()*L[2]*0.72;
+        p.push([ L[0] + Math.cos(a)*d,
+                 L[1] + Math.sin(a)*d*0.70,
+                 L[2]*(0.44 + acak()*0.32) ]);
+      }
+    });
+
+    // Kotak padat hanya ikut di dua lapis gelap - itu yang menjamin layar
+    // tertutup rapat. Dua lapis terang digambar dari gumpalan saja, jadi
+    // bagian dalam awan tetap berbenjol, bukan putih polos.
+    function lapis(warna, dx, dy, dr, pakaiKotak){
+      k.fillStyle = warna;
+      if(pakaiKotak) k.fillRect((tepiDiKiri ? 180 : 0) + dx, -60, RW, LH + 120);
+      p.forEach(function(q){
+        cakram(k, Math.round(q[0]+dx), Math.round(q[1]+dy), Math.round(q[2]+dr));
+      });
+    }
+    lapis('#CDC7B6',  4,   7,   0,  true);    // celah antar lobus
+    lapis('#E4E0D2',  0,   0,   0,  true);    // badan
+    lapis('#F3F0E6', -5,  -8,  -7,  false);   // sisi yang kena cahaya
+    lapis('#FEFDF9', -11, -17, -16, false);   // puncak paling terang
+    return c;
+  }
+
+  const BANK_KIRI  = bankAwan(20260913, false);   // tepi bergelombang di kanan
+  const BANK_KANAN = bankAwan(20261027, true);    // tepi bergelombang di kiri
+
+  function awan(v, maju, t){
+    if(maju <= 0) return;
+    // kanvasnya 290 tinggi dan dipasang di y = -10, jadi apung +-3 px
+    // tidak pernah menyingkap tepi atas atau bawah layar
+    const apung = Math.round(Math.sin(t/620) * 3);
+    v.drawImage(BANK_KIRI,  Math.round(MAJU*maju) - LW, apung - 10);
+    v.drawImage(BANK_KANAN, Math.round(480 - MAJU*maju), -apung - 10);
   }
 
   let raf = null, t0 = 0, lompat = false;
@@ -2544,19 +3101,22 @@ HOOKS.s5 = (function(){
     const belakang = sudahTertutup ? latar : (ASET.petaDunia || latar);
     pixelCanvas(CV, v=>{
       v.drawImage(belakang, 0, 0);
-      if(maju > 0){ gumpal(v, maju, true); gumpal(v, maju, false); }
+      awan(v, maju, t);
     });
 
     if(t >= TOTAL){ raf = null; return; }
     raf = requestAnimationFrame(bingkai);
   }
 
+  function jalankan(){
+    t0 = 0; lompat = false;
+    PAPAN.classList.remove('on');
+    if(raf){ cancelAnimationFrame(raf); raf = null; }
+    raf = requestAnimationFrame(bingkai);
+  }
+
   return {
-    enter(){
-      t0 = 0; lompat = false;
-      PAPAN.classList.remove('on');
-      if(!raf) raf = requestAnimationFrame(bingkai);
-    },
+    enter(){ jalankan(); },
     klik(){
       if(raf){ lompat = true; return true; }   // klik saat animasi = langsung ke akhir
       return false;
@@ -2758,9 +3318,7 @@ HOOKS.s6 = (function(){
   });
 
   const HALAMAN = [
-    'Sebuah papan kayu tergantung di gerbang desa.',
-    'Di bawahnya, selembar kertas dipaku ke tiang. Tulisan tangan, tintanya sudah agak luntur kena hujan:',
-    '"Mohon doa & bantuan untuk keluarga Pak Darto."'
+    'Selembar nota ditempelkan di gerbang desa. Tulisan tangan, tintanya sudah agak luntur kena hujan: "Mohon doa & bantuan untuk keluarga Pak Darto."'
   ];
 
   return {
@@ -2944,23 +3502,20 @@ HOOKS.s7 = (function(){
     { id:'yani', sprite:'ibu', warna:'#F4F1E8', tinta:'#B9C4CE', x:85, y:158,
       nama:'DOKTER YANI', lencana:'#F4F1E8',
       halaman:[
-        'Saya bisa mengobati. Tapi obat, rumah sakit, dan pemakaman butuh biaya.',
-        'Dana desa kita masih kurang. Kurang untuk menebus obat Pak Darto, dan kurang untuk membeli peralatan prosesi pemakaman - itu pun harus dibeli di desa sebelah.',
-        'Karena itu saya mengajak seluruh umat bergotong royong. Tiap keluarga menyisihkan sedikit tiap bulan, dicatat di kartu kuning.',
-        'Kalau semua kartu itu terkumpul dan dilaporkan tepat waktu, Pak Darto tertolong. Bu Yuli tertolong.'
+        'Saya bisa mengobati. Tapi obat, rumah sakit, dan pemakaman butuh biaya. Saya sudah mengajak seluruh umat bergotong royong. Tiap keluarga menyisihkan sedikit tiap bulan dan dicatat di kartu kuning.',
+        'Tapi saya perlu bantuan untuk mengumpulkan dana dan dilaporkan tepat waktu, supaya Pak Darto dan Bu Yuli tertolong.'
       ] },
     { id:'ana', sprite:'anak', warna:'#7FA9C4', tinta:'#4E7391', x:203, y:158,
       nama:'ANA', lencana:'#7FA9C4',
       halaman:[
         'Kak... bapakku sakit. Sudah seminggu di rumah sakit.',
-        'Ibu bilang biayanya banyak sekali. Tadi malam ibu menghitung uang di meja, lama sekali, lalu diam saja.'
+        'Ibu bilang perlu biaya banyak. Semalam ibu termenung di meja sambil menghitung uang.'
       ] },
     { id:'hasan', sprite:'bapak', warna:'#D9A05B', tinta:'#96682F', x:355, y:158,
       nama:'PAK HASAN', lencana:'#D9A05B',
       halaman:[
-        'Bu Yuli kehilangan suaminya minggu lalu. Kami umat di desa ini patungan seadanya, tapi tidak cukup.',
-        'Sebenarnya ada dana yang memang disiapkan untuk saat-saat seperti ini. Dana Sehat Santo Yusuf.',
-        'Tapi dana itu hanya ada kalau ada yang mengumpulkannya.'
+        'Bu Yuli kehilangan suaminya minggu lalu. Dan biaya yang dibutuhkan untuk pemakaman tidak sedikit.',
+        'Kami perlu metode pengumpulan dana yang efektif untuk membantu Bu Yuli.'
       ] }
   ];
 
@@ -3458,7 +4013,13 @@ function slideBergabung(cfg){
 
   const adeganSiap = kanvasKecil(v=>{
     v.drawImage(adegan, 0, 0);
-    // Bu Marni berdiri di halaman, si tuan rumah di ambang pintu
+    // Rombongan berdiri di halaman, si tuan rumah di ambang pintu.
+    // cfg.temanKedua dipakai di S13: waktu menjemput Pak Rusli, Bu Cicih
+    // sudah ikut - dia sudah bergabung di S11 dan berjalan bersama di S12.
+    if(cfg.temanKedua){
+      v.fillStyle='rgba(0,0,0,0.22)'; v.fillRect(164, 176, 13, 3);
+      v.drawImage(sprite('ibu', 1, cfg.temanKedua), 162, 152);
+    }
     v.fillStyle='rgba(0,0,0,0.22)'; v.fillRect(186, 176, 13, 3);
     v.drawImage(sprite('ibu', 1), 184, 152);
     v.fillStyle='rgba(0,0,0,0.22)'; v.fillRect(244, 176, 13, 3);
@@ -3487,23 +4048,20 @@ HOOKS.s11 = slideBergabung({
   rumah:{ atap:'#C7A24B', atapGelap:'#A8842F', lebar:184, bunga:true, atapCuram:true, dinding:'#EFE6CE' },
   halaman:[
     'Bu Marni mengetuk pintu rumah Bu Cicih, sekretaris lingkungan.',
-    'Kartu kuning fisiknya ada di saya semua. Tiap bulan saya yang menerima dan menyimpannya.',
-    'Kalau begitu, biar aku yang memeriksa. Aku bisa menyandingkan berkas fisiknya dengan yang kau ketik.',
-    'Aku yang pegang berkas kartu kuning fisiknya.'
+    'Aku bantu bu Marni... Aku bisa menyocokan berkas fisik dengan yang diketik.'
   ]
 });
 
 HOOKS.s12 = slideBergabung({
   canvas:'s12cv', panel:'s12gabung', sprite:'bapak',
   warna:'#1AAE9F', tinta:'#127A6F',
+  temanKedua:{'C':'#F7C325', 'c':'#AD891A'},      // Bu Cicih ikut menjemput
   nama:'PAK RUSLI', jabatan:'Ketua Lingkungan', peran:'RELEASER',
   rumah:{ atap:'#3E8C82', atapGelap:'#2C665E', pagar:true, lebar:230, cerobong:true, dinding:'#D8D0BC', pintu:'#5E4426',
           pohon:[[16,196,62],[48,182,46],[418,184,48],[452,200,66],[86,170,28],[398,168,26]] },
   halaman:[
-    'Pak Rusli membuka pintu. Di tangannya masih ada buku yang tadi sedang dibacanya.',
-    'Jadi kalian sudah punya yang menginput dan yang memeriksa. Tinggal satu yang belum: siapa yang melepas.',
-    'Uang ini milik umat. Yang melepasnya harus orang yang berani menanggung akibatnya.',
-    'Dan aku yang akan merilisnya. Tanggung jawab terakhir ada di tanganku.'
+    'Jadi sudah ada yang menginput dan yang memeriksa. Kurang satu: siapa yang harus memastikan sistem ini berjalan.',
+    'Uang ini milik umat. Saya yang akan mempertanggungjawabkan kepercayaan umat ini.'
   ]
 });
 
@@ -3512,6 +4070,8 @@ HOOKS.s12 = slideBergabung({
    ============================================================ */
 HOOKS.s13 = (function(){
   const BARIS = document.getElementById('s13baris');
+  const TALI  = document.getElementById('s13tali');
+  TALI.appendChild(petak(268, 22, 4, function(k){ gambarTali(k, 6, 262, 11); }));
   const ANGGOTA = [
     { spr:'ibu',   warna:'#D3455B', tinta:'#943040', nama:'BU MARNI',  jab:'Bendahara Lingkungan',  peran:'MAKER' },
     { spr:'ibu',   warna:'#F7C325', tinta:'#AD891A', nama:'BU CICIH',  jab:'Sekretaris Lingkungan', peran:'CHECKER' },
@@ -3534,13 +4094,16 @@ HOOKS.s13 = (function(){
   return {
     enter(){
       kartu.forEach(k=>k.classList.remove('on'));
+      TALI.classList.remove('on');
       jadwal.forEach(clearTimeout);
       jadwal = kartu.map((k,i)=>setTimeout(()=>k.classList.add('on'), 300 + i*250));
+      jadwal.push(setTimeout(()=>TALI.classList.add('on'), 1220));
     },
     klik(){
-      if(kartu.some(k=>!k.classList.contains('on'))){
+      if(kartu.some(k=>!k.classList.contains('on')) || !TALI.classList.contains('on')){
         jadwal.forEach(clearTimeout); jadwal=[];
         kartu.forEach(k=>k.classList.add('on'));
+        TALI.classList.add('on');
         return true;
       }
       return false;
@@ -3905,6 +4468,76 @@ HOOKS.s11b = (function(){
 })();
 
 /* ============================================================
+   PERABOT BALAI PAROKI - dipakai bersama S20 dan S44.
+   Ruangannya harus terbaca sebagai gedung yang sama: dinding,
+   lis kayu, lantai berkisi, jendela, salib, dan rak berkas
+   semuanya dari resep yang sama persis.
+   ============================================================ */
+function jendelaBalai(v, x, y, w, h){
+  v.fillStyle='#1B1B2B'; v.fillRect(x-4, y-4, w+8, h+8);
+  v.fillStyle='#8B6239'; v.fillRect(x-3, y-3, w+6, h+6);
+  v.fillStyle='#A8763E'; v.fillRect(x-3, y-3, w+6, 2);
+  v.fillStyle='#9EDCEF'; v.fillRect(x, y, w, h);
+  v.fillStyle='#B0E5F3'; v.fillRect(x, y, w, Math.round(h*0.42));
+  v.fillStyle='#FFFFFF';
+  v.fillRect(x+7, y+7, 13, 3); v.fillRect(x+10, y+5, 8, 2);
+  v.fillStyle='#6FA35C'; v.fillRect(x, y+h-9, w, 9);
+  v.fillStyle='#3C7343';
+  for(let i=0;i<4;i++){
+    const cx = x + 8 + i*16, t = 13 + (i%2)*5;
+    for(let r=0;r<t;r++){
+      const ww = Math.max(1, Math.round((r/t)*9));
+      v.fillRect(Math.round(cx-ww/2), y+h-9-t+r, ww, 1);
+    }
+  }
+  v.fillStyle='#8B6239';
+  v.fillRect(x+Math.floor(w/2)-1, y, 3, h);
+  v.fillRect(x, y+Math.floor(h/2)-1, w, 3);
+}
+
+function salib(v, cx, y, t){
+  const ly = y + Math.round(t*0.30);
+  v.fillStyle='#1B1B2B';
+  v.fillRect(cx-4, y-1, 8, t+2);
+  v.fillRect(cx-14, ly-1, 28, 10);
+  v.fillStyle='#8B6239';
+  v.fillRect(cx-3, y, 6, t);
+  v.fillRect(cx-13, ly, 26, 8);
+  v.fillStyle='#A8763E';
+  v.fillRect(cx-3, y, 2, t);
+  v.fillRect(cx-13, ly, 26, 2);
+}
+
+function rakBerkas(v, x, y, w){
+  v.fillStyle='rgba(0,0,0,0.10)'; v.fillRect(x+2, y+27, w, 4);
+  v.fillStyle='#1B1B2B'; v.fillRect(x-1, y-1, w+2, 28);
+  v.fillStyle='#6B4A2F'; v.fillRect(x, y, w, 26);
+  v.fillStyle='#5A3D26'; v.fillRect(x, y+22, w, 4);
+  const wr = ['#B5443A','#2A4A6B','#3C7343','#C79A2E','#7A3F86','#A85A3A','#4B5C6B'];
+  let c = x+2, i = 0;
+  while(c < x+w-5){
+    const bw = 4 + (i%3);
+    v.fillStyle='#1B1B2B'; v.fillRect(c, y+2, bw, 20);
+    v.fillStyle=wr[(i*3)%wr.length]; v.fillRect(c, y+2, bw-1, 19);
+    v.fillStyle='rgba(255,255,255,0.24)'; v.fillRect(c, y+7, bw-1, 2);
+    v.fillStyle='rgba(0,0,0,0.20)'; v.fillRect(c, y+16, bw-1, 2);
+    c += bw+1; i++;
+  }
+}
+
+/* Lantai ubin balai: kisi lurus dengan nat tipis - BUKAN pola
+   selang-seling. Pola selang-seling terbaca sebagai dinding bata. */
+function lantaiBalai(v, LANTAI){
+  const TW=32, TH=16;
+  v.fillStyle='#C9B392'; v.fillRect(0, LANTAI, 480, 270-LANTAI);
+  v.fillStyle='#B09873';
+  for(let y=LANTAI; y<270; y+=TH) v.fillRect(0, y, 480, 1);
+  for(let x=0; x<=480; x+=TW) v.fillRect(x, LANTAI, 1, 270-LANTAI);
+  v.fillStyle='#D6C3A5';
+  for(let y=LANTAI+1; y<270; y+=TH) v.fillRect(0, y, 480, 1);
+}
+
+/* ============================================================
    S20 - BALAI PAROKI, MEJA PAK JOKO
    Adegan interior: tokoh digambar skala 3 (bukan 1 seperti adegan
    luar ruang) karena penonton "masuk" ke dalam ruangan.
@@ -3948,57 +4581,7 @@ HOOKS.s19 = (function(){
   })();
 
   /* ---------- potongan-potongan ruangan ---------- */
-  function jendelaBalai(v, x, y, w, h){
-    v.fillStyle='#1B1B2B'; v.fillRect(x-4, y-4, w+8, h+8);
-    v.fillStyle='#8B6239'; v.fillRect(x-3, y-3, w+6, h+6);
-    v.fillStyle='#A8763E'; v.fillRect(x-3, y-3, w+6, 2);
-    v.fillStyle='#9EDCEF'; v.fillRect(x, y, w, h);
-    v.fillStyle='#B0E5F3'; v.fillRect(x, y, w, Math.round(h*0.42));
-    v.fillStyle='#FFFFFF';
-    v.fillRect(x+7, y+7, 13, 3); v.fillRect(x+10, y+5, 8, 2);
-    v.fillStyle='#6FA35C'; v.fillRect(x, y+h-9, w, 9);
-    v.fillStyle='#3C7343';
-    for(let i=0;i<4;i++){
-      const cx = x + 8 + i*16, t = 13 + (i%2)*5;
-      for(let r=0;r<t;r++){
-        const ww = Math.max(1, Math.round((r/t)*9));
-        v.fillRect(Math.round(cx-ww/2), y+h-9-t+r, ww, 1);
-      }
-    }
-    v.fillStyle='#8B6239';
-    v.fillRect(x+Math.floor(w/2)-1, y, 3, h);
-    v.fillRect(x, y+Math.floor(h/2)-1, w, 3);
-  }
 
-  function salib(v, cx, y, t){
-    const ly = y + Math.round(t*0.30);
-    v.fillStyle='#1B1B2B';
-    v.fillRect(cx-4, y-1, 8, t+2);
-    v.fillRect(cx-14, ly-1, 28, 10);
-    v.fillStyle='#8B6239';
-    v.fillRect(cx-3, y, 6, t);
-    v.fillRect(cx-13, ly, 26, 8);
-    v.fillStyle='#A8763E';
-    v.fillRect(cx-3, y, 2, t);
-    v.fillRect(cx-13, ly, 26, 2);
-  }
-
-  function rakBerkas(v, x, y, w){
-    v.fillStyle='rgba(0,0,0,0.10)'; v.fillRect(x+2, y+27, w, 4);
-    v.fillStyle='#1B1B2B'; v.fillRect(x-1, y-1, w+2, 28);
-    v.fillStyle='#6B4A2F'; v.fillRect(x, y, w, 26);
-    v.fillStyle='#5A3D26'; v.fillRect(x, y+22, w, 4);
-    const wr = ['#B5443A','#2A4A6B','#3C7343','#C79A2E','#7A3F86','#A85A3A','#4B5C6B'];
-    let c = x+2, i = 0;
-    while(c < x+w-5){
-      const bw = 4 + (i%3);
-      v.fillStyle='#1B1B2B'; v.fillRect(c, y+2, bw, 20);
-      v.fillStyle=wr[(i*3)%wr.length]; v.fillRect(c, y+2, bw-1, 19);
-      v.fillStyle='rgba(255,255,255,0.24)'; v.fillRect(c, y+7, bw-1, 2);
-      v.fillStyle='rgba(0,0,0,0.20)'; v.fillRect(c, y+16, bw-1, 2);
-      c += bw+1; i++;
-    }
-  }
 
   function papanPengumuman(v, x, y, w, h){
     v.fillStyle='#1B1B2B'; v.fillRect(x-3, y-3, w+6, h+6);
@@ -4064,13 +4647,7 @@ HOOKS.s19 = (function(){
     v.fillStyle='#5A3D26'; v.fillRect(0, LANTAI-1, 480, 1);
 
     // ---- lantai ubin ----
-    v.fillStyle='#C9B392'; v.fillRect(0, LANTAI, 480, 270-LANTAI);
-    const TW=32, TH=16;
-    v.fillStyle='#B09873';                       // nat ubin, tipis
-    for(let y=LANTAI; y<270; y+=TH) v.fillRect(0, y, 480, 1);
-    for(let x=0; x<=480; x+=TW) v.fillRect(x, LANTAI, 1, 270-LANTAI);
-    v.fillStyle='#D6C3A5';                       // kilau tipis di bawah tiap nat
-    for(let y=LANTAI+1; y<270; y+=TH) v.fillRect(0, y, 480, 1);
+    lantaiBalai(v, LANTAI);
 
     // ---- hiasan dinding ----
     jendelaBalai(v, 24, 28, 72, 60);
@@ -4154,10 +4731,9 @@ HOOKS.s19 = (function(){
   });
 
   const HAL = [
-    'Balai Paroki. Di balik meja bertumpuk berkas duduk Pak Joko, staf bendahara gereja.',
-    'Sebelum kalian menyentuh Gulungan Ajaib, party kalian harus terdaftar dulu. Aku yang menjaga daftarnya.',
-    'Selama tiga nama kalian belum ada di daftar itu, sistemnya tidak akan mengenali kalian. Menunya pun tidak akan muncul.',
-    'Dan yang mengajukan permohonannya bukan sembarang orang. Harus Releaser. Pak Rusli, itu tugasmu.'
+    'Balai Paroki. Di balik meja duduk Pak Joko, staf bendahara gereja.',
+    'Sebelum kalian menyentuh Gulungan Ajaib, kalian harus terdaftar dulu.',
+    'Pak Rusli... sebagai Releaser, Anda perlu mengajukan permohonan terlebih dahulu.'
   ];
 
   return {
@@ -4521,9 +5097,10 @@ const CAHAYA_SIANG = {
   lampu:false
 };
 
-function buatDapur(c){
+function buatDapur(c, o){
   c = c || CAHAYA_MALAM;
-  const MEJA = 186;                       // permukaan meja
+  o = o || {};                            // o.tanpaIbu: S50 menggambar Bu Marni sendiri
+  const MEJA = 186;                       // permukaan meja                  (supaya bisa bergetar)
 
   return kanvasKecil(function(v){
     // ---------- dinding papan ----------
@@ -4607,7 +5184,8 @@ function buatDapur(c){
     })();
 
     // ---------- Bu Marni duduk ----------
-    v.drawImage(sprite('ibu', 3, {'C':'#D3455B','c':'#943040'}), 150, MEJA-54);
+    if(!o.tanpaIbu)
+      v.drawImage(sprite('ibu', 3, {'C':'#D3455B','c':'#943040'}), 150, MEJA-54);
 
     // ---------- laptop, terlihat dari punggung layarnya ----------
     (function(){
@@ -5547,19 +6125,21 @@ HOOKS.s38 = (function(){
       .forEach(function(c){ cemara(c[0], c[1], c[2]); });
 
     // ---------- papan penunjuk ----------
-    tiang(v, 115, 84, 154);
-    papan(v, 40, 46, 190, 88);
-    v.fillStyle='#1B1B2B'; v.fillRect(89, 92, 52, 42);
-    v.fillStyle='#8B6239'; v.fillRect(90, 93, 50, 40);
-    v.fillStyle='#96683A'; v.fillRect(93, 96, 44, 34);
-    ikonHP(v, 115, 113);
+    // Papannya dikecilkan dan diturunkan: sebelumnya tepi atasnya menyenggol
+    // kotak keterangan di atas. Tinggi papan 34 (dulu 42), lebar 138 (dulu 150).
+    tiang(v, 115, 92, 158);
+    papan(v, 46, 58, 184, 92);
+    v.fillStyle='#1B1B2B'; v.fillRect(91, 100, 48, 38);
+    v.fillStyle='#8B6239'; v.fillRect(92, 101, 46, 36);
+    v.fillStyle='#96683A'; v.fillRect(95, 104, 40, 30);
+    ikonHP(v, 115, 119);
 
-    tiang(v, 365, 84, 154);
-    papan(v, 290, 46, 440, 88);
-    v.fillStyle='#1B1B2B'; v.fillRect(339, 92, 52, 42);
-    v.fillStyle='#8B6239'; v.fillRect(340, 93, 50, 40);
-    v.fillStyle='#96683A'; v.fillRect(343, 96, 44, 34);
-    ikonUang(v, 365, 113);
+    tiang(v, 365, 92, 158);
+    papan(v, 296, 58, 434, 92);
+    v.fillStyle='#1B1B2B'; v.fillRect(341, 100, 48, 38);
+    v.fillStyle='#8B6239'; v.fillRect(342, 101, 46, 36);
+    v.fillStyle='#96683A'; v.fillRect(345, 104, 40, 30);
+    ikonUang(v, 365, 119);
 
     // ---------- Bu Marni berdiri di titik cabang ----------
     v.fillStyle='rgba(0,0,0,0.20)'; v.fillRect(228, 236, 25, 4);
@@ -5733,11 +6313,15 @@ HOOKS.s39 = slideCetak({
   layar:'s39layar', ket:'s39ket', zona:'s39zona'
 });
 
-/* Lompat ke slide lain lewat id. Kalau slide-nya belum dibangun,
-   jatuh ke slide berikutnya supaya tombolnya tidak terasa rusak. */
+/* Lompat ke slide lain lewat id.
+   Kalau slide-nya belum dibangun, TIDAK jadi ke mana-mana. Dulu ia jatuh ke
+   show(idx+1), tapi begitu S43 (cabang Cash) ada, tombol LANJUT di S42
+   malah melempar penonton ke cabang satunya - lebih membingungkan daripada
+   tombol yang diam. */
 function lompatKe(id){
   const i = SLIDES.indexOf(id);
-  show(i >= 0 ? i : idx + 1);
+  if(i < 0){ console.warn('lompatKe: slide ' + id + ' belum dibangun'); return; }
+  show(i);
 }
 
 /* ============================================================
@@ -5865,6 +6449,1192 @@ HOOKS.s41 = (function(){
 
   return {
     enter(){ pixelCanvas(CV, function(v){ v.drawImage(adegan, 0, 0); }); }
+  };
+})();
+
+/* ============================================================
+   S43 - MENCETAK LAPORAN, CABANG CASH
+   Layar yang sama persis dengan S40; adegannya dari ASET.ruangCetak.
+   Begitu id 's42' ada, tombol JALAN CASH di S39 hidup sendiri.
+   ============================================================ */
+HOOKS.s42 = slideCetak({
+  canvas:'s42cv', kap:'s42kap', tanda:'s42tanda', hint:'s42hint',
+  layar:'s42layar', ket:'s42ket', zona:'s42zona'
+});
+
+/* ============================================================
+   S44 - MENYERAHKAN UANG DI KASIR
+   Balai Paroki yang sama dengan S20/S23, tapi sudut pandangnya lebar:
+   lantai kelihatan, dua tokoh, meja kasir tinggi berpapan tegak.
+   ============================================================ */
+HOOKS.s43 = (function(){
+  const CV = document.getElementById('s43cv');
+  const UNGU = '#730FC3', UNGU_T = '#4E0A85';
+  const MERAH = '#D3455B', MERAH_T = '#943040';
+  const LANTAI = 168;      // dinding berakhir
+  const CTOP   = 214;      // permukaan meja kasir
+  const CX1    = 206;      // tepi kiri meja (memanjang keluar layar kanan)
+
+  /* Setumpuk uang kertas yang berpindah tangan. */
+  function uang(v, x, y){
+    const bil = ['#C4707A', '#7C9BC4', '#7FA36A'];   // merah, biru, hijau
+    for(let i=2;i>=0;i--){
+      const xx = x + i*2, yy = y + i*2;
+      v.fillStyle='#1B1B2B'; v.fillRect(xx-1, yy-1, 32, 12);
+      v.fillStyle=bil[i];    v.fillRect(xx, yy, 30, 10);
+      v.fillStyle='rgba(255,255,255,0.34)'; v.fillRect(xx+2, yy+1, 26, 2);
+      v.fillStyle='rgba(0,0,0,0.26)';       v.fillRect(xx+2, yy+7, 26, 2);
+      v.fillStyle='rgba(255,255,255,0.55)'; v.fillRect(xx+13, yy+3, 5, 4);
+    }
+  }
+
+  /* Selembar hasil cetak tergeletak di meja, dengan label kecil di kepalanya. */
+  function cetakan(v, x, y, w, h, warnaKop){
+    v.fillStyle='rgba(0,0,0,0.20)'; v.fillRect(x+3, y+3, w, h);
+    v.fillStyle='#1B1B2B'; v.fillRect(x-1, y-1, w+2, h+2);
+    v.fillStyle='#F4F1E8'; v.fillRect(x, y, w, h);
+    v.fillStyle=warnaKop;  v.fillRect(x+4, y+4, 22, 5);
+    v.fillStyle='#1B1B2B'; v.fillRect(x+4, y+12, w-8, 1);
+    v.fillStyle='#B4AB9A';
+    for(let i=0;i<4;i++) v.fillRect(x+4, y+16+i*5, w-8-((i%2)?12:0), 2);
+    v.fillStyle='#9A9184'; v.fillRect(x+4, y+h-8, Math.round(w*0.45), 2);
+  }
+
+  const adegan = kanvasKecil(function(v){
+    // ---------- dinding balai paroki ----------
+    v.fillStyle='#E4D9C0'; v.fillRect(0, 0, 480, LANTAI);
+    v.fillStyle='#D9CDB1'; v.fillRect(0, 0, 480, 12);
+    v.fillStyle='#EDE3CD'; v.fillRect(0, 12, 480, 3);
+    let b = 20260905;
+    const acak = function(){ b=(b*1103515245+12345)&0x7fffffff; return b/0x7fffffff; };
+    for(let i=0;i<340;i++){
+      v.fillStyle = (acak()>0.5) ? '#DED2B7' : '#EAE0C8';
+      v.fillRect(Math.floor(acak()*480), 16+Math.floor(acak()*(LANTAI-28)), 1, 1);
+    }
+    v.fillStyle='#A8763E'; v.fillRect(0, LANTAI-7, 480, 7);
+    v.fillStyle='#C08B4C'; v.fillRect(0, LANTAI-7, 480, 2);
+    v.fillStyle='#5A3D26'; v.fillRect(0, LANTAI-1, 480, 1);
+
+    // ---------- lantai ubin, resep yang sama dengan S20 ----------
+    lantaiBalai(v, LANTAI);
+
+    // ---------- perabot dinding, sama seperti S20 ----------
+    salib(v, 166, 34, 46);
+    jendelaBalai(v, 196, 36, 64, 50);
+    rakBerkas(v, 436, 40, 44);
+
+    // ---------- papan gantung "KASIR" (teksnya elemen DOM) ----------
+    (function(){
+      const x=314, y=52, w=108, h=40;
+      v.fillStyle='#1B1B2B'; v.fillRect(x+14, y-14, 4, 14); v.fillRect(x+w-18, y-14, 4, 14);
+      v.fillStyle='rgba(0,0,0,0.14)'; v.fillRect(x+4, y+4, w, h);
+      v.fillStyle='#1B1B2B'; v.fillRect(x-3, y-3, w+6, h+6);
+      v.fillStyle='#8B6239'; v.fillRect(x, y, w, h);
+      v.fillStyle='#A8763E'; v.fillRect(x, y, w, 3);
+      v.fillStyle='#5A3D26'; v.fillRect(x, y+h-4, w, 4);
+    })();
+
+    // ---------- Pak Joko, berdiri di balik meja ----------
+    v.drawImage(sprite('joko', 3, {'C':UNGU, 'c':UNGU_T}), 262, 158);
+
+    // ---------- Bu Marni, berdiri di depan meja ----------
+    v.fillStyle='rgba(0,0,0,0.20)'; v.fillRect(152, 250, 40, 5);
+    v.drawImage(sprite('ibu', 3, {'C':MERAH, 'c':MERAH_T}), 148, 180);
+
+    // ---------- tas Bu Marni di lantai ----------
+    (function(){
+      const x=110, dasar=252;
+      v.fillStyle='rgba(0,0,0,0.20)'; v.fillRect(x-4, dasar, 40, 5);
+      v.fillStyle='#1B1B2B'; v.fillRect(x-1, dasar-25, 36, 26);
+      v.fillStyle='#8B5E3C'; v.fillRect(x, dasar-24, 34, 24);
+      v.fillStyle='#6B4A2F'; v.fillRect(x, dasar-24, 34, 5);
+      v.fillStyle='#A8763E'; v.fillRect(x+7, dasar-32, 5, 9); v.fillRect(x+22, dasar-32, 5, 9);
+    })();
+
+    // ---------- meja kasir (menutupi kaki keduanya) ----------
+    v.fillStyle='rgba(0,0,0,0.18)'; v.fillRect(CX1+6, 262, 480-CX1, 5);
+    v.fillStyle='#1B1B2B'; v.fillRect(CX1-4, CTOP-4, 480-CX1+8, 12);   // bibir meja
+    v.fillStyle='#A8763E'; v.fillRect(CX1-3, CTOP-3, 480-CX1+6, 10);
+    v.fillStyle='#C08B4C'; v.fillRect(CX1-3, CTOP-3, 480-CX1+6, 3);
+    v.fillStyle='#1B1B2B'; v.fillRect(CX1-4, CTOP+8, 480-CX1+8, 262-CTOP-8);
+    v.fillStyle='#6B4A2F'; v.fillRect(CX1-3, CTOP+9, 480-CX1+6, 262-CTOP-10);
+    v.fillStyle='#7C583A';                                             // papan tegak
+    for(let x=CX1+2; x<480; x+=17) v.fillRect(x, CTOP+13, 13, 262-CTOP-16);
+    v.fillStyle='#5A3D26';
+    for(let x=CX1+2; x<480; x+=17) v.fillRect(x, CTOP+13, 2, 262-CTOP-16);
+    v.fillStyle='#5A3D26'; v.fillRect(CX1-3, 256, 480-CX1+6, 4);
+
+    // ---------- yang tergeletak di atas meja ----------
+    cetakan(v, 312, 184, 56, 26, '#C9BFA4');     // PrintDS
+    cetakan(v, 336, 192, 56, 26, '#8FA9C4');     // PrintSY
+
+    // buku catatan Pak Joko + pena
+    (function(){
+      const x=402, y=186, w=60, h=24;
+      v.fillStyle='rgba(0,0,0,0.20)'; v.fillRect(x+3, y+3, w, h);
+      v.fillStyle='#1B1B2B'; v.fillRect(x-1, y-1, w+2, h+2);
+      v.fillStyle='#3C6B58'; v.fillRect(x, y, w, h);                 // sampul
+      v.fillStyle='#F4F1E8'; v.fillRect(x+5, y+4, w-10, h-8);        // halaman
+      v.fillStyle='#B4AB9A';
+      for(let i=0;i<3;i++) v.fillRect(x+8, y+8+i*4, w-20-(i*6), 1);
+      v.fillStyle='#2A4A6B'; v.fillRect(x+32, y+16, 12, 1);          // coretan tinta
+      v.fillStyle='#1B1B2B'; v.fillRect(x+44, y-11, 4, 18);          // pena berdiri
+      v.fillStyle='#8E2230'; v.fillRect(x+45, y-10, 2, 13);
+      v.fillStyle='#C9CFD6'; v.fillRect(x+45, y+3, 2, 4);
+    })();
+
+    // ---------- lengan yang bertemu DI ATAS meja ----------
+    // lengan Bu Marni: berangkat dari bahunya, menjulur ke kanan
+    v.fillStyle='#1B1B2B'; v.fillRect(188, 207, 40, 17);
+    v.fillStyle=MERAH;     v.fillRect(189, 208, 24, 15);
+    v.fillStyle=MERAH_T;   v.fillRect(189, 219, 24, 3);
+    v.fillStyle='#F2C9A0'; v.fillRect(213, 208, 14, 15);
+    v.fillStyle='#E0B48C'; v.fillRect(213, 219, 14, 3);
+    v.fillStyle='#C4826A'; v.fillRect(213, 210, 14, 1);   // garis jari
+
+    // uang, tepat di antara kedua telapak
+    uang(v, 224, 208);
+
+    // lengan Pak Joko: menjulur ke kiri, jarinya menyentuh uang
+    v.fillStyle='#1B1B2B'; v.fillRect(250, 205, 38, 17);
+    v.fillStyle='#F2C9A0'; v.fillRect(251, 206, 15, 15);
+    v.fillStyle='#E0B48C'; v.fillRect(251, 217, 15, 3);
+    v.fillStyle='#C4826A'; v.fillRect(251, 208, 15, 1);   // garis jari
+    v.fillStyle=UNGU;      v.fillRect(266, 206, 21, 15);
+    v.fillStyle=UNGU_T;    v.fillRect(266, 217, 21, 3);
+  });
+
+  document.getElementById('s43balik').onclick = function(e){
+    e.stopPropagation(); lompatKe('s38');
+  };
+  document.getElementById('s43lanjut').onclick = function(e){
+    e.stopPropagation(); lompatKe('s44');
+  };
+
+  return {
+    enter(){ pixelCanvas(CV, function(v){ v.drawImage(adegan, 0, 0); }); }
+  };
+})();
+
+/* ============================================================
+   S45 - KONFIRMASI DITERIMA, ACHIEVEMENT UNLOCKED
+   ============================================================ */
+HOOKS.s44 = (function(){
+  const SUREL = document.getElementById('s44surel');
+  const KAKI  = document.getElementById('s44kaki');
+  const KANAN = document.getElementById('s44kanan');
+
+  /* Lencana bintang. Digarisi dengan menstempel petanya ke 8 arah -
+     garis tepi per bagian, bukan satu blok hitam di belakangnya. */
+  function bintang(skala){
+    const PETA = [
+      '.......#.......', '.......#.......', '......###......', '......###......',
+      '.....#####.....', '.....#####.....', '###############', '.#############.',
+      '..###########..', '...#########...', '...#########...', '..####...####..',
+      '..###.....###..', '.###.......###.', '.##.........##.'
+    ];
+    const W = 15, H = 15;
+    function cap(k, dx, dy){
+      for(let y=0;y<H;y++) for(let x=0;x<W;x++)
+        if(PETA[y][x] === '#') k.fillRect(x+dx+1, y+dy+1, 1, 1);
+    }
+    return petak(W+2, H+2, skala, function(k){
+      k.fillStyle='#1B1B2B';
+      [[-1,-1],[0,-1],[1,-1],[-1,0],[1,0],[-1,1],[0,1],[1,1]].forEach(function(d){
+        cap(k, d[0], d[1]);
+      });
+      k.fillStyle='#F7C325'; cap(k, 0, 0);
+      k.fillStyle='#FFE9A8';                       // kilau di sisi kiri-atas
+      k.fillRect(7, 3, 2, 2); k.fillRect(5, 7, 4, 2);
+    });
+  }
+
+  const TIGA = [
+    { nama:'BU MARNI',  peran:'MAKER',    warna:'#D3455B', spr:'ibu',   teks:'Yang mengisi dari awal.' },
+    { nama:'BU CICIH',  peran:'CHECKER',  warna:'#F7C325', spr:'ibu',   teks:'Yang memeriksa dan menyatakan valid.' },
+    { nama:'PAK RUSLI', peran:'RELEASER', warna:'#1AAE9F', spr:'bapak', teks:'Yang merilis laporannya.' }
+  ];
+  const TINTA = { '#D3455B':'#943040', '#F7C325':'#AD891A', '#1AAE9F':'#127A6F' };
+  const lencana = [];
+
+  const kartu = TIGA.map(function(a){
+    const d = document.createElement('div');
+    d.className = 'kartuK2 dqbox naik';
+    const spr = sprite(a.spr, 4, {'C':a.warna, 'c':TINTA[a.warna]});
+    const cv = document.createElement('canvas');
+    cv.width = spr.width; cv.height = spr.height;
+    const g = cv.getContext('2d'); g.imageSmoothingEnabled = false; g.drawImage(spr, 0, 0);
+    const s = document.createElement('div'); s.className = 'siapaK2';
+    const n = document.createElement('div');
+    n.className = 'nmK2'; n.style.color = a.warna; n.textContent = a.nama;
+    const p = document.createElement('div');
+    p.className = 'pnK2'; p.style.background = a.warna; p.textContent = a.peran;
+    if(a.warna === '#D3455B') p.style.color = '#FFF';
+    s.appendChild(n); s.appendChild(p);
+    const t = document.createElement('div');
+    t.className = 'stK2';
+    t.innerHTML = a.teks + '<br><b>E-mail yang sama.</b>';
+    d.appendChild(cv); d.appendChild(s); d.appendChild(t);
+    const l = document.createElement('div');
+    l.className = 'lencana';
+    l.appendChild(bintang(3));
+    d.appendChild(l);
+    lencana.push(l);
+    KANAN.appendChild(d);
+    return d;
+  });
+
+  const urut = [SUREL].concat(kartu).concat([KAKI]);
+  let jadwal = [];
+
+  return {
+    enter(){
+      jadwal.forEach(clearTimeout);
+      urut.forEach(function(e){ e.classList.remove('on'); });
+      lencana.forEach(function(l){ l.classList.remove('cap', 'hidup'); });
+      jadwal = urut.map(function(e, i){
+        return setTimeout(function(){ e.classList.add('on'); }, 260 + i*380);
+      });
+      // stempel menyusul setelah ketiga kartunya selesai timbul
+      lencana.forEach(function(l, i){
+        jadwal.push(setTimeout(function(){ l.classList.add('cap'); }, 1900 + i*300));
+        jadwal.push(setTimeout(function(){ l.classList.add('hidup'); }, 2060 + i*300));
+      });
+    },
+    klik(){
+      if(lencana.some(function(l){ return !l.classList.contains('hidup'); })){
+        jadwal.forEach(clearTimeout); jadwal = [];
+        urut.forEach(function(e){ e.classList.add('on'); });
+        lencana.forEach(function(l){ l.classList.add('cap', 'hidup'); });
+        return true;
+      }
+      return false;
+    },
+    keluar(){ jadwal.forEach(clearTimeout); jadwal = []; }
+  };
+})();
+
+/* ============================================================
+   S46 - SPREADSHEET KOSONG, LALU "TELAH DIPERBARUI!"
+   Sheet-nya digambar ulang jadi pixel art (SS-18 cuma acuan).
+   Angka nol digambar sebagai glif 3x5 - cukup terbaca di 4x.
+   ============================================================ */
+HOOKS.s45 = (function(){
+  const CV    = document.getElementById('s45cv');
+  const GARIS = document.getElementById('s45garis');
+  const KAP   = document.getElementById('s45kap');
+  const HINT  = document.getElementById('s45hint');
+  const TAB   = document.getElementById('s45tab');
+  const POW   = document.getElementById('s45pow');
+  const KET   = document.getElementById('s45ket');
+
+  function nol(v, x, y){                      // glif "0" 3x5
+    v.fillRect(x, y, 3, 1); v.fillRect(x, y+4, 3, 1);
+    v.fillRect(x, y+1, 1, 3); v.fillRect(x+2, y+1, 1, 3);
+  }
+
+  const sheetKosong = kanvasKecil(function(v){
+    const X1=18, X2=462, Y1=44, Y2=250;
+    v.fillStyle='#1A222E'; v.fillRect(0, 0, 480, 270);
+    v.fillStyle='rgba(0,0,0,0.35)'; v.fillRect(X1+5, Y1+5, X2-X1, Y2-Y1);
+    v.fillStyle='#1B1B2B'; v.fillRect(X1-2, Y1-2, X2-X1+4, Y2-Y1+4);
+    v.fillStyle='#FFFFFF'; v.fillRect(X1, Y1, X2-X1, Y2-Y1);
+
+    // ---------- kepala jendela: ikon Sheets + judul + menu ----------
+    v.fillStyle='#1E8E3E'; v.fillRect(X1+7, Y1+5, 12, 15);
+    v.fillStyle='#FFFFFF'; v.fillRect(X1+9, Y1+9, 8, 2); v.fillRect(X1+9, Y1+13, 8, 2);
+    v.fillStyle='#3C4A5A'; v.fillRect(X1+24, Y1+7, 62, 5);          // "Maximus - Maker"
+    v.fillStyle='#9AA6B4';
+    [10, 26, 44, 60, 76, 94].forEach(function(dx, i){
+      v.fillRect(X1+24+dx, Y1+16, 12 + (i%2)*4, 3);                 // File Edit View ...
+    });
+    v.fillStyle='#C79A2E'; v.fillRect(X1+152, Y1+15, 34, 5);        // menu DSSY Maker
+    v.fillStyle='#E8EAED'; v.fillRect(X1, Y1+24, X2-X1, 1);
+
+    // ---------- bilah alat ----------
+    v.fillStyle='#F6F8FA'; v.fillRect(X1, Y1+25, X2-X1, 14);
+    v.fillStyle='#6B7684';
+    for(let i=0;i<16;i++) v.fillRect(X1+8+i*17, Y1+30, 8, 5);
+    v.fillStyle='#E8EAED'; v.fillRect(X1, Y1+39, X2-X1, 1);
+
+    // ---------- kepala kolom ----------
+    const KY = Y1+41, BY = KY+9;
+    v.fillStyle='#F1F3F4'; v.fillRect(X1, KY, X2-X1, 9);
+    v.fillStyle='#C4CAD2';
+    for(let x=X1+22; x<X2; x+=34) v.fillRect(x, KY, 1, 9);
+    v.fillStyle='#9AA6B4';
+    for(let x=X1+34; x<X2-6; x+=34) v.fillRect(x, KY+3, 4, 4);
+    v.fillStyle='#F1F3F4'; v.fillRect(X1, BY, 14, Y2-Y1-41-9-16);   // kolom nomor baris
+    v.fillStyle='#C4CAD2'; v.fillRect(X1+14, KY, 1, Y2-Y1-41-16);
+
+    // ---------- judul lembar ----------
+    v.fillStyle='#1B1B2B'; v.fillRect(X1+20, BY+5, 118, 7);         // "Daftar Sumbangan Dana Sehat"
+
+    // ---------- baris Lingkungan / Status / Metode ----------
+    const R3 = BY+20;
+    v.fillStyle='#DDE2E8'; v.fillRect(X1+16, R3, 62, 10); v.fillRect(X1+16, R3+12, 62, 10);
+    v.fillStyle='#3C4A5A'; v.fillRect(X1+19, R3+3, 40, 4); v.fillRect(X1+19, R3+15, 30, 4);
+    v.fillStyle='#6B7684'; v.fillRect(X1+82, R3+3, 74, 4); v.fillRect(X1+82, R3+15, 18, 4);
+    v.fillStyle='#DDE2E8'; v.fillRect(X1+186, R3, 44, 10); v.fillRect(X1+186, R3+12, 44, 10);
+    v.fillStyle='#3C4A5A'; v.fillRect(X1+189, R3+3, 26, 4); v.fillRect(X1+189, R3+15, 34, 4);
+    v.fillStyle='#6B7684'; v.fillRect(X1+236, R3+3, 22, 4);         // "Draft"
+    v.fillStyle='#DDE2E8'; v.fillRect(X1+286, R3, 76, 10);
+    v.fillStyle='#3C4A5A'; v.fillRect(X1+289, R3+3, 66, 4);         // "Metode Pembayaran"
+    v.fillStyle='#F7E400'; v.fillRect(X1+366, R3, 52, 10);          // sel kuning Midtrans
+    v.fillStyle='#2A4A6B'; v.fillRect(X1+369, R3+3, 34, 4);
+    v.fillStyle='#1B1B2B'; v.fillRect(X1+410, R3+4, 5, 3);
+
+    // ---------- kepala tahun + bulan ----------
+    const RH = R3+34, KOL = 30, KX = X1+150;
+    v.fillStyle='#DDE2E8'; v.fillRect(KX, RH, X2-4-KX, 11);
+    v.fillStyle='#3C4A5A'; v.fillRect(KX+72, RH+3, 20, 5);          // "2025"
+    v.fillStyle='#DDE2E8'; v.fillRect(KX, RH+12, X2-4-KX, 11);
+    v.fillStyle='#3C4A5A';
+    for(let i=0;i<10 && KX+i*KOL+26 < X2-4; i++)
+      v.fillRect(KX+i*KOL+5, RH+15, 20, 5);                         // Jul-25 ... Apr-26
+    // baris total: semuanya nol
+    v.fillStyle='#FFFFFF'; v.fillRect(KX, RH+24, X2-4-KX, 11);
+    v.fillStyle='#C4CAD2';
+    for(let i=0;i<=10 && KX+i*KOL <= X2-4; i++) v.fillRect(KX+i*KOL, RH+24, 1, 11);
+    v.fillStyle='#1B1B2B';
+    for(let i=0;i<10 && KX+i*KOL+26 < X2-4; i++) nol(v, KX+i*KOL+22, RH+27);
+    // kepala kolom nama
+    v.fillStyle='#DDE2E8'; v.fillRect(X1+16, RH+24, 132, 11);
+    v.fillStyle='#3C4A5A'; v.fillRect(X1+20, RH+27, 56, 5); v.fillRect(X1+104, RH+27, 24, 5);
+
+    // ---------- baris umat: nama ada, angkanya belum ----------
+    const RY = RH+36;
+    for(let r=0; RY+r*11+10 < Y2-18; r++){
+      const y = RY + r*11;
+      v.fillStyle='#FFFFFF'; v.fillRect(X1+16, y, 132, 10);
+      v.fillStyle='#9AA6B4'; v.fillRect(X1+20, y+3, 46 + ((r*7)%40), 4);
+      v.fillStyle='#E8EAED'; v.fillRect(X1+100, y+3, 46, 4);
+      for(let i=0;i<10 && KX+i*KOL+KOL < X2-4; i++){
+        const n = (r*3+i) % 7;
+        v.fillStyle = (n===0||n===3) ? '#4285F4' : (n===6 ? '#F7C325' : '#34A853');
+        v.fillRect(KX+i*KOL, y, KOL-1, 10);
+      }
+      v.fillStyle='#E8EAED'; v.fillRect(X1+16, y+10, X2-20-X1, 1);
+    }
+
+    // ---------- bilah tab ----------
+    const TY = Y2-16;
+    v.fillStyle='#F1F3F4'; v.fillRect(X1, TY, X2-X1, 16);
+    v.fillStyle='#E8EAED'; v.fillRect(X1, TY, X2-X1, 1);
+    const tab = [[40, 100, true], [148, 88, false], [248, 100, false], [356, 88, false]];
+    tab.forEach(function(t){
+      v.fillStyle = t[2] ? '#D2E3FC' : '#F1F3F4';
+      v.fillRect(t[0], TY+2, t[1], 14);
+      v.fillStyle = t[2] ? '#1967D2' : '#6B7684';
+      v.fillRect(t[0]+6, TY+7, 5, 5);                               // ikon gembok
+      if(t[2]) v.fillRect(t[0], TY+15, t[1], 1);
+    });
+  });
+
+  /* garis kecepatan radial + bintang meledak, khas panel manga */
+  const garisPow = kanvasKecil(function(v){
+    const CXX = 240, CYY = 116;
+    v.fillStyle='rgba(6,5,14,0.72)'; v.fillRect(0, 0, 480, 270);
+    for(let i=0;i<44;i++){
+      const a = (i/44)*Math.PI*2 + 0.11;
+      const r0 = 104 + ((i*37)%42);
+      const r1 = 300;
+      const tebal = 1 + (i%2);
+      v.fillStyle = (i%2) ? 'rgba(247,195,37,0.40)' : 'rgba(244,241,232,0.20)';
+      for(let r=r0; r<r1; r+=1){
+        const x = Math.round(CXX + Math.cos(a)*r);
+        const y = Math.round(CYY + Math.sin(a)*r*0.78);
+        if(x<-8||x>488||y<-8||y>278) break;
+        v.fillRect(x, y, tebal, tebal);
+      }
+    }
+  });
+
+  let dibuka = false;
+  function buka(){
+    if(dibuka) return;
+    dibuka = true;
+    KAP.classList.add('pergi');
+    HINT.classList.add('pergi');
+    TAB.classList.add('pergi');
+    POW.classList.add('on');
+    KET.classList.add('on');
+  }
+
+  return {
+    enter(){
+      pixelCanvas(CV, function(v){ v.drawImage(sheetKosong, 0, 0); });
+      const g = GARIS.getContext('2d'); g.imageSmoothingEnabled = false;
+      g.clearRect(0, 0, 1920, 1080);
+      g.drawImage(garisPow, 0,0,480,270, 0,0,1920,1080);
+      dibuka = false;
+      [KAP, HINT, TAB].forEach(function(e){ e.classList.remove('pergi'); });
+      POW.classList.remove('on'); KET.classList.remove('on');
+    },
+    klik(){
+      if(!dibuka){ buka(); return true; }
+      return false;
+    }
+  };
+})();
+
+/* ============================================================
+   S47 - KEMBALI KE DESA 2026 CEMARA, SORE KEEMASAN
+   Layar yang sama dengan S7. Yang berubah cuma cahaya dan dialog.
+   Sengaja TANPA penanda "!" / "OK" di atas kepala dan tanpa
+   lencana kuning - ini slide klimaks, bukan slide permainan.
+   ============================================================ */
+const CAHAYA_SORE = {
+  rumput:'#7E8A46', rumput2:'#94A055', rumput3:'#65703A',
+  jalan:'#D8A96E', jalan2:'#B8874F',
+  dinding:'#F2DCAC', kaca:'#F7C325', bayang:'rgba(58,30,10,0.26)'
+};
+
+HOOKS.s46 = (function(){
+  const CV    = document.getElementById('s46cv');
+  const KELAR = document.getElementById('s46kelar');
+  const kotak = KotakDialog();
+
+  // desa sore = desa yang sama, disiram cahaya hangat sekali di awal
+  const desaSore = (function(){
+    const dasar = buatDesaCemara(CAHAYA_SORE);
+    return kanvasKecil(function(v){
+      v.drawImage(dasar, 0, 0);
+      v.fillStyle='rgba(247,163,58,0.15)'; v.fillRect(0, 0, 480, 270);
+      // sudut kiri-atas sedikit lebih hangat, arah datangnya matahari sore
+      for(let i=0;i<9;i++){
+        v.fillStyle='rgba(255,196,96,0.030)';
+        v.fillRect(0, 0, 480 - i*46, 270 - i*26);
+      }
+    });
+  })();
+
+  const WARGA = [
+    { id:'yani', sprite:'ibu', warna:'#F4F1E8', tinta:'#B9C4CE', x:85, y:158,
+      nama:'DOKTER YANI', lencana:'#F4F1E8',
+      halaman:[
+        'Obat Pak Darto tertebus. Peralatan prosesi dari desa sebelah juga sudah terbeli.',
+        'Saya yakin paroki kita sanggup, karena kepercayaan umat kita jaga dengan baik.'
+      ] },
+    { id:'ana', sprite:'anak', warna:'#7FA9C4', tinta:'#4E7391', x:203, y:158,
+      nama:'ANA', lencana:'#7FA9C4',
+      halaman:[
+        'Kak! Bapakku sudah pulang dari rumah sakit.',
+        'Aku senang, ibu dan bapak sudah bisa tertawa lagi.'
+      ] },
+    { id:'hasan', sprite:'bapak', warna:'#D9A05B', tinta:'#96682F', x:355, y:158,
+      nama:'PAK HASAN', lencana:'#D9A05B',
+      halaman:[
+        'Terima kasih bantuannya, Bu Yuli sekarang sudah tenang.',
+        'Prosesi pemakaman suaminya terselenggara dengan layak.'
+      ] }
+  ];
+
+  const sudah = {};
+  const zona = document.getElementById('s46warga');
+  WARGA.forEach(function(w){
+    const z = document.createElement('div');
+    z.className = 'warga';
+    z.style.left = (w.x*4 - 26) + 'px';
+    z.style.top  = (w.y*4 - 60) + 'px';
+    z.style.width = '116px';
+    z.style.height = '156px';
+    z.setAttribute('data-nokli','');
+    z.title = w.nama;
+    z.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      sudah[w.id] = true;
+      kotak.mulai({
+        nama:w.nama, warna:w.lencana, halaman:w.halaman,
+        potret: sprite(w.sprite, 4, {'C':w.warna, 'c':w.tinta})
+      });
+      cek();
+    });
+    zona.appendChild(z);
+  });
+  function cek(){ KELAR.classList.toggle('on', WARGA.every(function(w){ return sudah[w.id]; })); }
+
+  return {
+    enter(){
+      cek();
+      pixelCanvas(CV, function(v){
+        v.drawImage(desaSore, 0, 0);
+        WARGA.forEach(function(w){
+          v.fillStyle='rgba(58,30,10,0.26)';
+          v.fillRect(w.x-3, w.y+23, 19, 2);          // bayangan sore, memanjang ke kiri
+          v.drawImage(sprite(w.sprite, 1, {'C':w.warna, 'c':w.tinta}), w.x, w.y);
+        });
+      });
+    },
+    klik(){ return kotak.klik(); },
+    keluar(){ kotak.sembunyi(); }
+  };
+})();
+
+/* ============================================================
+   S48 - "1 MINGGU KEMUDIAN"
+   Tujuh siang-malam lewat dalam beberapa detik, lalu berhenti
+   di siang hari. Warna langit dihitung, bukan digambar per bingkai.
+   ============================================================ */
+HOOKS.s47 = (function(){
+  const CV    = document.getElementById('s47cv');
+  const KARTU = document.getElementById('s47kartu');
+  const KAKI  = document.getElementById('s47kaki');
+  const HARI  = 3.2, JUMLAH = 7;                    // detik per hari; 7 x 3,2 = 22,4 detik
+
+  // jam pasir - emoji tidak muncul di Press Start 2P, jadi digambar
+  (function(){
+    const jam = petak(14, 20, 4, function(k){
+      k.fillStyle='#1B1B2B';
+      k.fillRect(1, 0, 12, 2); k.fillRect(1, 18, 12, 2);
+      k.fillRect(2, 2, 10, 1); k.fillRect(2, 17, 10, 1);
+      for(let i=0;i<7;i++){ k.fillRect(2+i, 3+i, 1, 1); k.fillRect(11-i, 3+i, 1, 1); }
+      for(let i=0;i<7;i++){ k.fillRect(5-i+1, 10+i, 1, 1); k.fillRect(8+i-1, 10+i, 1, 1); }
+      k.fillStyle='#F7C325';
+      k.fillRect(3, 3, 8, 1); k.fillRect(4, 4, 6, 1); k.fillRect(5, 5, 4, 1);
+      k.fillRect(6, 11, 2, 6); k.fillRect(4, 15, 6, 2); k.fillRect(3, 16, 8, 1);
+      k.fillStyle='#8B6239'; k.fillRect(1, 0, 12, 2); k.fillRect(1, 18, 12, 2);
+    });
+    const t = document.getElementById('s47jam');
+    t.width = jam.width; t.height = jam.height;
+    const g = t.getContext('2d'); g.imageSmoothingEnabled = false; g.drawImage(jam, 0, 0);
+  })();
+
+  const SIANG = [126, 200, 227], SENJA = [224, 132, 74], MALAM = [14, 18, 48];
+  function campur(a, b, f){
+    return 'rgb(' + Math.round(a[0]+(b[0]-a[0])*f) + ',' +
+                    Math.round(a[1]+(b[1]-a[1])*f) + ',' +
+                    Math.round(a[2]+(b[2]-a[2])*f) + ')';
+  }
+
+  // bukit siluet: bentuknya tetap, cuma warnanya ikut langit
+  const BUKIT = [];
+  for(let x=0;x<480;x++){
+    BUKIT.push([
+      Math.round(206 - 13*Math.sin(x/54 + 0.7) - 6*Math.sin(x/19)),
+      Math.round(226 - 9*Math.sin(x/38 + 2.4) - 4*Math.sin(x/13))
+    ]);
+  }
+  const BINTANG = [];
+  for(let i=0;i<90;i++) BINTANG.push([(i*137)%480, (i*61)%180]);
+
+  let raf = null, t0 = 0, jadwal = [];
+
+  function bingkai(now){
+    if(!t0) t0 = now;
+    const t = (now - t0)/1000;
+    const p = (t < HARI*JUMLAH) ? ((t/HARI) % 1) : 0.25;   // berhenti di siang
+    const d = Math.sin(p*Math.PI*2);
+    const terang = Math.max(0, Math.min(1, d*2.2));
+    const gelap  = Math.max(0, Math.min(1, -d*2.2));
+    const langit = (d >= 0) ? campur(SENJA, SIANG, terang) : campur(SENJA, MALAM, gelap);
+
+    pixelCanvas(CV, function(v){
+      v.fillStyle = langit; v.fillRect(0, 0, 480, 270);
+      // semburat hangat di dekat cakrawala saat matahari rendah
+      const senja = 1 - Math.min(1, Math.abs(d)*2.4);
+      if(senja > 0.02){
+        for(let i=0;i<11;i++){
+          v.fillStyle = 'rgba(240,146,68,' + (senja*0.10) + ')';
+          v.fillRect(0, 200 - i*9, 480, 9);
+        }
+      }
+      if(gelap > 0.45){
+        BINTANG.forEach(function(b, i){
+          v.fillStyle = (i%4) ? 'rgba(255,246,213,' + (gelap*0.7) + ')'
+                              : 'rgba(255,246,213,' + (gelap*0.35) + ')';
+          v.fillRect(b[0], b[1], 1, 1);
+        });
+      }
+      // matahari / bulan menyeberang langit
+      if(d >= 0){
+        const u = p/0.5, x = Math.round(20 + 440*u), y = Math.round(212 - Math.sin(u*Math.PI)*146);
+        v.fillStyle='#FFE9A8';
+        for(let dy=-11;dy<=11;dy++) for(let dx=-11;dx<=11;dx++)
+          if(dx*dx+dy*dy<=121) v.fillRect(x+dx, y+dy, 1, 1);
+        v.fillStyle='#FFF6D5';
+        for(let dy=-7;dy<=7;dy++) for(let dx=-7;dx<=7;dx++)
+          if(dx*dx+dy*dy<=49) v.fillRect(x+dx, y+dy, 1, 1);
+      } else {
+        const u = (p-0.5)/0.5, x = Math.round(20 + 440*u), y = Math.round(212 - Math.sin(u*Math.PI)*146);
+        v.fillStyle='#FFF6D5';
+        for(let dy=-9;dy<=9;dy++) for(let dx=-9;dx<=9;dx++){
+          const d1 = dx*dx+dy*dy, d2 = (dx-5)*(dx-5)+dy*dy;
+          if(d1<=81 && d2>92) v.fillRect(x+dx, y+dy, 1, 1);
+        }
+      }
+      // dua lapis bukit, warnanya ikut gelap-terangnya langit
+      const f = Math.max(0, Math.min(1, (d+0.6)/1.6));
+      v.fillStyle = campur([18,22,44], [74,104,66], f*0.55);
+      for(let x=0;x<480;x++) v.fillRect(x, BUKIT[x][0], 1, 270-BUKIT[x][0]);
+      v.fillStyle = campur([10,13,30], [50,74,44], f*0.55);
+      for(let x=0;x<480;x++) v.fillRect(x, BUKIT[x][1], 1, 270-BUKIT[x][1]);
+    });
+    if(t < HARI*JUMLAH + 0.2) raf = requestAnimationFrame(bingkai);
+    else raf = null;                  // sudah menetap di siang, tidak perlu digambar lagi
+  }
+
+  return {
+    enter(){
+      t0 = 0;
+      KARTU.classList.remove('on'); KAKI.classList.remove('on');
+      jadwal.forEach(clearTimeout);
+      jadwal = [ setTimeout(function(){ KARTU.classList.add('on'); }, 520),
+                 setTimeout(function(){ KAKI.classList.add('on'); }, 1100) ];
+      if(!raf) raf = requestAnimationFrame(bingkai);
+    },
+    klik(){
+      if(!KAKI.classList.contains('on')){
+        jadwal.forEach(clearTimeout); jadwal = [];
+        KARTU.classList.add('on'); KAKI.classList.add('on');
+        return true;
+      }
+      return false;
+    },
+    keluar(){
+      jadwal.forEach(clearTimeout); jadwal = [];
+      if(raf){ cancelAnimationFrame(raf); raf = null; }
+    }
+  };
+})();
+
+/* ============================================================
+   S49 - BU MARNI YANG RAJIN
+   Dapur yang sama dengan S26, tapi siang. Ruangannya tidak
+   berubah supaya perubahan sikapnya yang terbaca.
+   ============================================================ */
+const dapurSiang = buatDapur(CAHAYA_SIANG);
+
+HOOKS.s48 = (function(){
+  const CV  = document.getElementById('s48cv');
+  const KAP = document.getElementById('s48kap');
+  const B   = [KAP.querySelector('.k2')];      // tinggal satu baris
+
+  // kilau kecil di sekitar Bu Marni - dia duduk di sekitar (150..198, 132..204)
+  const KILAU = [
+    [140, 120, 0.0], [206, 132, 0.7], [132, 168, 1.4],
+    [210, 178, 2.1], [166, 108, 2.8], [196, 106, 3.4]
+  ];
+  function bintangKecil(v, x, y, r, warna){
+    v.fillStyle = warna;
+    v.fillRect(x-r, y, r*2+1, 1);
+    v.fillRect(x, y-r, 1, r*2+1);
+    if(r >= 3){ v.fillRect(x-1, y-1, 3, 3); }
+  }
+
+  let raf = null, t0 = 0, jadwal = [];
+  function bingkai(now){
+    if(!t0) t0 = now;
+    const t = (now - t0)/1000;
+    pixelCanvas(CV, function(v){
+      v.drawImage(dapurSiang, 0, 0);
+      KILAU.forEach(function(k){
+        const f = ((t + k[2]) % 2.4) / 2.4;             // 0..1 sekali tiap 2,4 detik
+        const a = Math.sin(f*Math.PI);                   // muncul lalu hilang
+        if(a < 0.06) return;
+        const r = 2 + Math.round(a*2);
+        bintangKecil(v, k[0], k[1] - Math.round(f*7), r, 'rgba(255,240,170,' + (a*0.9) + ')');
+      });
+    });
+    raf = requestAnimationFrame(bingkai);
+  }
+
+  return {
+    enter(){
+      t0 = 0;
+      B.forEach(function(e){ e.classList.remove('on'); });
+      KAP.classList.remove('pergi');
+      jadwal.forEach(clearTimeout);
+      jadwal = [ setTimeout(function(){ B[0].classList.add('on'); }, 400) ];
+      if(!raf) raf = requestAnimationFrame(bingkai);
+    },
+    klik(){
+      if(!B[0].classList.contains('on')){
+        jadwal.forEach(clearTimeout); jadwal = [];
+        B.forEach(function(e){ e.classList.add('on'); });
+        return true;
+      }
+      return false;
+    },
+    keluar(){
+      jadwal.forEach(clearTimeout); jadwal = [];
+      if(raf){ cancelAnimationFrame(raf); raf = null; }
+    }
+  };
+})();
+
+/* ============================================================
+   S50 - RINTANGAN 3: TERLALU CEPAT
+   Dapur siang yang sama, tapi Bu Marni digambar sendiri di sini
+   supaya bisa bergetar - karena itu buatDapur dipanggil dengan
+   {tanpaIbu:true}.
+   ============================================================ */
+HOOKS.s49 = (function(){
+  const CV    = document.getElementById('s49cv');
+  const KAP   = document.getElementById('s49kap');
+  const HINT  = document.getElementById('s49hint');
+  const LAYAR = document.getElementById('s49layar');
+  const KET   = document.getElementById('s49ket');
+  const dapurKosong = buatDapur(CAHAYA_SIANG, {tanpaIbu:true});
+  const IX = 150, IY = 132;                       // posisi Bu Marni di buatDapur
+
+  /* "!?" besar yang melompat di atas kepalanya.
+     Digambar dari peta huruf lalu digarisi dengan menstempel
+     petanya 8 arah - garis tepi per bagian, bukan satu blok hitam. */
+  const tanya = (function(){
+    const PETA = [
+      '.##.....####....',
+      '.##....##....##.',
+      '.##....##....##.',
+      '.##..........##.',
+      '.##.........##..',
+      '.##........##...',
+      '.##.......##....',
+      '.##.......##....',
+      '.##.......##....',
+      '................',
+      '.##.......##....',
+      '.##.......##....'
+    ];
+    const W = 16, H = 12;
+    function cap(k, dx, dy){
+      for(let y=0;y<H;y++) for(let x=0;x<W;x++)
+        if(PETA[y][x] === '#') k.fillRect(x+dx+1, y+dy+1, 1, 1);
+    }
+    return petak(W+2, H+2, 3, function(k){
+      k.fillStyle='#1B1B2B';
+      [[-1,-1],[0,-1],[1,-1],[-1,0],[1,0],[-1,1],[0,1],[1,1]].forEach(function(d){
+        cap(k, d[0], d[1]);
+      });
+      k.fillStyle='#F2A0A8'; cap(k, 0, 0);
+    });
+  })();
+
+  let raf = null, t0 = 0, dibuka = false;
+  function bingkai(now){
+    if(!t0) t0 = now;
+    const t = (now - t0)/1000;
+    const getar = dibuka ? 0 : (Math.round(Math.sin(t*26)) * 2);
+    const lompat = Math.round(Math.abs(Math.sin(t*3.4)) * 5);
+    pixelCanvas(CV, function(v){
+      v.drawImage(dapurKosong, 0, 0);
+      v.drawImage(sprite('ibu', 3, {'C':'#D3455B','c':'#943040'}), IX + getar, IY);
+      if(!dibuka) v.drawImage(tanya, IX + 5 + getar, IY - 52 - lompat);
+    });
+    raf = requestAnimationFrame(bingkai);
+  }
+
+  function buka(){
+    if(dibuka) return;
+    dibuka = true;
+    KAP.classList.add('pergi');
+    HINT.classList.add('pergi');
+    LAYAR.classList.add('on');
+    KET.classList.add('on');
+  }
+
+  return {
+    enter(){
+      t0 = 0; dibuka = false;
+      KAP.classList.remove('pergi'); HINT.classList.remove('pergi');
+      LAYAR.classList.remove('on'); KET.classList.remove('on');
+      if(!raf) raf = requestAnimationFrame(bingkai);
+    },
+    klik(){
+      if(!dibuka){ buka(); return true; }
+      return false;
+    },
+    keluar(){ if(raf){ cancelAnimationFrame(raf); raf = null; } }
+  };
+})();
+
+/* ============================================================
+   S51 - PERI DESY, DUA JALAN KELUAR
+   QR-nya digambar sebagai pixel art dari matriks di bawah -
+   tidak ada pustaka luar, tidak ada gambar yang perlu dikirim.
+   Warnanya sengaja hijau-mint: Desy bukan salah satu dari
+   empat peran, jadi tidak boleh memakai warna peran.
+   ============================================================ */
+const QR = {
+  sop: [
+    '111111101011100000001110011101101100101111111',
+    '100000100100111100100100100111001001001000001',
+    '101110100100010011110010000100101101001011101',
+    '101110101010000001001110101010010001101011101',
+    '101110101110001011011111101101111111101011101',
+    '100000101101111001011000110000101000001000001',
+    '111111101010101010101010101010101010101111111',
+    '000000001001111111101000111100101110000000000',
+    '100010111010110001001111111101111010011111001',
+    '001001000100111000101101101101110101111111100',
+    '010100110010011110110001001101011101111111010',
+    '101101001100000111100110001100001011011100000',
+    '000010110001101101101110111100111100010100010',
+    '001000010110110110011111001010111001101111100',
+    '111110101101000111111101001110100101011110100',
+    '111010010100011010100001100100011110000010010',
+    '111100111000010011101001100000101101000100011',
+    '100011011111011101011110001101111101101100010',
+    '101101100101101001001011001101111100111001010',
+    '100100000000111010110110000101001010100101001',
+    '101011111101000100111111100100001100111111000',
+    '100110001111111101001000111001101001100011100',
+    '100010101000110011011010100011100000101011010',
+    '101010001110100100011000111100001011100010011',
+    '110111111001010100111111111100101100111111000',
+    '011111011101101101100110101111101101010000010',
+    '111000111000011001000001101010000001000100010',
+    '100010000010010011010110000100010000111000010',
+    '111110100101011001011101101100101110010110011',
+    '111000000111110100110010101011100100010100100',
+    '111001111000000100110111011111111010100110000',
+    '001010000111010101111100100010001000101110011',
+    '000001101100100000001000010101101010011010001',
+    '110000010010101100000111001110100100100100110',
+    '000010110101001001100111101111111100010011010',
+    '011110001111001110100010000100011010001111010',
+    '100110110111000001111111111101111010111111001',
+    '000000001111010010111000111011111001100011110',
+    '111111101111101001011010100001110000101011010',
+    '100000100110110001011000101001001110100010001',
+    '101110101011101111011111101101001111111111000',
+    '101110100010101100101001001101100100001011000',
+    '101110100100001001101011001000010100010110110',
+    '100000100000101010111011100101000111110100000',
+    '111111101100010111111001110100001111110110001'
+  ],
+  desy: [
+    '11111110101111100110001111111',
+    '10000010101110001111101000001',
+    '10111010110011001000101011101',
+    '10111010011111001101101011101',
+    '10111010100100101011101011101',
+    '10000010011100001000101000001',
+    '11111110101010101010101111111',
+    '00000000010101001001000000000',
+    '10011111101000110101010010111',
+    '10100101101000111111000110110',
+    '00101011001110110100101010100',
+    '11111100100110110100100101001',
+    '01001011100010111010101100001',
+    '10110100001101011110001111111',
+    '01010011001110111101110110101',
+    '01110001100010100001011100101',
+    '11111010111011110000110101000',
+    '11011000011010110111100010110',
+    '11011110001011111001000011001',
+    '11010000001101110000001111100',
+    '11001010010100010100111111110',
+    '00000000111000011010100011000',
+    '11111110111111110101101011000',
+    '10000010100100101101100010000',
+    '10111010100111100001111111010',
+    '10111010101100110110010000001',
+    '10111010001000010000110110111',
+    '10000010011000010000011101101',
+    '11111110101111000011101010000'
+  ]
+};
+
+function qrKode(rows, skala){
+  const n = rows.length, q = 4, sisi = n + q*2;
+  return petak(sisi, sisi, skala, function(k){
+    k.fillStyle='#F4F1E8'; k.fillRect(0, 0, sisi, sisi);
+    k.fillStyle='#1B1B2B';
+    for(let y=0;y<n;y++) for(let x=0;x<n;x++)
+      if(rows[y][x] === '1') k.fillRect(x+q, y+q, 1, 1);
+  });
+}
+
+HOOKS.s50 = (function(){
+  const CV     = document.getElementById('s50cv');
+  const PANEL  = document.getElementById('s50panel');
+  const kotak  = KotakDialog();
+  const MINT   = '#8FE3C4', MINT_T = '#4FA98A';
+
+  const URL_SOP  = 'https://resolute-william-42f.notion.site/SOP-Bendahara-Lingkungan-Sumbangan-DSSY-3bcf720a2371801cb6ffe641dd4bbbbc';
+  const URL_DESY = 'https://gemini.google.com/gem/82df4cfaa603';
+
+  document.getElementById('s50qrsop').appendChild(qrKode(QR.sop, 7));
+  document.getElementById('s50qrdesy').appendChild(qrKode(QR.desy, 10));
+  document.getElementById('s50sop').onclick = function(e){
+    e.stopPropagation(); window.open(URL_SOP, '_blank', 'noopener');
+  };
+  document.getElementById('s50tanya').onclick = function(e){
+    e.stopPropagation(); window.open(URL_DESY, '_blank', 'noopener');
+  };
+
+  const HALAMAN = [
+    'Namaku Desy. Aku lahir dari nama DSSY.',
+    'Rintangan yang tadi kalian lewati cuma tiga yang paling sering. Masih ada beberapa lagi yang tidak sempat diceritakan hari ini.',
+    'Kalau kalian tersesat - Maker, Checker, maupun Releaser - selalu ada dua jalan.'
+  ];
+
+  const AWAL = [430, 26], AKHIR = [258, 84], TERBANG = 1.5;   // detik
+  let raf = null, t0 = 0, jadwal = [], tahap = 0;
+
+  function bingkai(now){
+    if(!t0) t0 = now;
+    const t = (now - t0)/1000;
+    const f = Math.min(1, t/TERBANG);
+    const e = 1 - Math.pow(1-f, 3);                            // melambat di ujung
+    const x = Math.round(AWAL[0] + (AKHIR[0]-AWAL[0])*e);
+    const y = Math.round(AWAL[1] + (AKHIR[1]-AWAL[1])*e
+                         + (f<1 ? Math.sin(f*Math.PI*3)*13 : 0)
+                         + (f>=1 ? Math.sin(t*2.4)*3 : 0));
+    const sayap = (Math.floor(t*14) % 2) ? 1 : 0;
+
+    pixelCanvas(CV, function(v){
+      v.drawImage(dapurSiang, 0, 0);
+      // cahaya lembut yang dibawanya
+      for(let i=5;i>=1;i--){
+        v.fillStyle = 'rgba(143,227,196,' + (0.05 + (5-i)*0.012) + ')';
+        const r = i*7;
+        for(let dy=-r;dy<=r;dy++) for(let dx=-r;dx<=r;dx++)
+          if(dx*dx+dy*dy <= r*r) v.fillRect(x+8+dx, y+8+dy, 1, 1);
+      }
+      // serbuk yang tertinggal di belakangnya
+      for(let i=0;i<7;i++){
+        const g = f - 0.05 - i*0.045;
+        if(g <= 0) continue;
+        const ge = 1 - Math.pow(1-g, 3);
+        const gx = Math.round(AWAL[0] + (AKHIR[0]-AWAL[0])*ge);
+        const gy = Math.round(AWAL[1] + (AKHIR[1]-AWAL[1])*ge + Math.sin(g*Math.PI*3)*13);
+        v.fillStyle = 'rgba(255,246,213,' + (0.34 - i*0.045) + ')';
+        v.fillRect(gx+7, gy+8, 2, 2);
+      }
+      v.drawImage(sprite('peri', 2, {'C':MINT, 'c':MINT_T}), x - sayap, y);
+    });
+    raf = requestAnimationFrame(bingkai);
+  }
+
+  function tampilkanPanel(){
+    tahap = 2;
+    kotak.sembunyi();
+    PANEL.classList.add('on');
+  }
+
+  return {
+    enter(){
+      t0 = 0; tahap = 0;
+      PANEL.classList.remove('on');
+      jadwal.forEach(clearTimeout);
+      jadwal = [ setTimeout(function(){
+        tahap = 1;
+        kotak.mulai({
+          nama:'DESY', warna:MINT, halaman:HALAMAN,
+          potret: sprite('peri', 4, {'C':MINT, 'c':MINT_T}),
+          selesai: tampilkanPanel
+        });
+      }, TERBANG*1000 + 220) ];
+      if(!raf) raf = requestAnimationFrame(bingkai);
+    },
+    klik(){
+      if(tahap === 0){                       // percepat terbangnya
+        jadwal.forEach(clearTimeout); jadwal = [];
+        tahap = 1;
+        kotak.mulai({
+          nama:'DESY', warna:MINT, halaman:HALAMAN,
+          potret: sprite('peri', 4, {'C':MINT, 'c':MINT_T}),
+          selesai: tampilkanPanel
+        });
+        return true;
+      }
+      if(tahap === 1) return kotak.klik();
+      return false;
+    },
+    keluar(){
+      jadwal.forEach(clearTimeout); jadwal = [];
+      kotak.sembunyi();
+      if(raf){ cancelAnimationFrame(raf); raf = null; }
+    }
+  };
+})();
+
+/* ============================================================
+   S52 - PENUTUP
+   Ketiganya berjalan menjauh di jalan setapak. Tampak punggung:
+   warna kulit dan mata ditukar jadi warna rambut lewat palette
+   swap - tidak perlu sprite baru.
+   ============================================================ */
+HOOKS.s51 = (function(){
+  const CV     = document.getElementById('s51cv');
+  const AYAT   = document.getElementById('s51ayat');
+  const RUJUK  = document.getElementById('s51rujuk');
+  const TUTUP  = document.getElementById('s51tutup');
+  const TAMAT  = document.getElementById('s51tamat');
+  const HORIZON = 168, DASAR = 270;
+
+  const BARIS = [
+    'Apa pun juga yang kamu perbuat,',
+    'perbuatlah dengan segenap hatimu',
+    'seperti untuk Tuhan dan bukan untuk manusia.'
+  ];
+  const TEKS = BARIS.join(String.fromCharCode(10));
+
+  function belakang(warna, tinta){          // punggung: wajah ditutup rambut
+    return {'C':warna, 'c':tinta, 's':'#2B2118', 'b':'#2B2118', 'm':'#2B2118', 'e':'#2B2118'};
+  }
+  const TIGA = [
+    { spr:'ibu',   warna:'#D3455B', tinta:'#943040', dx:-1 },
+    { spr:'ibu',   warna:'#F7C325', tinta:'#AD891A', dx: 0 },
+    { spr:'bapak', warna:'#1AAE9F', tinta:'#127A6F', dx: 1 }
+  ];
+
+  const langit = kanvasKecil(function(v){
+    // ---------- langit senja, dijenjangkan jadi pita ----------
+    const ATAS = [74, 58, 96], BAWAH = [244, 172, 96];
+    for(let y=0;y<HORIZON;y+=3){
+      const f = y/HORIZON, g = Math.pow(f, 1.7);
+      v.fillStyle = 'rgb(' +
+        Math.round(ATAS[0]+(BAWAH[0]-ATAS[0])*g) + ',' +
+        Math.round(ATAS[1]+(BAWAH[1]-ATAS[1])*g) + ',' +
+        Math.round(ATAS[2]+(BAWAH[2]-ATAS[2])*g) + ')';
+      v.fillRect(0, y, 480, 3);
+    }
+    // ---------- matahari, puncaknya di atas deretan cemara ----------
+    const SY = HORIZON - 12;
+    v.fillStyle='rgba(255,214,138,0.30)';                 // halo
+    for(let dy=-46;dy<=46;dy++) for(let dx=-46;dx<=46;dx++){
+      const y = SY + dy;
+      if(y >= HORIZON || y < 0) continue;
+      if(dx*dx+dy*dy <= 46*46) v.fillRect(240+dx, y, 1, 1);
+    }
+    v.fillStyle='#FFDE96';
+    for(let dy=-34;dy<=34;dy++) for(let dx=-34;dx<=34;dx++){
+      const y = SY + dy;
+      if(y >= HORIZON || y < 0) continue;
+      if(dx*dx+dy*dy <= 34*34) v.fillRect(240+dx, y, 1, 1);
+    }
+    v.fillStyle='#FFF8DC';
+    for(let dy=-23;dy<=23;dy++) for(let dx=-23;dx<=23;dx++){
+      const y = SY + dy;
+      if(y >= HORIZON || y < 0) continue;
+      if(dx*dx+dy*dy <= 23*23) v.fillRect(240+dx, y, 1, 1);
+    }
+    // pita awan tipis melintang di depan matahari
+    v.fillStyle='rgba(120,72,96,0.34)';
+    [[132, 96, 216], [140, 60, 150], [150, 250, 190], [122, 292, 120]].forEach(function(p){
+      v.fillRect(p[1], p[0], p[2], 4);
+    });
+
+    // ---------- deretan cemara di cakrawala ----------
+    // Memecah garis lurus cakrawala, sekaligus menutup babak: desanya
+    // bernama Cemara, dan cemaranya yang terakhir terlihat.
+    (function(){
+      let b = 20260929;
+      const acak = function(){ b=(b*1103515245+12345)&0x7fffffff; return b/0x7fffffff; };
+      for(let x=-6; x<486; x += 5 + Math.floor(acak()*4)){
+        const t = 9 + Math.floor(acak()*9);
+        const w = 3 + Math.floor(acak()*2);
+        v.fillStyle = 'rgba(52,34,44,0.88)';
+        for(let r=0;r<t;r++){
+          const ww = Math.max(1, Math.round((r/t)*w*2));
+          v.fillRect(Math.round(x-ww/2), HORIZON-t+r, ww, 1);
+        }
+        v.fillRect(x-1, HORIZON-3, 2, 3);
+      }
+    })();
+
+    // ---------- tanah ----------
+    v.fillStyle='#4A3A2E'; v.fillRect(0, HORIZON, 480, DASAR-HORIZON);
+    for(let i=0;i<1700;i++){
+      const x=(i*131)%480, y=HORIZON+((i*77)%(DASAR-HORIZON));
+      v.fillStyle=(i%3)?'#54422F':'#402F26';
+      v.fillRect(x,y,1,1);
+    }
+
+    // ---------- jalan setapak yang menyempit ke cakrawala ----------
+    for(let y=HORIZON; y<DASAR; y++){
+      const u = (y-HORIZON)/(DASAR-HORIZON);
+      // lebarnya bergoyang sedikit supaya tidak terbaca sebagai segitiga
+      const w = Math.max(2, Math.round(3 + 118*u + 3*Math.sin(y/9) + 2*Math.sin(y/23)));
+      const c = Math.round(240 + 5*Math.sin((y-HORIZON)/31));
+      v.fillStyle = '#C9A377';
+      v.fillRect(c-w, y, w*2, 1);
+      v.fillStyle = 'rgba(90,61,38,0.30)';
+      v.fillRect(c-w, y, 2, 1); v.fillRect(c+w-2, y, 2, 1);
+    }
+    for(let i=0;i<420;i++){
+      const y = HORIZON + ((i*29)%(DASAR-HORIZON));
+      const u = (y-HORIZON)/(DASAR-HORIZON);
+      const w = Math.max(2, Math.round(3 + 118*u + 3*Math.sin(y/9) + 2*Math.sin(y/23)));
+      const c = Math.round(240 + 5*Math.sin((y-HORIZON)/31));
+      const x = c - w + ((i*97)%(w*2));
+      v.fillStyle=(i%2)?'#B8905F':'#D6B189';
+      v.fillRect(x, y, 1, 1);
+    }
+    // rumput tinggi di tepi jalan
+    for(let i=0;i<150;i++){
+      const y = HORIZON + 6 + ((i*37)%(DASAR-HORIZON-8));
+      const u = (y-HORIZON)/(DASAR-HORIZON);
+      const w = Math.max(2, Math.round(3 + 118*u + 3*Math.sin(y/9) + 2*Math.sin(y/23)));
+      const c = Math.round(240 + 5*Math.sin((y-HORIZON)/31));
+      const kiri = (i%2) === 0;
+      const x = kiri ? (c - w - 2 - ((i*13)%26)) : (c + w + 1 + ((i*17)%26));
+      const t = 2 + ((i*7)%4);
+      v.fillStyle = (i%3) ? '#3E4E2C' : '#4C5E36';
+      v.fillRect(x, y-t, 1, t);
+    }
+  });
+
+  const MULAI = 252, SELESAI = 210, LAMA = 10;      // detik untuk menjauh
+  const JEDA = 1150;                 // rujukan sempat terbaca dulu, seperti S2
+  let raf = null, t0 = 0, jadwal = [], mesin = null;
+
+  function bingkai(now){
+    if(!t0) t0 = now;
+    const t = (now - t0)/1000;
+    const f = Math.min(1, t/LAMA);
+    const e = 1 - Math.pow(1-f, 2.1);
+    const y = Math.round(MULAI + (SELESAI-MULAI)*e);
+    const u = (y-HORIZON)/(DASAR-HORIZON);
+    const rentang = Math.round(10 + 52*u);
+    const tengah = Math.round(240 + 5*Math.sin((y-HORIZON)/31));
+    const kaki = Math.floor(t*3.6) % 2;
+
+    pixelCanvas(CV, function(v){
+      v.drawImage(langit, 0, 0);
+      TIGA.forEach(function(a, i){
+        const x = tengah + a.dx*rentang - 8;
+        const naik = ((kaki + i) % 2) ? 1 : 0;
+        const nama = (a.spr === 'ibu') ? (((kaki + i) % 2) ? 'ibu_langkah' : 'ibu') : 'bapak';
+        v.fillStyle='rgba(40,24,16,0.30)';
+        v.fillRect(x+2, y-1, 12, 2);
+        v.drawImage(sprite(nama, 1, belakang(a.warna, a.tinta)), x, y - 24 - naik);
+      });
+    });
+    raf = requestAnimationFrame(bingkai);
+  }
+
+  return {
+    enter(){
+      t0 = 0;
+      AYAT.innerHTML = '';
+      [RUJUK, TUTUP, TAMAT].forEach(function(e){ e.classList.remove('on'); });
+      jadwal.forEach(clearTimeout);
+      mesin = null;
+      jadwal = [ setTimeout(function(){ RUJUK.classList.add('on'); }, 180),
+                 setTimeout(function(){ mesin = ketik(AYAT, TEKS, 36, null); }, JEDA),
+                 setTimeout(function(){ TUTUP.classList.add('on'); }, JEDA + 5200),
+                 setTimeout(function(){ TAMAT.classList.add('on'); }, JEDA + 8200) ];
+      if(!raf) raf = requestAnimationFrame(bingkai);
+    },
+    klik(){
+      if(mesin && mesin.penuh()) return true;
+      if(!TAMAT.classList.contains('on')){
+        jadwal.forEach(clearTimeout); jadwal = [];
+        RUJUK.classList.add('on');
+        if(!mesin){ mesin = ketik(AYAT, TEKS, 36, null); mesin.penuh(); }
+        [TUTUP, TAMAT].forEach(function(e){ e.classList.add('on'); });
+        return true;
+      }
+      return false;
+    },
+    keluar(){
+      jadwal.forEach(clearTimeout); jadwal = [];
+      if(raf){ cancelAnimationFrame(raf); raf = null; }
+    }
   };
 })();
 
