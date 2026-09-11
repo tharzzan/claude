@@ -220,9 +220,13 @@ img,video,canvas,svg{max-width:100%;max-height:100%}
 }
 .s-title h1 em{font-style:italic}
 .s-title .head{max-width:1190px}
-.s-title .lede{font-family:var(--font-body);font-weight:300;font-size:37px;line-height:1.5;color:var(--ink-soft);margin:44px 0 0;max-width:960px}
-.s-title .meta{font-family:var(--font-label);font-weight:400;font-size:23px;line-height:1.75;color:var(--ink-soft)}
-.s-title .meta strong{color:var(--ink);font-weight:600;display:block}
+.s-title .subtitle{
+  font-family:var(--font-label);font-weight:600;font-size:34px;
+  letter-spacing:.1em;color:var(--ink-soft);margin:40px 0 0;
+  padding-top:30px;border-top:2px solid var(--rule-strong);display:inline-block;
+}
+/* the footer now carries only the role key, so send it right */
+.s-title .foot{margin-top:0;justify-content:flex-end}
 
 /* the Kartu Kuning as a physical object */
 .kartu{
@@ -263,7 +267,7 @@ img,video,canvas,svg{max-width:100%;max-height:100%}
 /* ===========================================
    S3 — STATEMENT (used for the big single lines)
    =========================================== */
-.s-statement .wrap{justify-content:center}
+.s-statement .wrap{justify-content:flex-start}
 .statement{
   font-family:var(--font-display);font-weight:400;font-size:126px;line-height:1.0;
   letter-spacing:-.016em;color:var(--ink);margin:0;max-width:1520px;
@@ -354,7 +358,7 @@ img,video,canvas,svg{max-width:100%;max-height:100%}
 /* ===========================================
    S12 — THE COMPARISON TABLE (the one dense slide)
    =========================================== */
-.s-table .wrap{padding:70px 110px 60px 110px}
+.s-table .wrap{padding:88px 110px 60px 110px}
 .cmp{width:100%;border-collapse:collapse;margin-top:26px}
 .cmp th{
   font-family:var(--font-label);font-weight:700;font-size:28px;letter-spacing:.16em;
@@ -481,7 +485,8 @@ body.editing .edit-hint{display:block}
 .qghost{
   position:absolute;right:112px;top:50%;transform:translateY(-50%);
   font-family:var(--font-display);font-size:500px;line-height:.78;
-  color:transparent;-webkit-text-stroke:2px rgba(23,32,43,.12);
+  color:rgba(23,32,43,.085);            /* a little mass, so it survives a projector */
+  -webkit-text-stroke:4px rgba(23,32,43,.3);
   z-index:0;user-select:none;pointer-events:none;
 }
 .qmark{
@@ -612,7 +617,7 @@ a.cue:hover,.cue:hover{color:inherit}
    THE APOLOGY — words on the left, the gesture
    on the right. Nothing else on the slide.
    =========================================== */
-.s-maaf .wrap{justify-content:center}
+.s-maaf .wrap{justify-content:flex-start}
 .maaf-row{display:flex;align-items:center;gap:52px}
 .maaf-row .statement{flex:1;max-width:1160px;font-size:74px;line-height:1.12}
 .gesture{
@@ -669,7 +674,7 @@ a.cue:hover,.cue:hover{color:inherit}
 /* ===========================================
    MOCKUP SLIDE — full width, no image column
    =========================================== */
-.s-mockup .wrap{justify-content:center}
+.s-mockup .wrap{justify-content:flex-start}
 .mockup-lede{
   font-family:var(--font-display);font-size:78px;line-height:1.08;
   color:var(--ink);margin:0 0 42px;max-width:1580px;
@@ -700,6 +705,31 @@ a.cue:hover,.cue:hover{color:inherit}
   padding:8px 16px;
 }
 .gonecard.asked{border-top-color:var(--kuning-deep);border-top-width:4px}
+
+/* ===========================================
+   A SHIFT FROM ONE WORD TO ANOTHER
+   Same shape as the 6 -> 3 slide, so the deck
+   reuses a move the room has already learned.
+   =========================================== */
+.shift{display:flex;align-items:stretch;gap:48px;margin-top:74px}
+.shift-box{
+  flex:1;border:2px solid var(--ink);background:rgba(255,255,255,.45);
+  padding:46px 48px 56px;
+}
+.shift-box .tag{
+  font-family:var(--font-label);font-weight:700;font-size:23px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:24px;
+}
+.shift-box .word-big{
+  font-family:var(--font-display);font-size:146px;line-height:.96;color:var(--ink);
+  display:block;letter-spacing:-.01em;
+}
+.shift-box.to{background:rgba(247,195,37,.2);border-width:3px}
+.shift-box.to .tag{color:var(--ink)}
+.shift-arrow{
+  flex:none;align-self:center;font-family:var(--font-display);
+  font-size:158px;line-height:1;color:var(--ink-faint);
+}
 </style>
 </head>
 <body>
@@ -730,12 +760,10 @@ a.cue:hover,.cue:hover{color:inherit}
     <div class="head reveal dB">
       <p class="lbl">Pertemuan Kedua</p>
       <h1>Menjawab<br><em class="mark">Pertanyaan Anda</em></h1>
+      <p class="subtitle">Ketua &middot; Bendahara &middot; Sekretaris Lingkungan</p>
     </div>
 
     <div class="foot reveal dD">
-      <div class="meta">13 September 2026
-        <strong>Ketua · Bendahara · Sekretaris Lingkungan</strong>
-      </div>
       <div class="legend">
         <span class="chip"><i class="sq m">M</i>Maker</span>
         <span class="chip"><i class="sq c">C</i>Checker</span>
@@ -750,7 +778,7 @@ a.cue:hover,.cue:hover{color:inherit}
      ============================================================ -->
 <section class="slide">
   <div class="wrap">
-    <div class="runhead reveal d0">Rundown &nbsp;·&nbsp; <b>13 September 2026</b></div>
+    <div class="runhead reveal d0">Rundown</div>
 
     <div class="rundown">
       <div class="rd now reveal dA">
@@ -760,7 +788,7 @@ a.cue:hover,.cue:hover{color:inherit}
         </div>
         <div>
           <h3>Latar belakang &amp; Open Question</h3>
-          <p>Kenapa program ini ada. Lalu seluruh pertanyaan dan keraguan Anda dijawab satu per satu.</p>
+          <p>Kenapa program ini ada. Lalu seluruh pertanyaan dan keraguan teman-teman dijawab satu per satu.</p>
         </div>
       </div>
 
@@ -816,7 +844,7 @@ a.cue:hover,.cue:hover{color:inherit}
     <div class="qghost">02</div>
     <div class="reveal dA">
       <span class="qmark">&ldquo;</span>
-      <p class="qbig">Kenapa ketika mengajukan<br>role harus pakai<br>surat pernyataan?</p>
+      <p class="qbig">Kenapa ketika mengajukan<br>ketiga peran itu harus pakai<br>surat pernyataan?</p>
       <!-- <p class="qattr">Disampaikan di pertemuan pertama</p> -->
     </div>
   </div>
@@ -850,7 +878,7 @@ a.cue:hover,.cue:hover{color:inherit}
       </div>
     </div>
 
-    <p class="closer reveal dD">Surat pernyataan adalah satu-satunya cara kami tahu<br>pengajuan itu <em class="mark">benar dari Anda</em>.</p>
+    <p class="closer reveal dD">Surat pernyataan adalah satu-satunya cara kami tahu<br>pengajuan itu <em class="mark">benar dari teman-teman</em>.</p>
   </div>
 </section>
 
@@ -902,7 +930,7 @@ a.cue:hover,.cue:hover{color:inherit}
     </div>
 
     <div class="foot reveal dE">
-      <p class="say" style="font-size:38px;max-width:1330px">Setiap penerimaan sumbangan &amp; pengeluaran uang dari gereja perlu <strong class="nb">dua tanda tangan</strong>.</p>
+      <p class="say" style="font-size:38px;max-width:1330px">Setiap penerimaan sumbangan &amp; pengeluaran uang dari gereja perlu <strong class="nb">minimal dua tanda tangan</strong>.</p>
       <span class="ayat">Markus 6:7</span>
     </div>
   </div>
@@ -978,7 +1006,7 @@ a.cue:hover,.cue:hover{color:inherit}
     <div class="reveal dA" style="margin-top:auto;margin-bottom:auto">
       <p class="mockup-lede">Jadi sekarang kami buatkan.<br><a class="hotword" href="https://tharzzan.github.io/claude/mockup-dssy-hp-v3.html" target="_blank" rel="noopener noreferrer">Web app sendiri</a>, dirancang untuk HP sejak awal.</p>
 
-      <p class="say" style="font-size:40px;max-width:1500px">Fungsinya <strong>sedang dikerjakan sekarang</strong>. Yang Anda lihat hari ini baru tampilannya.</p>
+      <p class="say" style="font-size:40px;max-width:1500px">Fungsinya <strong>sedang dikerjakan sekarang</strong>. Yang teman-teman lihat hari ini baru tampilannya.</p>
 
       <div class="two-panels">
         <div class="panel" style="padding:28px 32px">
@@ -1037,14 +1065,37 @@ a.cue:hover,.cue:hover{color:inherit}
   <div class="wrap">
     <div class="runhead reveal d0"><span class="qno">05</span> &nbsp;Berarti kami tidak dipercaya.</div>
 
-    <div class="reveal dB" style="margin-top:52px">
-      <p class="statement sm">Kalau kami tidak percaya,<br>kami akan <em>datang sendiri</em> mengecek.</p>
+    <div class="reveal dB" style="margin-top:auto;margin-bottom:auto">
+      <p class="statement sm">Kalau bendahara paroki tidak percaya,<br>kami akan <em>datang sendiri</em> mengecek.</p>
       <p class="statement sm" style="margin-top:34px"><em class="mark" style="font-style:normal">Kami tidak datang.</em></p>
-      <p class="say reveal dD" style="margin-top:52px;font-size:44px;max-width:1560px">Yang mengecek adalah <strong>teman satu lingkungan Anda sendiri</strong>. Pembuatan dan pengecekannya 100% terjadi di lingkungan Anda.</p>
+      <p class="say reveal dD" style="margin-top:52px;font-size:44px;max-width:1560px">Yang mengecek adalah <strong>teman satu lingkungan sendiri</strong>. Pembuatan dan pengecekannya 100% terjadi di lingkungan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     P5 — what actually changed: the scope, not the trust
+     ============================================================ -->
+<section class="slide">
+  <div class="wrap">
+    <div class="runhead reveal d0"><span class="qno">05</span> &nbsp;Berarti kami tidak dipercaya.</div>
+
+    <p class="reveal dA" style="font-family:var(--font-display);font-size:66px;line-height:1.08;color:var(--ink);margin:20px 0 0;max-width:1580px">Yang berubah bukan kepercayaannya —<br>tapi <em class="mark">cakupannya</em>.</p>
+
+    <div class="shift">
+      <div class="shift-box reveal dB">
+        <span class="tag">Dulu &middot; Self-assessment</span>
+        <span class="word-big">Individu</span>
+      </div>
+      <div class="shift-arrow reveal dC">&rarr;</div>
+      <div class="shift-box to reveal dD">
+        <span class="tag">Sekarang &middot; Self-assessment</span>
+        <span class="word-big">Komunal</span>
+      </div>
     </div>
 
     <div class="foot reveal dE">
-      <p class="say" style="font-size:40px;max-width:1560px">Yang berubah bukan kepercayaannya — tapi cakupannya. Dari <strong>self-assessment individu</strong> menjadi <strong>self-assessment komunal</strong>.</p>
+      <p class="say" style="font-size:38px;max-width:1580px">Diverifikasi secara mandiri <strong>di lingkungan masing-masing</strong> — bukan oleh orang luar yang datang memeriksa.</p>
     </div>
   </div>
 </section>
@@ -1180,8 +1231,8 @@ a.cue:hover,.cue:hover{color:inherit}
 
     <div class="door">
       <div>
-        <p class="statement sm reveal dB" style="font-size:88px">Anda tidak<br><em class="mark">mengerjakannya sendirian.</em></p>
-        <p class="say reveal dC" style="margin-top:46px;font-size:38px">Bendahara Paroki akan mendampingi. Datang saja ke kantor — ada tim yang <strong>standby</strong> untuk membantu secara teknis.</p>
+        <p class="statement sm reveal dB" style="font-size:88px">Teman-teman tidak<br><em class="mark">mengerjakannya sendirian.</em></p>
+        <p class="say reveal dC" style="margin-top:46px;font-size:38px">Tim Bendahara Paroki akan mendampingi. Datang saja ke gereja — ada tim yang <strong>standby</strong> untuk membantu secara teknis.</p>
         <p class="say reveal dD" style="margin-top:26px;font-size:34px">Tidak perlu membuat janji. Tidak perlu menunggu jadwal pelatihan.</p>
       </div>
 
@@ -1205,21 +1256,6 @@ a.cue:hover,.cue:hover{color:inherit}
     <div class="runhead reveal d0">Open Question</div>
     <div class="reveal dB" style="margin-top:auto;margin-bottom:auto">
       <p class="statement">Masih ada yang<br><em class="mark">mengganjal</em>?</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     S15 — CLOSING
-     ============================================================ -->
-<section class="slide s-close">
-  <div class="wrap">
-    <div class="runhead reveal d0">Dana Sehat Santo Yusuf &nbsp;·&nbsp; <b>Paroki Tangerang</b></div>
-
-    <div class="reveal dB" style="margin-top:auto;margin-bottom:auto">
-      <p class="statement">Kami tidak meminta Anda percaya<br>karena kami bilang begitu.</p>
-      <p class="statement" style="margin-top:30px"><em>Kami meminta Anda <span class="mark">mencobanya.</span></em></p>
-      <div class="after">Setelah istirahat: kita jalankan sendiri</div>
     </div>
   </div>
 </section>
