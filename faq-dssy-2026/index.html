@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DSSY — Menjawab Pertanyaan Anda</title>
+<title>DSSY — Menjawab Pertanyaan Teman-teman</title>
 
 <!-- Fonts: Instrument Serif (display), Newsreader (body), Bricolage Grotesque (labels) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -696,15 +696,15 @@ a.cue:hover,.cue:hover{color:inherit}
 /* ===========================================
    A CHANGE THAT CAME FROM THE ROOM
    =========================================== */
-.dari-anda{
-  position:absolute;top:-56px;left:0;white-space:nowrap;
+.gonecard .dari-anda{
+  position:absolute;top:-66px;left:0;white-space:nowrap;
   display:inline-flex;align-items:center;
   background:var(--kuning);border:1.5px solid var(--ink);
-  font-family:var(--font-label);font-weight:700;font-size:18px;
-  letter-spacing:.13em;text-transform:uppercase;color:#3d2f04;
-  padding:8px 16px;
+  font-family:var(--font-label);font-weight:700;font-size:24px;line-height:1.2;
+  letter-spacing:.14em;text-transform:uppercase;color:#3d2f04;
+  padding:9px 18px;
 }
-.gonecard.asked{border-top-color:var(--kuning-deep);border-top-width:4px}
+
 
 /* ===========================================
    A SHIFT FROM ONE WORD TO ANOTHER
@@ -730,6 +730,41 @@ a.cue:hover,.cue:hover{color:inherit}
   flex:none;align-self:center;font-family:var(--font-display);
   font-size:158px;line-height:1;color:var(--ink-faint);
 }
+
+/* ===========================================
+   OPEN FLOOR — question left, form QR right.
+   The QR is inline SVG generated from the form
+   URL and decode-checked before it was placed.
+   =========================================== */
+.floor{display:flex;align-items:center;justify-content:space-between;gap:80px}
+.qr-card{
+  flex:none;margin:0;background:#fff;border:2px solid var(--ink);
+  padding:24px 24px 20px;box-shadow:0 26px 50px -28px rgba(23,32,43,.5);
+}
+.qr-card .qr-svg{width:560px;height:560px;display:block;max-width:none;max-height:none}
+.qr-card figcaption{
+  margin-top:16px;text-align:center;font-family:var(--font-label);font-weight:700;
+  font-size:24px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+}
+
+/* ===========================================
+   STILL OPEN — a short honest note with one
+   wide capture underneath it.
+   =========================================== */
+.pending-lede{
+  font-family:var(--font-display);font-size:78px;line-height:1.08;
+  color:var(--ink);margin:8px 0 38px;max-width:1600px;
+}
+.pending-shot{
+  border:2px solid var(--ink);background:#fff;overflow:hidden;
+  box-shadow:0 26px 50px -30px rgba(23,32,43,.5);
+}
+.pending-shot img{width:100%;height:auto;display:block;max-width:none;max-height:none}
+.pending-note{
+  margin-top:28px;font-family:var(--font-body);font-weight:400;font-size:38px;
+  line-height:1.4;color:var(--ink-soft);
+}
+.pending-note strong{color:var(--ink);font-weight:500}
 </style>
 </head>
 <body>
@@ -759,7 +794,7 @@ a.cue:hover,.cue:hover{color:inherit}
 
     <div class="head reveal dB">
       <p class="lbl">Pertemuan Kedua</p>
-      <h1>Menjawab<br><em class="mark">Pertanyaan Anda</em></h1>
+      <h1>Menjawab Pertanyaan<br><em class="mark">Teman-teman</em></h1>
       <p class="subtitle">Ketua &middot; Bendahara &middot; Sekretaris Lingkungan</p>
     </div>
 
@@ -1047,7 +1082,7 @@ a.cue:hover,.cue:hover{color:inherit}
       <div class="word reveal dB">
         <div class="tagx">Yang pertama</div>
         <h3>Niat</h3>
-        <p>Bukan urusan kami. Itu urusan Romo, dan jauh lebih besar daripada yang bisa kami tangani.</p>
+        <p>Di luar kendali kami.</p>
       </div>
       <div class="word on reveal dC">
         <div class="tagx">Yang kedua</div>
@@ -1188,7 +1223,7 @@ a.cue:hover,.cue:hover{color:inherit}
 
     <div class="gone reveal dC">
       <div class="gonecard asked">
-        <span class="dari-anda">Dari masukan Anda</span>
+        <span class="dari-anda">Dari feedback</span>
         <b>Print laporan</b>
         <span>Dihapus. Pencetakan pindah ke Staf Bendahara Gereja, untuk audit internal.</span>
       </div>
@@ -1249,13 +1284,34 @@ a.cue:hover,.cue:hover{color:inherit}
 </section>
 
 <!-- ============================================================
+     STILL OPEN — the Midtrans account application (IMG-04)
+     ============================================================ -->
+<section class="slide">
+  <div class="wrap">
+    <div class="runhead reveal d0">Yang masih kami selesaikan</div>
+
+    <p class="pending-lede reveal dA">Pengajuan akun Midtrans <em class="mark">masih bermasalah</em>.</p>
+
+    <div class="pending-shot reveal dB">
+      <img src="assets/IMG-04.jpeg" alt="Tahap aktivasi akun Midtrans: Business review masih In progress">
+    </div>
+
+    <p class="pending-note reveal dC">Masih tertahan di tahap <strong>Business review</strong>.</p>
+  </div>
+</section>
+
+<!-- ============================================================
      OPEN FLOOR — the seven are done; anything else is theirs
      ============================================================ -->
 <section class="slide s-statement">
   <div class="wrap">
     <div class="runhead reveal d0">Open Question</div>
-    <div class="reveal dB" style="margin-top:auto;margin-bottom:auto">
+    <div class="floor reveal dB" style="margin-top:auto;margin-bottom:auto">
       <p class="statement">Masih ada yang<br><em class="mark">mengganjal</em>?</p>
+      <figure class="qr-card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57 57" class="qr-svg"><path fill="#fff" d="M0 0h57v57h-57z"/><path stroke="#17202b" d="M4 4.5h7m2 0h1m3 0h4m1 0h1m1 0h6m1 0h6m2 0h3m2 0h1m1 0h7m-49 1h1m5 0h1m1 0h2m2 0h3m5 0h1m1 0h1m2 0h2m2 0h3m1 0h2m1 0h5m1 0h1m5 0h1m-49 1h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h2m1 0h1m1 0h9m1 0h1m2 0h3m2 0h2m1 0h2m1 0h1m1 0h3m1 0h1m-49 1h1m1 0h3m1 0h1m3 0h1m2 0h1m4 0h1m3 0h1m1 0h1m2 0h1m2 0h2m1 0h5m1 0h1m2 0h1m1 0h3m1 0h1m-49 1h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h4m1 0h9m1 0h1m2 0h1m1 0h1m2 0h2m4 0h1m1 0h3m1 0h1m-49 1h1m5 0h1m2 0h1m1 0h1m1 0h2m1 0h4m1 0h2m3 0h1m2 0h2m4 0h4m3 0h1m5 0h1m-49 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-38 1h1m3 0h2m5 0h1m3 0h2m3 0h2m2 0h1m1 0h2m-38 1h3m1 0h2m5 0h3m1 0h1m3 0h1m1 0h8m1 0h1m1 0h1m4 0h1m7 0h2m-48 1h3m5 0h1m3 0h2m1 0h1m3 0h4m1 0h1m2 0h1m1 0h3m4 0h2m3 0h4m2 0h1m-48 1h4m2 0h2m3 0h1m1 0h1m1 0h2m3 0h1m1 0h3m1 0h1m2 0h2m1 0h4m2 0h3m1 0h3m-45 1h1m2 0h3m3 0h2m1 0h1m1 0h2m3 0h4m4 0h2m3 0h1m1 0h1m2 0h1m1 0h1m2 0h1m2 0h2m1 0h1m-48 1h1m1 0h1m1 0h2m1 0h2m2 0h1m1 0h1m1 0h2m3 0h7m1 0h2m3 0h4m1 0h2m2 0h1m1 0h3m-48 1h4m4 0h1m3 0h1m5 0h2m2 0h1m3 0h2m4 0h2m1 0h4m2 0h1m2 0h4m-47 1h4m1 0h2m1 0h2m2 0h5m2 0h2m1 0h1m1 0h3m1 0h4m1 0h2m1 0h2m3 0h2m1 0h1m1 0h1m-41 1h3m6 0h1m1 0h2m1 0h1m1 0h3m2 0h2m1 0h2m1 0h1m1 0h7m1 0h1m-44 1h1m2 0h3m3 0h1m1 0h1m2 0h1m4 0h2m2 0h1m2 0h4m1 0h1m1 0h1m2 0h1m2 0h1m2 0h4m-47 1h2m1 0h1m1 0h1m1 0h1m3 0h2m1 0h1m2 0h1m6 0h2m1 0h4m2 0h1m1 0h2m2 0h3m2 0h1m3 0h1m-48 1h4m1 0h7m1 0h3m1 0h1m2 0h2m3 0h3m1 0h4m2 0h6m3 0h1m1 0h2m-49 1h1m2 0h3m3 0h1m1 0h4m2 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h3m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m-47 1h1m1 0h4m2 0h1m1 0h1m1 0h3m1 0h1m1 0h3m1 0h3m2 0h3m2 0h1m1 0h1m2 0h2m5 0h1m1 0h2m-49 1h1m1 0h3m3 0h1m1 0h1m4 0h1m1 0h5m5 0h4m8 0h1m1 0h2m-42 1h2m1 0h5m3 0h2m3 0h1m1 0h8m1 0h7m5 0h6m-45 1h2m1 0h1m3 0h2m2 0h3m5 0h1m1 0h1m3 0h4m1 0h2m1 0h1m1 0h1m2 0h2m3 0h1m1 0h3m-49 1h5m1 0h1m1 0h1m1 0h1m2 0h2m2 0h6m1 0h1m1 0h2m1 0h2m3 0h3m1 0h3m1 0h1m1 0h3m1 0h1m-48 1h1m1 0h2m3 0h1m3 0h2m1 0h1m1 0h1m4 0h1m3 0h2m1 0h1m2 0h1m2 0h6m3 0h1m2 0h2m-48 1h1m2 0h5m2 0h1m2 0h1m1 0h2m1 0h8m1 0h1m1 0h1m6 0h10m-46 1h1m1 0h2m2 0h1m1 0h2m1 0h1m3 0h1m1 0h3m1 0h1m2 0h2m1 0h3m1 0h2m3 0h1m1 0h3m1 0h1m3 0h1m-48 1h2m1 0h6m1 0h1m2 0h3m4 0h3m1 0h2m1 0h1m1 0h1m1 0h4m2 0h2m3 0h1m-43 1h1m6 0h1m4 0h1m1 0h2m1 0h2m1 0h1m2 0h1m4 0h1m2 0h4m6 0h2m-43 1h1m3 0h1m1 0h1m1 0h1m1 0h4m2 0h1m3 0h1m2 0h3m1 0h3m1 0h6m1 0h6m3 0h2m-49 1h1m1 0h1m1 0h2m1 0h2m3 0h1m1 0h4m3 0h4m7 0h1m2 0h1m2 0h1m1 0h3m2 0h1m1 0h1m-48 1h3m1 0h1m1 0h1m3 0h1m1 0h1m2 0h5m2 0h2m1 0h3m4 0h1m1 0h1m2 0h2m1 0h1m2 0h1m1 0h3m-48 1h2m1 0h1m3 0h2m2 0h2m3 0h6m2 0h7m1 0h1m2 0h3m1 0h5m1 0h2m1 0h1m-48 1h2m3 0h8m1 0h6m2 0h2m1 0h3m2 0h1m4 0h1m2 0h1m3 0h1m2 0h1m-47 1h2m1 0h1m1 0h1m1 0h1m3 0h1m1 0h1m1 0h2m4 0h2m1 0h1m4 0h1m1 0h1m1 0h2m4 0h2m4 0h4m-48 1h1m1 0h2m1 0h3m1 0h1m1 0h1m3 0h2m3 0h2m2 0h2m2 0h3m2 0h3m1 0h7m-44 1h1m9 0h2m2 0h1m6 0h1m1 0h1m2 0h1m1 0h1m3 0h1m1 0h4m1 0h1m2 0h3m1 0h1m-47 1h1m3 0h4m1 0h1m3 0h1m3 0h1m1 0h2m1 0h1m1 0h2m2 0h4m5 0h2m3 0h2m2 0h1m-47 1h3m3 0h1m1 0h2m5 0h3m1 0h1m4 0h2m1 0h1m1 0h1m2 0h1m7 0h1m5 0h2m-49 1h3m3 0h4m2 0h1m2 0h3m4 0h5m4 0h3m6 0h5m1 0h2m-40 1h1m1 0h5m4 0h2m1 0h1m3 0h2m4 0h1m1 0h1m4 0h2m3 0h3m1 0h1m-49 1h7m7 0h2m1 0h3m2 0h1m1 0h1m1 0h1m2 0h3m6 0h1m1 0h1m1 0h1m1 0h2m1 0h2m-49 1h1m5 0h1m1 0h2m2 0h1m2 0h3m2 0h3m3 0h1m1 0h1m1 0h2m4 0h2m2 0h1m3 0h2m2 0h1m-49 1h1m1 0h3m1 0h1m2 0h1m1 0h2m1 0h5m3 0h9m2 0h1m4 0h1m1 0h6m1 0h1m-48 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m2 0h4m1 0h1m1 0h1m2 0h1m3 0h5m1 0h3m1 0h3m1 0h2m1 0h1m-47 1h1m1 0h3m1 0h1m1 0h1m2 0h3m2 0h1m2 0h1m1 0h1m1 0h1m1 0h3m1 0h4m1 0h3m2 0h1m3 0h2m1 0h1m-47 1h1m5 0h1m1 0h1m2 0h1m2 0h1m3 0h3m1 0h3m1 0h2m1 0h5m1 0h2m1 0h2m1 0h1m3 0h2m-47 1h7m2 0h2m1 0h3m2 0h1m1 0h2m6 0h1m1 0h1m1 0h1m2 0h5m2 0h1m2 0h5"/></svg>
+        <figcaption>Form Perubahan Akses DSSY</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -1287,7 +1343,7 @@ a.cue:hover,.cue:hover{color:inherit}
 </div>
 
 <!-- Deck chrome — lives outside the 1920×1080 stage -->
-<div class="counter" id="counter">01 / 22</div>
+<div class="counter" id="counter">01 / 23</div>
 <div class="edit-hotzone" id="editHotzone"></div>
 <button class="edit-toggle" id="editToggle" title="Mode edit (E)">&#9998;</button>
 <div class="edit-hint">Mode edit aktif · klik teks untuk mengubah · Ctrl+S simpan · E keluar</div>
